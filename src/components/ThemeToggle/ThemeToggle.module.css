@@ -1,0 +1,21 @@
+.toggle {
+  display: inline-grid;
+  place-items: center;
+  /* Icon-only, so it must hit the 44px minimum on its own. */
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--text-lg);
+  line-height: 1;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.toggle:hover {
+  background-color: var(--color-surface-sunken);
+  border-color: var(--color-border-strong);
+}

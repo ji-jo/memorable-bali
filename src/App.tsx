@@ -1,103 +1,56 @@
-import { useEffect, useState } from 'react';
+import { Suspense, lazy } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { getCategories, getDefaultAnchor, getSpots } from '@/data/repository';
-import { sortByDistance, withDistances } from '@/data/queries';
-import { formatDistance, formatDuration, formatRating } from '@/lib/format';
-import { useTheme, useThemeCycle } from '@/state/ThemeContext';
-import type { Category, Spot } from '@/data/types';
+import { AppShell } from '@/components/AppShell';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { OnboardingProvider, useOnboarding } from '@/state/OnboardingContext';
+import { VisitedProvider } from '@/state/VisitedContext';
+import { ItineraryProvider } from '@/state/ItineraryContext';
 
-import styles from './App.module.css';
+import Landing from '@/screens/Landing';
+import Onboarding from '@/screens/Onboarding';
+import Home from '@/screens/Home';
 
-/**
- * Scaffold smoke screen — phase 1 of docs/11-Cloud-Code-Prompt.md.
- *
- * This proves the foundation works end to end: tokens render in both themes,
- * the repository seam loads real data, distances compute, formatting helpers
- * behave. It is NOT the Home screen — that arrives in phase 5, along with
- * routing, the component library and the Explore map.
- */
+// Route-level splitting. Landing and Home stay in the entry chunk so first
+// paint is immediate; the heavier screens (and the Maps SDK) load on demand.
+const Explore = lazy(() => import('@/screens/Explore'));
+const PlaceDetail = lazy(() => import('@/screens/PlaceDetail'));
+const ItineraryScreen = lazy(() => import('@/screens/Itinerary'));
+const Ferry = lazy(() => import('@/screens/Ferry'));
+const NotFound = lazy(() => import('@/screens/NotFound'));
+
+/** `/` redirects straight to Home once onboarding has been completed. */
+function LandingGate() {
+  const { isOnboarded } = useOnboarding();
+  return isOnboarded ? <Navigate to="/home" replace /> : <Landing />;
+}
+
 export default function App() {
-  const [spots, setSpots] = useState<Spot[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
-  const { preference, resolved } = useTheme();
-  const cycleTheme = useThemeCycle();
-
-  useEffect(() => {
-    void (async () => {
-      const [allSpots, allCategories] = await Promise.all([getSpots(), getCategories()]);
-      setSpots(sortByDistance(withDistances(allSpots, getDefaultAnchor())));
-      setCategories(allCategories);
-    })();
-  }, []);
-
-  const colorFor = (categoryId: string) =>
-    categories.find((c) => c.id === categoryId)?.color ?? 'var(--color-accent)';
-
   return (
-    <div className={styles.shell}>
-      <header className={styles.header}>
-        <div>
-          <h1 className={styles.title}>Memorable Bali</h1>
-          <p className={styles.subtitle}>
-            Foundation scaffold — data layer, tokens and theming verified.
-          </p>
-        </div>
-        <button
-          type="button"
-          className={styles.themeButton}
-          onClick={cycleTheme}
-          aria-label={`Theme: ${preference}. Click to change.`}
-        >
-          {preference === 'system' ? `System (${resolved})` : preference}
-        </button>
-      </header>
+    <OnboardingProvider>
+      <VisitedProvider>
+        <ItineraryProvider>
+          <ErrorBoundary>
+            <Suspense fallback={<div style={{ padding: 'var(--gutter)' }}>Loading…</div>}>
+              <Routes>
+                <Route path="/" element={<LandingGate />} />
+                <Route path="/onboarding" element={<Navigate to="/onboarding/1" replace />} />
+                <Route path="/onboarding/:step" element={<Onboarding />} />
 
-      <div className={styles.statusGrid}>
-        <div className={styles.stat}>
-          <div className={styles.statValue}>{spots.length}</div>
-          <div className={styles.statLabel}>Curated places</div>
-        </div>
-        <div className={styles.stat}>
-          <div className={styles.statValue}>{categories.length}</div>
-          <div className={styles.statLabel}>Categories</div>
-        </div>
-        <div className={styles.stat}>
-          <div className={styles.statValue}>{resolved}</div>
-          <div className={styles.statLabel}>Active theme</div>
-        </div>
-      </div>
+                <Route element={<AppShell />}>
+                  <Route path="/home" element={<Home />} />
+                  <Route path="/explore" element={<Explore />} />
+                  <Route path="/place/:id" element={<PlaceDetail />} />
+                  <Route path="/itinerary" element={<ItineraryScreen />} />
+                  <Route path="/ferry" element={<Ferry />} />
+                </Route>
 
-      <h2 className={styles.sectionTitle}>Nearest to Ubud</h2>
-      <ul className={styles.list} role="list">
-        {spots.slice(0, 8).map((spot) => (
-          <li key={spot.id} className={styles.card}>
-            <div
-              className={styles.thumb}
-              style={{ ['--thumb-color' as string]: colorFor(spot.category) }}
-              aria-hidden="true"
-            >
-              {spot.name.charAt(0)}
-            </div>
-            <div className={styles.cardBody}>
-              <div className={styles.cardName}>{spot.name}</div>
-              <div className={styles.cardDesc}>{spot.description}</div>
-              <div className={styles.cardMeta}>
-                <span>{spot.category}</span>
-                <span>{formatDistance(spot.distanceFromStayKm)}</span>
-                <span>{formatDuration(spot.visitDurationMin)}</span>
-                <span>★ {formatRating(spot.rating)}</span>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
-
-      <p className={styles.note}>
-        Ratings shown are editorial placeholders, not Google ratings. Coordinates,
-        hours and prices are unverified — see <code>docs/03-Data-Model.md</code>.
-        Place images do not exist yet; the coloured tiles above stand in for the
-        gradient fallback that <code>SpotImage</code> will provide.
-      </p>
-    </div>
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </ErrorBoundary>
+        </ItineraryProvider>
+      </VisitedProvider>
+    </OnboardingProvider>
   );
 }

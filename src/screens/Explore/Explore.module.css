@@ -1,0 +1,72 @@
+.explore {
+  position: relative;
+  /* Fill the viewport minus the tab bar. */
+  height: calc(100dvh - 56px - env(safe-area-inset-bottom));
+}
+
+/* Below --bp-lg: map is full-bleed, the Sheet floats over it. */
+.mapPane {
+  position: absolute;
+  inset: 0;
+}
+
+.panel {
+  display: none;
+}
+
+.list {
+  display: grid;
+  gap: var(--space-2);
+  padding-bottom: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .explore {
+    height: calc(100dvh - 73px); /* top bar instead of tab bar */
+  }
+}
+
+/* From --bp-lg: side by side, no sheet. */
+@media (min-width: 1024px) {
+  .explore {
+    display: grid;
+    grid-template-columns: minmax(24rem, 34rem) 1fr;
+  }
+
+  .mapPane {
+    position: relative;
+    inset: auto;
+    grid-column: 2;
+    height: 100%;
+  }
+
+  .panel {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1;
+    grid-row: 1;
+    overflow: hidden;
+    border-right: 1px solid var(--color-border);
+    background-color: var(--color-bg);
+  }
+
+  .panelHeader {
+    flex-shrink: 0;
+    padding: var(--space-5) var(--space-5) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text);
+  }
+
+  .panel .list {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--space-4) var(--space-5) var(--space-8);
+  }
+}

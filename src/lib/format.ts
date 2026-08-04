@@ -1,4 +1,5 @@
-import type { Cost } from '@/data/types';
+/** Only the numeric parts are needed to format — `note` is rendered separately. */
+type CostAmount = { currency: string; min: number; max: number };
 
 /** "1h 30m", "45m". For visit durations and travel times. */
 export function formatDuration(minutes: number): string {
@@ -26,7 +27,7 @@ export function formatIDR(amount: number): string {
   return `Rp ${(amount / 1_000_000).toFixed(1)}M`;
 }
 
-export function formatCost(cost: Cost): string {
+export function formatCost(cost: CostAmount): string {
   if (cost.min === 0 && cost.max === 0) return 'Free';
   if (cost.min === cost.max) return formatIDR(cost.min);
   return `${formatIDR(cost.min)}–${formatIDR(cost.max)}`;

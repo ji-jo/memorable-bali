@@ -1,0 +1,213 @@
+.detail {
+  max-width: 48rem;
+  margin-inline: auto;
+  padding-bottom: var(--space-8);
+}
+
+.notFound {
+  padding: var(--gutter);
+}
+
+.hero {
+  position: relative;
+}
+
+.back {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-full);
+  background-color: var(--color-scrim);
+  color: #fff;
+  font-size: var(--text-lg);
+  backdrop-filter: blur(4px);
+}
+
+.body {
+  padding: var(--space-5) var(--gutter) 0;
+}
+
+.header {
+  margin-bottom: var(--space-5);
+}
+
+.tags {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-3);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+}
+
+.subline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.longDescription {
+  font-size: var(--text-lg);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+  max-width: 68ch;
+}
+
+.practical {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-sunken);
+}
+
+.practicalItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.practicalLabel {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-tertiary);
+}
+
+.practicalValue {
+  font-weight: var(--weight-medium);
+  color: var(--color-text);
+}
+
+.practicalNote {
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+  line-height: var(--leading-snug);
+}
+
+/* Given real visual weight — this is the curation the product sells. */
+.tips {
+  margin-top: var(--space-6);
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-accent);
+  background-color: var(--color-accent-subtle);
+}
+
+.tipsTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+
+.tipsList {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.tip {
+  position: relative;
+  padding-left: var(--space-5);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+}
+
+.tip::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+}
+
+.section {
+  margin-top: var(--space-7);
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+}
+
+.nearbyRail {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.disclaimer {
+  margin-top: var(--space-7);
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+  line-height: var(--leading-snug);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Actions stay reachable while scrolling. */
+.actionBar {
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-6);
+  padding: var(--space-4) var(--gutter);
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.mapsLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-full);
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+}
+
+.mapsLink:hover {
+  background-color: var(--color-accent-subtle);
+}
+
+.tripLink {
+  display: block;
+  padding: var(--space-4) var(--gutter);
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .actionBar {
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    margin-inline: var(--gutter);
+    bottom: var(--space-5);
+    box-shadow: var(--shadow-md);
+  }
+}
