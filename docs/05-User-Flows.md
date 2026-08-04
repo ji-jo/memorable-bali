@@ -21,7 +21,7 @@ Explore   map + list, synced    (filters preserved; mobile: sheet snap points)
 Place detail
    ├── Add to itinerary ──────► Itinerary
    ├── Mark visited            (in place, optimistic)
-   ├── Navigate ──────────────► In-app directions
+   ├── Open in Maps ──────────► external (Google Maps)
    ├── Open in Google Maps ───► external
    └── Nearby card ───────────► Place detail (recursive)
 
@@ -118,7 +118,7 @@ Actions stay reachable while scrolling (sticky bar on mobile, sidebar from `--bp
 |---|---|
 | Add to itinerary | Adds to the active itinerary; toggles to Remove. If none exists, create "My Trip" silently — do not interrupt with a dialog. |
 | Mark visited | Optimistic toggle, no confirmation, persists immediately. |
-| Navigate | In-app directions (Flow 6). |
+| Open in Maps | External Google Maps handoff (Flow 6). |
 | Open in Google Maps | External tab. |
 
 Tapping a Nearby card pushes another detail page. Back must return to the previous one with scroll position intact.
@@ -149,15 +149,9 @@ Tapping a Nearby card pushes another detail page. Back must return to the previo
 
 ## Flow 6 — Navigate
 
-1. **Navigate** on a detail page or itinerary stop.
-2. Origin: geolocation if already granted, otherwise the stay anchor. Never block waiting on a permission prompt.
-3. Directions API renders the route polyline in-app with distance and duration.
-4. Step list below the map.
-5. Secondary action hands off to Google Maps for live turn-by-turn.
+**As shipped**: one step. **Open in Maps** on a place page opens that destination in Google Maps — the native app where installed, the web otherwise. Uses the record's `googleMapsUrl`, so it needs no API key and costs nothing per user.
 
-Travel mode follows the onboarding transportation choice. **Scooter maps to `DRIVING`** — the API has no two-wheeler mode for Indonesia. Say so in the UI rather than implying a precision we do not have; scooter routes and times genuinely differ.
-
-There is no voice guidance. That is Google Maps' job and the handoff exists for it.
+In-app Directions is deferred on cost grounds, not effort — see `01-PRD.md` §F7 for the reasoning and what building it would involve. There is no voice guidance in either version; that is what the handoff is for.
 
 ---
 

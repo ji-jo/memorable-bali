@@ -116,7 +116,7 @@ Body, in order:
 Actions, persistent on scroll:
 - **Add to itinerary** (or Remove, if already added)
 - **Mark as visited** — toggles `bali-explorer:visited`, optimistic, no confirmation
-- **Navigate** — in-app directions (F7)
+- **Open in Maps** — external Google Maps handoff (F7)
 - **Open in Google Maps** — external, `target="_blank" rel="noopener noreferrer"`
 
 **Done when**: every field in the `Spot` type is rendered or deliberately omitted, and both toggles survive a page refresh.
@@ -125,15 +125,21 @@ Actions, persistent on scroll:
 
 ## F7 — Navigation
 
-Directions stay **inside the app** by default.
+**Shipped scope: external handoff only.** Every place page links out to Google Maps via the record's `googleMapsUrl`. No API key needed, no per-user cost, and the native app opens when installed.
 
-- Origin: current geolocation if granted, otherwise the stay anchor. Never block on a permission prompt.
-- Directions API for the route; render the polyline on the map with distance and duration.
-- Travel mode follows the onboarding transportation choice — scooter maps to `DRIVING` (the API has no two-wheeler mode for Indonesia; note this in the UI rather than pretending otherwise).
-- Step list below the map. **No turn-by-turn voice guidance** — that is what Google Maps is for.
-- A clear secondary action hands off to Google Maps for live turn-by-turn.
+This is a deliberate narrowing of the original brief, which called for directions to stay inside the app. The reason is billing: an embedded browsing map is one Dynamic Maps load per session, but in-app Directions is a per-request charge that scales with every user who taps Navigate — and the per-SKU free allowance (`07-Google-Maps.md`) is consumed by exactly that pattern. The handoff gives the same outcome for nothing.
 
-**Done when**: a route renders in-app with a realistic duration, and the handoff opens the correct destination in Google Maps.
+### Deferred: in-app Directions
+
+Kept here rather than in the roadmap because the groundwork exists — `MapView` already accepts a `route` prop and the loader requests the `geometry` library. Building it means:
+
+- Origin: current geolocation if already granted, otherwise the stay anchor. Never block on a permission prompt.
+- Directions API for the route; render the polyline with distance and duration.
+- Travel mode from the onboarding transportation choice. **Scooter maps to `DRIVING`** — the API has no two-wheeler mode for Indonesia, and scooter routes genuinely differ. Say so in the UI rather than implying a precision we do not have.
+- Step list below the map. No turn-by-turn voice guidance — that is what the handoff is for.
+- Cache results by ordered stop ids. An itinerary screen that recalculates on every render is the fastest way to burn the allowance.
+
+**Done when (shipped)**: every place page opens the correct destination in Google Maps, in the native app where installed.
 
 ---
 

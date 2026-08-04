@@ -6,7 +6,9 @@ Everything here is **out of scope for v1**. The MVP scope is `01-PRD.md` and not
 
 ## Phase 1 — MVP
 
-Landing · onboarding · home · explore (map + list) · place detail · in-app navigation · itinerary builder · ferry info · light/dark · 54 curated places.
+Landing · onboarding · home · explore (map + list) · place detail · Google Maps handoff · itinerary builder · ferry info · light/dark · 54 curated places.
+
+In-app Directions was deferred on cost grounds (`01-PRD.md` §F7) — the external handoff delivers the same outcome for nothing per user.
 
 **Ships when** the release checklist in `09-Deployment.md` is clear.
 
