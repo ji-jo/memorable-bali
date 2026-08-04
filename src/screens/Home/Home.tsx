@@ -5,6 +5,7 @@ import { Chip } from '@/components/Chip';
 import { PlaceCard } from '@/components/PlaceCard';
 import { Section } from '@/components/Section';
 import { SearchOverlay } from '@/components/SearchOverlay';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { dailyShuffle, matchesInterests, sortByDistance, sortByRating } from '@/data/queries';
 import { useSpots } from '@/hooks/useSpots';
 import { useCategoryLookup } from '@/hooks/useLookups';
@@ -49,8 +50,17 @@ export default function Home() {
   return (
     <div className={styles.home}>
       <header className={styles.header}>
-        <p className={styles.greeting}>Staying in {preferences.stayAreaLabel}</p>
-        <h1 className={styles.title}>Where to today?</h1>
+        <div className={styles.headerRow}>
+          <div>
+            <p className={styles.greeting}>Staying in {preferences.stayAreaLabel}</p>
+            <h1 className={styles.title}>Where to today?</h1>
+          </div>
+          {/* The AppShell's top bar is hidden below --bp-md, so without this
+              mobile users would have no way to change theme at all. */}
+          <div className={styles.themeSlot}>
+            <ThemeToggle />
+          </div>
+        </div>
         <button
           type="button"
           className={styles.searchTrigger}
@@ -124,7 +134,7 @@ export default function Home() {
         </Link>
       </div>
 
-      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
+      {searchOpen && <SearchOverlay onClose={() => setSearchOpen(false)} />}
     </div>
   );
 }

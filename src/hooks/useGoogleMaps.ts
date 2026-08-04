@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export type MapsStatus = 'idle' | 'loading' | 'ready' | 'no-key' | 'error';
+export type MapsStatus = 'loading' | 'ready' | 'no-key' | 'error';
 
 /**
  * Shared across all callers so concurrent mounts inject exactly one script tag.
@@ -30,6 +30,8 @@ function loadMaps(): Promise<typeof google.maps> {
   return loaderPromise;
 }
 
+const hasKey = (): boolean => Boolean(import.meta.env.VITE_GOOGLE_MAPS_API_KEY);
+
 /**
  * Loads the Maps SDK on demand — never in the initial bundle.
  *
@@ -38,14 +40,13 @@ function loadMaps(): Promise<typeof google.maps> {
  * app (list, detail, itineraries, distances) works without it.
  */
 export function useGoogleMaps() {
-  const hasKey = Boolean(import.meta.env.VITE_GOOGLE_MAPS_API_KEY);
-  const [status, setStatus] = useState<MapsStatus>(hasKey ? 'idle' : 'no-key');
+  // Seeded from the key so the effect never has to set state synchronously.
+  const [status, setStatus] = useState<MapsStatus>(() => (hasKey() ? 'loading' : 'no-key'));
 
   useEffect(() => {
-    if (!hasKey) return;
+    if (!hasKey()) return;
 
     let cancelled = false;
-    setStatus('loading');
 
     loadMaps()
       .then(() => {
@@ -59,7 +60,7 @@ export function useGoogleMaps() {
     return () => {
       cancelled = true;
     };
-  }, [hasKey]);
+  }, []);
 
   return {
     status,

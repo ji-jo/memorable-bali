@@ -18,38 +18,34 @@ const prefersDark = (): boolean =>
   typeof window !== 'undefined' &&
   window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-const resolve = (pref: ThemePreference): ResolvedTheme =>
-  pref === 'system' ? (prefersDark() ? 'dark' : 'light') : pref;
-
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [preference, setPreference] = useLocalStorage<ThemePreference>(
     StorageKeys.theme,
     'system',
   );
-  const [resolved, setResolved] = useState<ResolvedTheme>(() => resolve(preference));
 
-  // Apply to the document. The inline script in index.html already did this
-  // before first paint; this keeps it in sync on change.
+  // The only genuinely external state is what the OS reports. Everything else
+  // is derived during render — storing `resolved` in state and syncing it in an
+  // effect would cascade an extra render on every preference change.
+  const [systemDark, setSystemDark] = useState(prefersDark);
+
+  const resolved: ResolvedTheme =
+    preference === 'system' ? (systemDark ? 'dark' : 'light') : preference;
+
+  // Subscribe to the OS. This is what effects are for.
   useEffect(() => {
-    const next = resolve(preference);
-    setResolved(next);
-    document.documentElement.dataset.theme = next;
-  }, [preference]);
-
-  // Follow the system while preference is 'system'.
-  useEffect(() => {
-    if (preference !== 'system') return;
-
     const media = window.matchMedia('(prefers-color-scheme: dark)');
-    const onChange = () => {
-      const next: ResolvedTheme = media.matches ? 'dark' : 'light';
-      setResolved(next);
-      document.documentElement.dataset.theme = next;
-    };
+    const onChange = () => setSystemDark(media.matches);
 
     media.addEventListener('change', onChange);
     return () => media.removeEventListener('change', onChange);
-  }, [preference]);
+  }, []);
+
+  // Push the resolved theme to the DOM. The inline script in index.html
+  // already did this before first paint; this keeps it in sync afterwards.
+  useEffect(() => {
+    document.documentElement.dataset.theme = resolved;
+  }, [resolved]);
 
   const value = useMemo(
     () => ({ preference, resolved, setPreference }),

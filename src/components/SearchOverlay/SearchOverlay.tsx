@@ -13,13 +13,17 @@ import { StorageKeys } from '@/lib/storage';
 import styles from './SearchOverlay.module.css';
 
 export interface SearchOverlayProps {
-  open: boolean;
   onClose: () => void;
 }
 
 const MAX_RECENT = 5;
 
-export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
+/**
+ * Rendered only while open — the caller mounts and unmounts it rather than
+ * passing an `open` flag. That makes mount/unmount the reset mechanism, so no
+ * effect has to clear state when it closes.
+ */
+export function SearchOverlay({ onClose }: SearchOverlayProps) {
   const [query, setQuery] = useState('');
   const [debounced, setDebounced] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
@@ -37,22 +41,17 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
   }, [query]);
 
   useEffect(() => {
-    if (open) inputRef.current?.focus();
-    else {
-      setQuery('');
-      setDebounced('');
-      setActiveIndex(0);
-    }
-  }, [open]);
+    inputRef.current?.focus();
+  }, []);
 
   const results = useMemo(
     () => searchSpots(spots, debounced, labels).slice(0, 12),
     [spots, debounced, labels],
   );
 
-  useEffect(() => setActiveIndex(0), [debounced]);
-
-  if (!open) return null;
+  // Clamp during render rather than resetting in an effect — a stale index
+  // from a longer previous result set must never index past the current one.
+  const safeIndex = results.length === 0 ? 0 : Math.min(activeIndex, results.length - 1);
 
   const openSpot = (id: string, term: string) => {
     if (term.trim()) {
@@ -71,13 +70,13 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
 
     if (e.key === 'ArrowDown') {
       e.preventDefault();
-      setActiveIndex((i) => (i + 1) % results.length);
+      setActiveIndex((safeIndex + 1) % results.length);
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
-      setActiveIndex((i) => (i - 1 + results.length) % results.length);
+      setActiveIndex((safeIndex - 1 + results.length) % results.length);
     } else if (e.key === 'Enter') {
       e.preventDefault();
-      const target = results[activeIndex];
+      const target = results[safeIndex];
       if (target) openSpot(target.id, query);
     }
   };
@@ -151,7 +150,7 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
           {results.map((spot, i) => (
             <div
               key={spot.id}
-              className={i === activeIndex ? styles.activeResult : undefined}
+              className={i === safeIndex ? styles.activeResult : undefined}
               onMouseEnter={() => setActiveIndex(i)}
             >
               <PlaceCard

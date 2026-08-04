@@ -9,6 +9,24 @@
   margin-bottom: var(--space-5);
 }
 
+.headerRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+/* Only below --bp-md, where AppShell's top bar (and its toggle) is hidden. */
+.themeSlot {
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .themeSlot {
+    display: none;
+  }
+}
+
 .greeting {
   font-size: var(--text-xs);
   text-transform: uppercase;

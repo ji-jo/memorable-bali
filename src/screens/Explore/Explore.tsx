@@ -28,7 +28,9 @@ const VALID_TAGS: SpotTag[] = ['Memorable', 'Must Visit', 'Cultural', 'Outworldl
 export default function Explore() {
   const [params, setParams] = useSearchParams();
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [snap, setSnap] = useState<SnapPoint>('half');
+  // null means "not chosen yet" — the default is derived below rather than
+  // forced by an effect, which would cascade an extra render.
+  const [chosenSnap, setChosenSnap] = useState<SnapPoint | null>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
   const spots = useSpots();
@@ -68,23 +70,25 @@ export default function Explore() {
 
   const results = useMemo(() => applyFilters(spots, filters), [spots, filters]);
 
+  // With no map there is nothing to look at behind the sheet, so the list takes
+  // the screen. The user can still drag it back down.
+  const snap: SnapPoint = chosenSnap ?? (mapUnavailable ? 'full' : 'half');
+
   /** Pin → card. Scrolls the card into view and lifts the sheet enough to see it. */
-  const selectFromMap = useCallback((id: string | null) => {
-    setSelectedId(id);
-    if (!id) return;
-    setSnap((current) => (current === 'peek' ? 'half' : current));
-  }, []);
+  const selectFromMap = useCallback(
+    (id: string | null) => {
+      setSelectedId(id);
+      if (!id) return;
+      if (snap === 'peek') setChosenSnap('half');
+    },
+    [snap],
+  );
 
   useEffect(() => {
     if (!selectedId) return;
     const node = listRef.current?.querySelector(`[data-spot-id="${selectedId}"]`);
     node?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }, [selectedId]);
-
-  // With no map, the list is the whole screen — open the sheet fully.
-  useEffect(() => {
-    if (mapUnavailable) setSnap('full');
-  }, [mapUnavailable]);
 
   const list = (
     <div className={styles.list} ref={listRef}>
@@ -146,7 +150,7 @@ export default function Explore() {
       ) : (
         <Sheet
           snap={snap}
-          onSnapChange={setSnap}
+          onSnapChange={setChosenSnap}
           title={`${results.length} place${results.length === 1 ? '' : 's'}`}
         >
           <FilterBar filters={filters} onChange={setFilters} resultCount={results.length} />
