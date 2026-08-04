@@ -1,0 +1,150 @@
+/**
+ * Design tokens — the single source of truth for colour, type, space, radius,
+ * elevation and motion. Defined in docs/04-Design-System.md.
+ *
+ * Nothing in the app hardcodes a colour, spacing value or radius. If you need
+ * one that isn't here, add it here — do not type a hex code into a .module.css.
+ */
+
+:root {
+  /* ─── Surfaces ─────────────────────────────────────────────────────── */
+  --color-bg: #fcfbf8; /* warm off-white, not pure white */
+  --color-surface: #ffffff;
+  --color-surface-raised: #ffffff;
+  --color-surface-sunken: #f4f1eb;
+
+  /* ─── Text ─────────────────────────────────────────────────────────── */
+  --color-text: #1a1815;
+  --color-text-secondary: #5c574e;
+  --color-text-tertiary: #8b8579; /* metadata only — never body copy */
+  --color-text-inverse: #fcfbf8;
+
+  /* ─── Lines ────────────────────────────────────────────────────────── */
+  --color-border: #e6e1d8;
+  --color-border-strong: #cfc8ba;
+
+  /* ─── Brand: volcanic clay, from Balinese terracotta ───────────────── */
+  --color-accent: #c0553b;
+  --color-accent-hover: #a9462f;
+  --color-accent-subtle: #f7e9e4;
+  --color-accent-text: #ffffff;
+
+  /* ─── Secondary: rice-terrace green, for visited + success ─────────── */
+  --color-success: #3f7d5c;
+  --color-success-subtle: #e4efe8;
+
+  --color-warning: #b8763e;
+  --color-danger: #b3392b;
+
+  /* ─── Scrims for text over photography ─────────────────────────────── */
+  --color-scrim: rgba(20, 18, 15, 0.55);
+  --color-scrim-strong: linear-gradient(180deg, transparent 30%, rgba(20, 18, 15, 0.85) 100%);
+
+  /* ─── Type ─────────────────────────────────────────────────────────── */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+
+  /* Fluid scale — min at 360px, max at 1280px */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem);
+  --text-xl: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
+  --text-2xl: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+  --text-3xl: clamp(2.25rem, 1.6rem + 2.9vw, 3.75rem);
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+
+  --tracking-tight: -0.02em; /* display sizes only */
+  --tracking-wide: 0.08em; /* uppercase labels only */
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  /* ─── Space — 4px base ─────────────────────────────────────────────── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  --gutter: clamp(1rem, 0.6rem + 2vw, 2rem);
+  --content-max: 72rem;
+
+  /* ─── Radius ───────────────────────────────────────────────────────── */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 999px;
+
+  /* ─── Elevation — soft and low. Premium reads as restraint. ────────── */
+  --shadow-sm: 0 1px 2px rgba(20, 18, 15, 0.06);
+  --shadow-md: 0 4px 16px rgba(20, 18, 15, 0.08);
+  --shadow-lg: 0 12px 32px rgba(20, 18, 15, 0.12);
+
+  /* ─── Motion ───────────────────────────────────────────────────────── */
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --ease-out: cubic-bezier(0.2, 0, 0, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ─── Breakpoints ──────────────────────────────────────────────────────
+   * Custom properties do not work inside media query conditions, so these
+   * are documentation only — write @media (min-width: 1024px) directly.
+   *   --bp-sm  480px
+   *   --bp-md  768px   nav shell: tab bar → top nav
+   *   --bp-lg  1024px  Explore: sheet-over-map → side-by-side
+   *   --bp-xl  1280px
+   */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+}
+
+/**
+ * Dark is NOT an inversion of light — the ramps are tuned separately so
+ * photography sits well on both.
+ */
+:root[data-theme='dark'] {
+  --color-bg: #131211;
+  --color-surface: #1c1a18;
+  --color-surface-raised: #24211e;
+  --color-surface-sunken: #0e0d0c;
+
+  --color-text: #f2efe9;
+  --color-text-secondary: #a8a197;
+  --color-text-tertiary: #78726a;
+  --color-text-inverse: #131211;
+
+  --color-border: #2e2b27;
+  --color-border-strong: #454039;
+
+  --color-accent: #e0725a; /* lifted for contrast on dark */
+  --color-accent-hover: #ec8570;
+  --color-accent-subtle: #33211c;
+  --color-accent-text: #131211;
+
+  --color-success: #5fa07c;
+  --color-success-subtle: #1b2a22;
+
+  --color-warning: #d19a5e;
+  --color-danger: #d9584a;
+
+  --color-scrim: rgba(0, 0, 0, 0.6);
+  --color-scrim-strong: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.9) 100%);
+
+  /* Shadows read poorly on dark. Prefer --color-border or --color-surface-raised
+     to signal elevation; keep these for genuinely floating elements. */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="A curated travel companion for Bali. Fifty hand-picked places, not ten thousand." />
+    <meta name="theme-color" content="#FCFBF8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#131211" media="(prefers-color-scheme: dark)" />
+    <title>Memorable Bali</title>
+
+    <!--
+      Resolve and apply the theme BEFORE first paint.
+      Without this, dark-mode users get a white flash on every load — the most
+      noticeable possible bug on a premium visual product.
+      See docs/04-Design-System.md and docs/05-User-Flows.md Flow 8.
+    -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('bali-explorer:theme');
+          var pref = stored ? JSON.parse(stored).data : 'system';
+          var resolved =
+            pref === 'system' || !pref
+              ? window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+              : pref;
+          document.documentElement.dataset.theme = resolved;
+        } catch (e) {
+          document.documentElement.dataset.theme = 'light';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
