@@ -1,0 +1,83 @@
+{
+  "_meta": {
+    "description": "The nine areas offered in onboarding's 'Where are you staying?' step.",
+    "usage": "Selecting an area sets the distance anchor. All spot distances are recomputed at runtime with haversine from that area's `center`, replacing the precomputed `distanceFromStayKm` baseline in bali-spots.json.",
+    "defaultAnchor": "ubud",
+    "note": "Onboarding also allows a free-form Google Places search. A custom location produces the same anchor shape ({ lat, lng }) and works identically.",
+    "lastUpdated": "2026-08-04"
+  },
+  "stayAreas": [
+    {
+      "id": "ubud",
+      "label": "Ubud",
+      "region": "ubud",
+      "center": { "lat": -8.5069, "lng": 115.2625 },
+      "blurb": "Rice fields, river gorges and temples. Best base for central Bali.",
+      "suitsTravelStyle": ["relaxed", "balanced"]
+    },
+    {
+      "id": "canggu",
+      "label": "Canggu",
+      "region": "south",
+      "center": { "lat": -8.6478, "lng": 115.1385 },
+      "blurb": "Surf breaks, cafés and a young crowd. Scooter country.",
+      "suitsTravelStyle": ["relaxed", "balanced", "packed"]
+    },
+    {
+      "id": "seminyak",
+      "label": "Seminyak",
+      "region": "south",
+      "center": { "lat": -8.6905, "lng": 115.1685 },
+      "blurb": "Beach clubs, restaurants and shopping. Polished and walkable.",
+      "suitsTravelStyle": ["relaxed", "balanced"]
+    },
+    {
+      "id": "sanur",
+      "label": "Sanur",
+      "region": "south",
+      "center": { "lat": -8.6870, "lng": 115.2626 },
+      "blurb": "Calm water and a flat beach path. The Nusa ferry port is here.",
+      "suitsTravelStyle": ["relaxed"]
+    },
+    {
+      "id": "uluwatu",
+      "label": "Uluwatu",
+      "region": "bukit",
+      "center": { "lat": -8.8291, "lng": 115.0849 },
+      "blurb": "Clifftop sunsets and world-class surf on the southern tip.",
+      "suitsTravelStyle": ["relaxed", "balanced"]
+    },
+    {
+      "id": "nusa-dua",
+      "label": "Nusa Dua",
+      "region": "bukit",
+      "center": { "lat": -8.7975, "lng": 115.2280 },
+      "blurb": "Resort enclave with calm swimming beaches and quiet streets.",
+      "suitsTravelStyle": ["relaxed"]
+    },
+    {
+      "id": "sidemen",
+      "label": "Sidemen",
+      "region": "east",
+      "center": { "lat": -8.4700, "lng": 115.4300 },
+      "blurb": "Terraced valley under Mount Agung. Ubud thirty years ago.",
+      "suitsTravelStyle": ["relaxed", "balanced"]
+    },
+    {
+      "id": "amed",
+      "label": "Amed",
+      "region": "east",
+      "center": { "lat": -8.3389, "lng": 115.6553 },
+      "blurb": "Black sand, freediving and the calmest water on the island.",
+      "suitsTravelStyle": ["relaxed", "balanced"]
+    },
+    {
+      "id": "lovina",
+      "label": "Lovina",
+      "region": "north",
+      "center": { "lat": -8.1620, "lng": 115.0250 },
+      "blurb": "Sleepy north coast, dolphin boats and easy waterfall access.",
+      "suitsTravelStyle": ["relaxed"]
+    }
+  ]
+}

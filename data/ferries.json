@@ -1,0 +1,89 @@
+{
+  "_meta": {
+    "description": "Fast-boat crossings to the Nusa Islands. Referenced by the `ferry` field on spots in bali-spots.json.",
+    "scope": "Information and outbound booking links only. The MVP processes no payments and holds no bookings.",
+    "provenance": {
+      "status": "UNVERIFIED — schedules and prices change constantly",
+      "note": "Departure times below are indicative patterns, not a live timetable. Crossings are regularly cancelled for weather, especially December–February. The UI must present these as approximate and always defer to the operator's own site."
+    },
+    "lastUpdated": "2026-08-04"
+  },
+  "routes": [
+    {
+      "id": "nusa-penida",
+      "label": "Bali → Nusa Penida",
+      "destinationRegion": "nusa",
+      "crossingMinutes": { "min": 35, "max": 55 },
+      "departurePorts": [
+        {
+          "id": "sanur",
+          "name": "Sanur Beach Port",
+          "coordinates": { "lat": -8.6852, "lng": 115.2632 },
+          "note": "Main departure point. Purpose-built terminal, most frequent sailings.",
+          "arrivesAt": "Banjar Nyuh / Toya Pakeh, Nusa Penida"
+        },
+        {
+          "id": "padangbai",
+          "name": "Padangbai Harbour",
+          "coordinates": { "lat": -8.5340, "lng": 115.5100 },
+          "note": "Better if you are already in East Bali. Fewer daily sailings.",
+          "arrivesAt": "Toya Pakeh, Nusa Penida"
+        }
+      ],
+      "indicativeSchedule": {
+        "outbound": ["07:00", "08:00", "09:30", "11:00", "13:00", "15:00", "16:30"],
+        "return": ["07:30", "09:00", "10:30", "12:30", "14:30", "16:00", "17:00"],
+        "note": "Last return is early. Missing it means an unplanned night on the island."
+      },
+      "indicativePrice": { "currency": "IDR", "min": 175000, "max": 400000, "note": "One way per person; return tickets usually cheaper than two singles" },
+      "operators": [
+        { "name": "Angel Billabong Fast Cruise", "bookingUrl": "https://www.google.com/search?q=Angel+Billabong+Fast+Cruise+Nusa+Penida+ticket" },
+        { "name": "Maruti Express", "bookingUrl": "https://www.google.com/search?q=Maruti+Express+Nusa+Penida+fast+boat" },
+        { "name": "Idola Express", "bookingUrl": "https://www.google.com/search?q=Idola+Express+Nusa+Penida+fast+boat" }
+      ],
+      "aggregators": [
+        { "name": "12Go Asia", "bookingUrl": "https://12go.asia/en/travel/sanur/nusa-penida" },
+        { "name": "Gili Bookings", "bookingUrl": "https://www.gilibookings.com/" }
+      ],
+      "tips": [
+        "Book the earliest outbound you can stand — the island needs a full day minimum.",
+        "Boarding is a wade through shallow surf at Sanur. Your luggage will get wet.",
+        "Crossings are cancelled for swell with little notice, most often in wet season.",
+        "Arrange island transport before you sail; supply at the pier is limited and priced accordingly."
+      ]
+    },
+    {
+      "id": "nusa-lembongan",
+      "label": "Bali → Nusa Lembongan",
+      "destinationRegion": "nusa",
+      "crossingMinutes": { "min": 30, "max": 45 },
+      "departurePorts": [
+        {
+          "id": "sanur",
+          "name": "Sanur Beach Port",
+          "coordinates": { "lat": -8.6852, "lng": 115.2632 },
+          "note": "The standard departure point for Lembongan.",
+          "arrivesAt": "Jungutbatu or Mushroom Bay, Nusa Lembongan"
+        }
+      ],
+      "indicativeSchedule": {
+        "outbound": ["08:00", "09:30", "11:30", "13:30", "15:30"],
+        "return": ["08:30", "10:30", "12:30", "14:30", "16:30"],
+        "note": "Fewer sailings than the Penida route; check the day before."
+      },
+      "indicativePrice": { "currency": "IDR", "min": 150000, "max": 350000, "note": "One way per person" },
+      "operators": [
+        { "name": "Rocky Fast Cruise", "bookingUrl": "https://www.google.com/search?q=Rocky+Fast+Cruise+Nusa+Lembongan" },
+        { "name": "Scoot Fast Cruises", "bookingUrl": "https://www.google.com/search?q=Scoot+Fast+Cruises+Nusa+Lembongan" }
+      ],
+      "aggregators": [
+        { "name": "12Go Asia", "bookingUrl": "https://12go.asia/en/travel/sanur/nusa-lembongan" }
+      ],
+      "tips": [
+        "Lembongan connects to Nusa Ceningan by a yellow suspension bridge — walk or scooter across.",
+        "Local boats run Lembongan → Penida if you want both islands in one trip.",
+        "The island is small enough to cover in a day, but it rewards an overnight."
+      ]
+    }
+  ]
+}

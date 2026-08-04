@@ -1,0 +1,75 @@
+name: Validate data
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  validate:
+    name: Validate curated dataset
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # No `npm ci` — the validator has zero dependencies, so this job passes
+      # from the first commit, before the app is scaffolded.
+      - name: Validate data files
+        run: node scripts/validate-spots.mjs
+
+      # compute-distances.mjs rewrites bali-spots.json. If it produces a diff,
+      # someone edited coordinates or added a spot without rerunning it, and
+      # distanceFromStayKm / _meta.count are now stale.
+      - name: Check distances are up to date
+        run: |
+          node scripts/compute-distances.mjs
+          if ! git diff --quiet -- data/bali-spots.json; then
+            echo "::error::distanceFromStayKm or _meta.count is stale."
+            echo "Run 'node scripts/compute-distances.mjs' and commit the result."
+            git diff --stat -- data/bali-spots.json
+            exit 1
+          fi
+
+  # Enable once package.json exists. Until then this job is skipped rather than
+  # failing a repository that has no app in it yet.
+  app:
+    name: Typecheck, lint, test, build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check whether the app has been scaffolded
+        id: check
+        run: |
+          if [ -f package.json ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            echo "No package.json yet — skipping app checks."
+          fi
+
+      - uses: actions/setup-node@v4
+        if: steps.check.outputs.exists == 'true'
+        with:
+          node-version: '20'
+          cache: npm
+
+      - if: steps.check.outputs.exists == 'true'
+        run: npm ci
+
+      - if: steps.check.outputs.exists == 'true'
+        run: npm run typecheck
+
+      - if: steps.check.outputs.exists == 'true'
+        run: npm run lint
+
+      - if: steps.check.outputs.exists == 'true'
+        run: npm run test
+
+      # Catches the failure mode Vercel would otherwise find for you.
+      - if: steps.check.outputs.exists == 'true'
+        run: npm run build
