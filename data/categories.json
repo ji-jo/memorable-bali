@@ -1,0 +1,118 @@
+{
+  "_meta": {
+    "description": "Primary category buckets for curated spots. Every spot in bali-spots.json has exactly one `category` drawn from this list.",
+    "note": "Categories are the primary filter. Cross-cutting qualities (Memorable, Must Visit, Cultural, Outworldly) live in each spot's `tags` array instead.",
+    "lastUpdated": "2026-08-04"
+  },
+  "categories": [
+    {
+      "id": "beaches",
+      "label": "Beaches",
+      "icon": "waves",
+      "color": "#2E9CCA",
+      "description": "Sand, surf and swimming spots along Bali's coastline."
+    },
+    {
+      "id": "nature",
+      "label": "Nature",
+      "icon": "leaf",
+      "color": "#3F9D6B",
+      "description": "Rice terraces, ridges, cliffs and volcanic landscapes."
+    },
+    {
+      "id": "waterfalls",
+      "label": "Waterfalls",
+      "icon": "droplets",
+      "color": "#4B8FD4",
+      "description": "Jungle cascades, canyon falls and swimming pools."
+    },
+    {
+      "id": "culture",
+      "label": "Culture",
+      "icon": "landmark",
+      "color": "#B8763E",
+      "description": "Royal water palaces, rock-cut shrines and living traditions."
+    },
+    {
+      "id": "temples",
+      "label": "Temples",
+      "icon": "torii",
+      "color": "#C0553B",
+      "description": "Pura across the island, from sea temples to mountain sanctuaries."
+    },
+    {
+      "id": "cafes",
+      "label": "Cafés",
+      "icon": "coffee",
+      "color": "#8A6B4F",
+      "description": "Specialty coffee, slow mornings and long laptop afternoons."
+    },
+    {
+      "id": "food",
+      "label": "Food",
+      "icon": "utensils",
+      "color": "#D08C2E",
+      "description": "Warungs, seafood grills and places worth planning a day around."
+    },
+    {
+      "id": "hidden-gems",
+      "label": "Hidden Gems",
+      "icon": "compass",
+      "color": "#6C5CE0",
+      "description": "Quiet places that reward the extra effort to reach them."
+    },
+    {
+      "id": "photography",
+      "label": "Photography",
+      "icon": "camera",
+      "color": "#5A6570",
+      "description": "Spots that exist in the itinerary because of the frame."
+    },
+    {
+      "id": "adventure",
+      "label": "Adventure",
+      "icon": "mountain",
+      "color": "#E0642E",
+      "description": "Diving, trekking, snorkelling and early alarm clocks."
+    },
+    {
+      "id": "wellness",
+      "label": "Wellness",
+      "icon": "lotus",
+      "color": "#7FA88B",
+      "description": "Yoga, healing, spas and deliberate slowness."
+    }
+  ],
+  "onboardingInterests": [
+    {
+      "id": "all",
+      "label": "All",
+      "matchesCategories": [],
+      "matchesTags": [],
+      "note": "Selecting All clears every other interest and disables filtering."
+    },
+    { "id": "food", "label": "Food", "matchesCategories": ["food"], "matchesTags": [] },
+    { "id": "nature", "label": "Nature", "matchesCategories": ["nature", "waterfalls"], "matchesTags": [] },
+    { "id": "beaches", "label": "Beaches", "matchesCategories": ["beaches"], "matchesTags": [] },
+    { "id": "culture", "label": "Culture", "matchesCategories": ["culture", "temples"], "matchesTags": ["Cultural"] },
+    { "id": "cafes", "label": "Cafés", "matchesCategories": ["cafes"], "matchesTags": [] },
+    { "id": "adventure", "label": "Adventure", "matchesCategories": ["adventure"], "matchesTags": [] },
+    { "id": "hidden-gems", "label": "Hidden Gems", "matchesCategories": ["hidden-gems"], "matchesTags": ["Outworldly"] },
+    {
+      "id": "sunset",
+      "label": "Sunset",
+      "matchesCategories": [],
+      "matchesTags": [],
+      "matchesBestTimeAfter": "16:00",
+      "note": "No category of its own. Resolved by parsing each spot's `bestTime` for a late-afternoon window."
+    },
+    {
+      "id": "shopping",
+      "label": "Shopping",
+      "matchesCategories": [],
+      "matchesTags": [],
+      "note": "Listed in the onboarding spec but has no curated spots yet. Hide this chip until the dataset supports it."
+    },
+    { "id": "wellness", "label": "Wellness", "matchesCategories": ["wellness"], "matchesTags": [] }
+  ]
+}

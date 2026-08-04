@@ -1,0 +1,42 @@
+.bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3) 0;
+}
+
+.scroller {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: var(--space-1);
+}
+
+.scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.scroller > * {
+  flex: 0 0 auto;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.clear {
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+  min-height: 44px;
+  padding-inline: var(--space-2);
+}
+
+.clear:hover {
+  text-decoration: underline;
+}

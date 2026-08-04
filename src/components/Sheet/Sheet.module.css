@@ -1,0 +1,101 @@
+/**
+ * Draggable bottom sheet — the primary structure for Explore on mobile.
+ * Map stays visible behind it; the sheet holds the list.
+ */
+.sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  border-top-left-radius: var(--radius-xl);
+  border-top-right-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  /* Transform only — never animate height/top. */
+  transform: translateY(var(--sheet-offset, 50%));
+  transition: transform var(--duration-slow) var(--ease-out);
+  height: calc(100dvh - var(--sheet-top-inset, 4rem));
+  touch-action: none;
+}
+
+.dragging {
+  transition: none;
+}
+
+/* Elevation reads poorly on dark — use a border instead. */
+:global(:root[data-theme='dark']) .sheet {
+  border-top: 1px solid var(--color-border);
+}
+
+.handleArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-3) var(--space-4) var(--space-2);
+  flex-shrink: 0;
+  cursor: grab;
+}
+
+.handleArea:active {
+  cursor: grabbing;
+}
+
+.handle {
+  width: 36px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-border-strong);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 0 var(--gutter) var(--space-3);
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+/**
+ * The explicit snap toggle. Dragging is not reachable by keyboard or screen
+ * reader, so this button is required, not decorative.
+ */
+.snapButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+}
+
+.snapButton:hover {
+  background-color: var(--color-surface-sunken);
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 var(--gutter) var(--space-8);
+  touch-action: pan-y;
+}
+
+/* From --bp-lg the sheet is not used at all — Explore renders side by side. */
+@media (min-width: 1024px) {
+  .sheet {
+    display: none;
+  }
+}

@@ -1,0 +1,61 @@
+.icon {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-scrim);
+  color: rgba(255, 255, 255, 0.75);
+  font-size: var(--text-sm);
+  line-height: 1;
+  backdrop-filter: blur(4px);
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+/* Pad the hit area to 44px without growing the visual circle. */
+.icon::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+}
+
+.icon:hover {
+  transform: scale(1.08);
+}
+
+.icon.active {
+  background-color: var(--color-success);
+  color: #fff;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.button:hover {
+  background-color: var(--color-surface-sunken);
+  border-color: var(--color-border-strong);
+}
+
+.button.active {
+  background-color: var(--color-success-subtle);
+  border-color: var(--color-success);
+  color: var(--color-success);
+}

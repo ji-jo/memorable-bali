@@ -1,0 +1,129 @@
+.shell {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  /* Clear the fixed tab bar plus the iOS home indicator. */
+  padding-bottom: calc(56px + env(safe-area-inset-bottom) + var(--space-4));
+}
+
+/* ─── Bottom tab bar — below --bp-md ─────────────────────────────────── */
+.tabBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 56px;
+  color: var(--color-text-tertiary);
+  font-size: 11px;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.tab:hover {
+  color: var(--color-text-secondary);
+}
+
+.tabActive {
+  color: var(--color-accent);
+}
+
+.tabIcon {
+  font-size: var(--text-lg);
+  line-height: 1;
+}
+
+.badge {
+  position: absolute;
+  transform: translate(12px, -10px);
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+  font-size: 10px;
+  display: grid;
+  place-items: center;
+}
+
+/* ─── Top nav — from --bp-md ─────────────────────────────────────────── */
+.topBar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .tabBar {
+    display: none;
+  }
+
+  .main {
+    padding-bottom: var(--space-8);
+  }
+
+  .topBar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    padding: var(--space-4) var(--gutter);
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-bg);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .brand {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text);
+    margin-right: auto;
+  }
+
+  .topNav {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+  }
+
+  .topLink {
+    position: relative;
+    padding: var(--space-2) var(--space-4);
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    border-radius: var(--radius-full);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    transition:
+      color var(--duration-fast) var(--ease-out),
+      background-color var(--duration-fast) var(--ease-out);
+  }
+
+  .topLink:hover {
+    background-color: var(--color-surface-sunken);
+    color: var(--color-text);
+  }
+
+  .topLinkActive {
+    color: var(--color-accent);
+    background-color: var(--color-accent-subtle);
+  }
+}

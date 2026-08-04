@@ -1,0 +1,51 @@
+{
+  "_meta": {
+    "description": "Geographic zones covering the whole Bali province. Every spot has one `region` from this list.",
+    "note": "Regions are NOT the same as stay-areas.json. A region is where a place IS; a stay area is where a visitor SLEEPS. Many curated spots (Jatiluwih, Sekumpul, Besakih) sit far from any stay area, so regions must be a separate, broader set.",
+    "lastUpdated": "2026-08-04"
+  },
+  "regions": [
+    {
+      "id": "south",
+      "label": "South Bali",
+      "blurb": "Canggu, Seminyak, Sanur and Denpasar — the busy, beachy heart.",
+      "center": { "lat": -8.6705, "lng": 115.1727 }
+    },
+    {
+      "id": "bukit",
+      "label": "Bukit Peninsula",
+      "blurb": "Limestone cliffs, hidden coves and the island's best sunsets.",
+      "center": { "lat": -8.8285, "lng": 115.1200 }
+    },
+    {
+      "id": "ubud",
+      "label": "Ubud & Central Bali",
+      "blurb": "Rice terraces, river gorges, temples and the arts scene.",
+      "center": { "lat": -8.5069, "lng": 115.2625 }
+    },
+    {
+      "id": "east",
+      "label": "East Bali",
+      "blurb": "Sidemen, Amed and Karangasem — water palaces under Mount Agung.",
+      "center": { "lat": -8.4200, "lng": 115.5500 }
+    },
+    {
+      "id": "north",
+      "label": "North Bali & Highlands",
+      "blurb": "Bedugul lakes, Munduk waterfalls and the quiet Lovina coast.",
+      "center": { "lat": -8.2200, "lng": 115.1200 }
+    },
+    {
+      "id": "west",
+      "label": "West Bali",
+      "blurb": "Tabanan's rice country, sea temples and the national park.",
+      "center": { "lat": -8.4000, "lng": 114.9000 }
+    },
+    {
+      "id": "nusa",
+      "label": "Nusa Islands",
+      "blurb": "Penida and Lembongan — reached by fast boat, worth the crossing.",
+      "center": { "lat": -8.7300, "lng": 115.4700 }
+    }
+  ]
+}

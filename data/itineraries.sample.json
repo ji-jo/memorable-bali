@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "description": "Worked example itineraries. These seed the 'Recommended Today' rail and give the itinerary builder something to show on first run.",
+    "note": "User-created itineraries live in localStorage under `bali-explorer:itineraries` and use this exact shape. Every `spotId` must resolve against bali-spots.json — scripts/validate-spots.mjs enforces this.",
+    "travelTimeNote": "`travelMinutesFromPrevious` is an editorial estimate including Bali traffic, NOT a Directions API result. The app recomputes real durations via the Directions API when a key is configured.",
+    "lastUpdated": "2026-08-04"
+  },
+  "itineraries": [
+    {
+      "id": "one-day-ubud-classic",
+      "title": "One Day in Ubud",
+      "summary": "Temples at dawn, a waterfall before the heat, coffee and a ridge at dusk.",
+      "lengthOfStay": "1-day",
+      "travelStyle": "balanced",
+      "suggestedStayArea": "ubud",
+      "interests": ["culture", "nature", "cafes"],
+      "transportation": ["scooter", "private-driver"],
+      "estimatedTotalMinutes": 600,
+      "estimatedCost": { "currency": "IDR", "min": 300000, "max": 700000, "note": "Entries, lunch and driver share" },
+      "stops": [
+        { "order": 1, "spotId": "tirta-empul", "arriveAt": "08:00", "dwellMinutes": 90, "travelMinutesFromPrevious": 0, "note": "First in, before the coach groups." },
+        { "order": 2, "spotId": "gunung-kawi", "arriveAt": "09:45", "dwellMinutes": 75, "travelMinutesFromPrevious": 15, "note": "300 steps down while it is still cool." },
+        { "order": 3, "spotId": "tegallalang-rice-terrace", "arriveAt": "11:15", "dwellMinutes": 90, "travelMinutesFromPrevious": 25, "note": "Late for the light, but the walk is still worth it." },
+        { "order": 4, "spotId": "seniman-coffee-studio", "arriveAt": "13:15", "dwellMinutes": 60, "travelMinutesFromPrevious": 30, "note": "Lunch and coffee through the worst of the heat." },
+        { "order": 5, "spotId": "sacred-monkey-forest", "arriveAt": "14:45", "dwellMinutes": 75, "travelMinutesFromPrevious": 10, "note": "Shaded, so midday is survivable here." },
+        { "order": 6, "spotId": "campuhan-ridge-walk", "arriveAt": "16:45", "dwellMinutes": 90, "travelMinutesFromPrevious": 15, "note": "Golden hour on the ridge to close the day." }
+      ]
+    },
+    {
+      "id": "weekend-south-bukit",
+      "title": "Weekend in the South",
+      "summary": "Cliff temples, hidden coves and two very different sunsets.",
+      "lengthOfStay": "weekend",
+      "travelStyle": "relaxed",
+      "suggestedStayArea": "uluwatu",
+      "interests": ["beaches", "sunset", "food"],
+      "transportation": ["scooter", "taxi"],
+      "estimatedTotalMinutes": 1080,
+      "estimatedCost": { "currency": "IDR", "min": 700000, "max": 1600000, "note": "Two days including a Jimbaran seafood dinner" },
+      "stops": [
+        { "order": 1, "spotId": "padang-padang-beach", "arriveAt": "07:00", "dwellMinutes": 120, "travelMinutesFromPrevious": 0, "note": "Day one. At opening the cove is nearly empty." },
+        { "order": 2, "spotId": "suluban-beach", "arriveAt": "09:30", "dwellMinutes": 120, "travelMinutesFromPrevious": 15, "note": "Time this to low tide or there is no beach." },
+        { "order": 3, "spotId": "uluwatu-temple", "arriveAt": "16:30", "dwellMinutes": 120, "travelMinutesFromPrevious": 15, "note": "Cliff path, then the kecak dance at sunset." },
+        { "order": 4, "spotId": "melasti-beach", "arriveAt": "08:30", "dwellMinutes": 150, "travelMinutesFromPrevious": 35, "note": "Day two. Stop at the cliff-road viewpoint on the way down." },
+        { "order": 5, "spotId": "pandawa-beach", "arriveAt": "11:30", "dwellMinutes": 120, "travelMinutesFromPrevious": 15, "note": "Calm and shallow — the swimming beach of the two." },
+        { "order": 6, "spotId": "jimbaran-seafood-bay", "arriveAt": "17:30", "dwellMinutes": 120, "travelMinutesFromPrevious": 30, "note": "Agree the price per kilo before it hits the grill." }
+      ]
+    },
+    {
+      "id": "three-days-island-hop",
+      "title": "Three Days: East, North & Nusa",
+      "summary": "A water palace, the island's best waterfall, then a boat to Penida.",
+      "lengthOfStay": "3-days",
+      "travelStyle": "packed",
+      "suggestedStayArea": "sidemen",
+      "interests": ["nature", "culture", "hidden-gems", "adventure"],
+      "transportation": ["private-driver"],
+      "estimatedTotalMinutes": 1800,
+      "estimatedCost": { "currency": "IDR", "min": 1800000, "max": 3500000, "note": "Includes driver, entries and the Nusa Penida crossing" },
+      "stops": [
+        { "order": 1, "spotId": "lempuyang-temple", "arriveAt": "06:00", "dwellMinutes": 180, "travelMinutesFromPrevious": 0, "note": "Day one. Before six or the gate queue eats the morning." },
+        { "order": 2, "spotId": "tirta-gangga", "arriveAt": "10:00", "dwellMinutes": 90, "travelMinutesFromPrevious": 40, "note": "Buy fish food for the stepping stones." },
+        { "order": 3, "spotId": "sidemen-valley", "arriveAt": "15:00", "dwellMinutes": 240, "travelMinutesFromPrevious": 90, "note": "Afternoon walk through the paddies, then stay the night." },
+        { "order": 4, "spotId": "sekumpul-waterfall", "arriveAt": "08:00", "dwellMinutes": 240, "travelMinutesFromPrevious": 150, "note": "Day two. The long drive north is the price of the best waterfall in Bali." },
+        { "order": 5, "spotId": "ulun-danu-beratan", "arriveAt": "14:00", "dwellMinutes": 90, "travelMinutesFromPrevious": 75, "note": "Bring a layer — it is properly cold at 1,200m." },
+        { "order": 6, "spotId": "kelingking-beach", "arriveAt": "09:00", "dwellMinutes": 180, "travelMinutesFromPrevious": 240, "note": "Day three. Sanur ferry at 07:00, then straight across the island." },
+        { "order": 7, "spotId": "broken-beach", "arriveAt": "12:30", "dwellMinutes": 60, "travelMinutesFromPrevious": 45, "note": "Walk the full rim; watch for mantas in the channel." },
+        { "order": 8, "spotId": "crystal-bay", "arriveAt": "14:00", "dwellMinutes": 90, "travelMinutesFromPrevious": 30, "note": "Swim, then make the last boat back. Do not miss it." }
+      ]
+    }
+  ]
+}

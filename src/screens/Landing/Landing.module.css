@@ -1,0 +1,62 @@
+.landing {
+  position: relative;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: var(--space-6) var(--gutter);
+  /* Editorial, photography-led feel without an actual photograph — the image
+     assets do not exist yet (docs/03-Data-Model.md). */
+  background:
+    radial-gradient(ellipse at 15% 10%, var(--color-accent-subtle) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 90%, var(--color-success-subtle) 0%, transparent 50%),
+    var(--color-bg);
+}
+
+.themeSlot {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--gutter);
+}
+
+.content {
+  max-width: 34rem;
+  text-align: center;
+}
+
+.eyebrow {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-4);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+}
+
+.lede {
+  margin-top: var(--space-5);
+  font-size: var(--text-lg);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+}
+
+.actions {
+  margin-top: var(--space-6);
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.note {
+  margin-top: var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+}

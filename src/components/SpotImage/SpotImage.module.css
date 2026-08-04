@@ -1,0 +1,46 @@
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-surface-sunken);
+  width: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/**
+ * The fallback IS the first-build appearance — /images/spots/*.jpg do not
+ * exist yet. Never a broken image icon.
+ */
+.fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--fallback-color) 85%, white) 0%, transparent 55%),
+    linear-gradient(145deg, var(--fallback-color) 0%, color-mix(in srgb, var(--fallback-color) 55%, black) 100%);
+}
+
+.initial {
+  font-family: var(--font-display);
+  font-weight: var(--weight-semibold);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(1.5rem, 18cqw, 3rem);
+  letter-spacing: var(--tracking-tight);
+  user-select: none;
+}
+
+/* Aspect ratios — always set, to prevent layout shift. */
+.a4x3 { aspect-ratio: 4 / 3; }
+.a16x9 { aspect-ratio: 16 / 9; }
+.a21x9 { aspect-ratio: 21 / 9; }
+.a1x1 { aspect-ratio: 1 / 1; }
+
+.rounded {
+  border-radius: var(--radius-lg);
+}

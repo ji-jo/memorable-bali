@@ -1,0 +1,2550 @@
+{
+  "_meta": {
+    "version": "0.1.0",
+    "count": 54,
+    "lastUpdated": "2026-08-04",
+    "distanceAnchor": {
+      "stayAreaId": "ubud",
+      "center": {
+        "lat": -8.5069,
+        "lng": 115.2625
+      },
+      "note": "`distanceFromStayKm` on each spot is straight-line (haversine) distance from this anchor, computed by scripts/compute-distances.mjs. It is a fallback only — once the user picks a stay area in onboarding, the app recomputes distances at runtime. Road distance in Bali is typically 1.3–1.8x straight-line, and travel time is dominated by traffic, not distance."
+    },
+    "provenance": {
+      "status": "UNVERIFIED — needs review before launch",
+      "written_by": "Model knowledge, not a live data source.",
+      "verify_before_launch": [
+        "coordinates — confirm each pin lands on the right place in Google Maps",
+        "openingHours — seasonal and ceremony closures are common, especially at temples",
+        "cost — Indonesian entrance fees change often; treat every figure as indicative",
+        "rating — placeholder editorial scores, NOT scraped Google ratings; replace with live Places API values or your own scoring",
+        "images — all paths point at assets that do not exist yet; see docs/03-Data-Model.md"
+      ],
+      "note": "Descriptions, tips and best-visiting-times are editorial judgement. They are the curation this product sells, so they should be re-read and edited by a human who knows Bali before shipping."
+    },
+    "tagVocabulary": [
+      "Memorable",
+      "Must Visit",
+      "Cultural",
+      "Outworldly"
+    ],
+    "fieldNotes": {
+      "description": "50–80 characters, enforced by scripts/validate-spots.mjs. Used on list/map cards.",
+      "longDescription": "2–3 sentences for the place detail page. No length constraint.",
+      "visited": "Seed value only, always false. Real per-user state lives in localStorage under `bali-explorer:visited`.",
+      "ferry": "null unless the place requires a boat crossing. Non-null values reference route ids in ferries.json."
+    }
+  },
+  "spots": [
+    {
+      "id": "tegallalang-rice-terrace",
+      "name": "Tegallalang Rice Terrace",
+      "description": "Emerald terraces carved down a valley, glowing in early light.",
+      "longDescription": "The most photographed rice terraces on the island, cut into a steep valley just north of Ubud. The subak irrigation system that feeds them is over a thousand years old and UNESCO-listed. Arrive before the tour buses and it is genuinely serene; arrive at eleven and it is a queue for a swing.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.4312,115.2792",
+      "visited": false,
+      "rating": 4.4,
+      "distanceFromStayKm": 8.6,
+      "tags": [
+        "Must Visit",
+        "Memorable"
+      ],
+      "category": "nature",
+      "region": "ubud",
+      "coordinates": {
+        "lat": -8.4312,
+        "lng": 115.2792
+      },
+      "images": [
+        "/images/spots/tegallalang-rice-terrace.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "18:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 90,
+      "cost": {
+        "currency": "IDR",
+        "min": 25000,
+        "max": 75000,
+        "note": "Entry plus small donations at terrace gates on the walk down"
+      },
+      "bestTime": "07:00–09:00",
+      "tips": [
+        "Go before 8am. After 9 the parking road jams and the light flattens.",
+        "Bring small notes — several gates on the valley walk ask for a donation.",
+        "The walk down is easy, the walk back up is not. Allow for it in the heat."
+      ],
+      "nearby": [
+        "tirta-empul",
+        "gunung-kawi",
+        "kanto-lampo-waterfall"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "sacred-monkey-forest",
+      "name": "Sacred Monkey Forest Sanctuary",
+      "description": "Mossy temple ruins under banyans, run entirely by macaques.",
+      "longDescription": "A genuine forest sanctuary in the middle of Ubud, with three temples, carved stone bridges and around a thousand long-tailed macaques who own the place. The moss-covered statuary is the real draw — the monkeys are simply the landlords.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.5188,115.2585",
+      "visited": false,
+      "rating": 4.3,
+      "distanceFromStayKm": 1.4,
+      "tags": [
+        "Must Visit",
+        "Cultural"
+      ],
+      "category": "nature",
+      "region": "ubud",
+      "coordinates": {
+        "lat": -8.5188,
+        "lng": 115.2585
+      },
+      "images": [
+        "/images/spots/sacred-monkey-forest.jpg"
+      ],
+      "openingHours": {
+        "open": "08:30",
+        "close": "18:00",
+        "note": "Last entry 17:30"
+      },
+      "visitDurationMin": 75,
+      "cost": {
+        "currency": "IDR",
+        "min": 80000,
+        "max": 100000,
+        "note": "Adult ticket; slightly less for children"
+      },
+      "bestTime": "08:30–10:00",
+      "tips": [
+        "No loose sunglasses, hats, water bottles or plastic bags — they will be taken.",
+        "Do not make eye contact or smile with teeth. Both read as a challenge.",
+        "Walk in from central Ubud; the car park fills early and the road is narrow."
+      ],
+      "nearby": [
+        "seniman-coffee-studio",
+        "campuhan-ridge-walk",
+        "yoga-barn-ubud"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "tirta-empul",
+      "name": "Tirta Empul Temple",
+      "description": "Balinese purification springs where pilgrims bathe at stone spouts.",
+      "longDescription": "A working water temple built around a sacred spring in 962 AD, where Balinese Hindus queue at a row of stone spouts for melukat, a ritual cleansing. Visitors may bathe too, with a sarong and the right approach. It is one of the few places on the island where you can watch living religion rather than a performance of it.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.4156,115.3153",
+      "visited": false,
+      "rating": 4.5,
+      "distanceFromStayKm": 11.7,
+      "tags": [
+        "Cultural",
+        "Must Visit",
+        "Memorable"
+      ],
+      "category": "temples",
+      "region": "ubud",
+      "coordinates": {
+        "lat": -8.4156,
+        "lng": 115.3153
+      },
+      "images": [
+        "/images/spots/tirta-empul.jpg"
+      ],
+      "openingHours": {
+        "open": "08:00",
+        "close": "18:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 90,
+      "cost": {
+        "currency": "IDR",
+        "min": 50000,
+        "max": 75000,
+        "note": "Entry includes sarong rental; locker fee extra if bathing"
+      },
+      "bestTime": "08:00–09:30",
+      "tips": [
+        "If you bathe, follow the queue in order and skip the two spouts used for the dead.",
+        "Bring a dry change of clothes and a towel — the changing rooms are basic.",
+        "Menstruating visitors are asked not to enter the bathing pools."
+      ],
+      "nearby": [
+        "gunung-kawi",
+        "tegallalang-rice-terrace",
+        "goa-gajah"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "goa-gajah",
+      "name": "Goa Gajah (Elephant Cave)",
+      "description": "A demonic stone mouth swallowing you into a ninth-century cave.",
+      "longDescription": "The entrance is a carved menacing face whose open mouth is the doorway — you walk in through it. Inside is a short T-shaped meditation cave with shrines; outside are bathing pools unearthed in 1954 and a quiet jungle path down to a river shrine that most visitors skip.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.5236,115.2872",
+      "visited": false,
+      "rating": 4.2,
+      "distanceFromStayKm": 3.3,
+      "tags": [
+        "Cultural",
+        "Outworldly"
+      ],
+      "category": "culture",
+      "region": "ubud",
+      "coordinates": {
+        "lat": -8.5236,
+        "lng": 115.2872
+      },
+      "images": [
+        "/images/spots/goa-gajah.jpg"
+      ],
+      "openingHours": {
+        "open": "08:00",
+        "close": "16:30",
+        "note": "Daily"
+      },
+      "visitDurationMin": 60,
+      "cost": {
+        "currency": "IDR",
+        "min": 50000,
+        "max": 50000,
+        "note": "Entry includes sarong"
+      },
+      "bestTime": "08:00–10:00",
+      "tips": [
+        "Take the stairs down past the pools — the river valley below is the best part.",
+        "The cave itself is tiny and takes five minutes. Budget your time accordingly.",
+        "Vendors at the exit are persistent; the exit path is the only way out."
+      ],
+      "nearby": [
+        "sacred-monkey-forest",
+        "tirta-empul",
+        "kanto-lampo-waterfall"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "campuhan-ridge-walk",
+      "name": "Campuhan Ridge Walk",
+      "description": "A grassy spine between two river valleys, best walked at dawn.",
+      "longDescription": "A paved path along a narrow ridge with jungle falling away on both sides, running about two kilometres from a temple at the edge of Ubud out to open fields and warungs. Free, easy, and completely different at 6am than at noon.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.5060,115.2536",
+      "visited": false,
+      "rating": 4.5,
+      "distanceFromStayKm": 1,
+      "tags": [
+        "Memorable",
+        "Must Visit"
+      ],
+      "category": "nature",
+      "region": "ubud",
+      "coordinates": {
+        "lat": -8.506,
+        "lng": 115.2536
+      },
+      "images": [
+        "/images/spots/campuhan-ridge-walk.jpg"
+      ],
+      "openingHours": {
+        "note": "Open 24 hours; walk at first light"
+      },
+      "visitDurationMin": 90,
+      "cost": {
+        "currency": "IDR",
+        "min": 0,
+        "max": 0,
+        "note": "Free"
+      },
+      "bestTime": "05:45–07:30",
+      "tips": [
+        "Start at Warwick Ibah's lane — the trailhead is easy to miss from the main road.",
+        "There is no shade at all. After 9am it is a hot, exposed slog.",
+        "Walk out, have coffee at a ridge warung, walk back. Roughly ninety minutes."
+      ],
+      "nearby": [
+        "seniman-coffee-studio",
+        "sacred-monkey-forest",
+        "yoga-barn-ubud"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "tegenungan-waterfall",
+      "name": "Tegenungan Waterfall",
+      "description": "A wide, powerful curtain of water with an easy walk down to it.",
+      "longDescription": "The most accessible major waterfall near Ubud — a broad, thundering fall into a swimmable pool, reached by a proper staircase rather than a scramble. That accessibility is also its problem: it is rarely quiet. Come at opening or accept the crowd.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.5754,115.2892",
+      "visited": false,
+      "rating": 4.1,
+      "distanceFromStayKm": 8.2,
+      "tags": [
+        "Must Visit"
+      ],
+      "category": "waterfalls",
+      "region": "ubud",
+      "coordinates": {
+        "lat": -8.5754,
+        "lng": 115.2892
+      },
+      "images": [
+        "/images/spots/tegenungan-waterfall.jpg"
+      ],
+      "openingHours": {
+        "open": "06:30",
+        "close": "18:30",
+        "note": "Daily"
+      },
+      "visitDurationMin": 75,
+      "cost": {
+        "currency": "IDR",
+        "min": 20000,
+        "max": 20000,
+        "note": "Entry; parking extra"
+      },
+      "bestTime": "06:30–08:00",
+      "tips": [
+        "Water browns and the current strengthens after heavy rain — check before swimming.",
+        "The staircase is long. It is the return climb that catches people out.",
+        "Skip the paid viewpoint decks at the top; the free view from the path is the same."
+      ],
+      "nearby": [
+        "kanto-lampo-waterfall",
+        "goa-gajah",
+        "sacred-monkey-forest"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "tukad-cepung-waterfall",
+      "name": "Tukad Cepung Waterfall",
+      "description": "A hidden cave chamber where a sunbeam lands on falling water.",
+      "longDescription": "You wade up a shallow river into a roofless cave, and for about two hours each morning a shaft of sunlight drops through the gap and lights the falling water like a spotlight. Miss the window, or come on a cloudy day, and it is just a pretty waterfall in a cave.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.4364,115.3877",
+      "visited": false,
+      "rating": 4.6,
+      "distanceFromStayKm": 15.8,
+      "tags": [
+        "Outworldly",
+        "Memorable",
+        "Must Visit"
+      ],
+      "category": "waterfalls",
+      "region": "ubud",
+      "coordinates": {
+        "lat": -8.4364,
+        "lng": 115.3877
+      },
+      "images": [
+        "/images/spots/tukad-cepung-waterfall.jpg"
+      ],
+      "openingHours": {
+        "open": "06:00",
+        "close": "17:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 90,
+      "cost": {
+        "currency": "IDR",
+        "min": 20000,
+        "max": 30000,
+        "note": "Entry plus parking"
+      },
+      "bestTime": "09:00–11:00",
+      "tips": [
+        "The light beam only appears mid-morning on a clear day. That is the entire point of coming.",
+        "You will wade shin-deep. Wear sandals with grip and put your phone in a dry bag.",
+        "Rainy season can close it outright — flash flooding in the canyon is a real risk."
+      ],
+      "nearby": [
+        "tirta-empul",
+        "besakih-temple",
+        "gunung-kawi"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "kanto-lampo-waterfall",
+      "name": "Kanto Lampo Waterfall",
+      "description": "Water fanning down a black rock staircase into a shallow pool.",
+      "longDescription": "Not tall, but unusually wide — the river spreads across a tiered face of dark volcanic rock so you can climb into the middle of it. Shallow and safe enough to stand in, which makes it the most photographed waterfall near Gianyar.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.5372,115.3170",
+      "visited": false,
+      "rating": 4.4,
+      "distanceFromStayKm": 6.9,
+      "tags": [
+        "Memorable",
+        "Outworldly"
+      ],
+      "category": "waterfalls",
+      "region": "ubud",
+      "coordinates": {
+        "lat": -8.5372,
+        "lng": 115.317
+      },
+      "images": [
+        "/images/spots/kanto-lampo-waterfall.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "18:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 60,
+      "cost": {
+        "currency": "IDR",
+        "min": 15000,
+        "max": 25000,
+        "note": "Entry; local guides offer help on the rocks for a tip"
+      },
+      "bestTime": "07:00–09:00",
+      "tips": [
+        "The rock is genuinely slippery. Barefoot grips better than smooth-soled sandals.",
+        "A local will usually offer to hold your phone and shoot from the classic angle. Tip them.",
+        "Ten minutes from Tegenungan — easy to pair the two in one morning."
+      ],
+      "nearby": [
+        "tegenungan-waterfall",
+        "goa-gajah",
+        "tegallalang-rice-terrace"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "gunung-kawi",
+      "name": "Gunung Kawi Temple",
+      "description": "Ten royal shrines cut straight into a river gorge's cliff face.",
+      "longDescription": "Down three hundred steps into the Pakerisan valley, ten candi are carved directly into the rock wall — eleventh-century memorials to a royal family, each in its own niche. The gorge is green, wet and loud with water, and far fewer people make the descent than at Tirta Empul next door.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.4249,115.3122",
+      "visited": false,
+      "rating": 4.5,
+      "distanceFromStayKm": 10.6,
+      "tags": [
+        "Cultural",
+        "Outworldly",
+        "Memorable"
+      ],
+      "category": "culture",
+      "region": "ubud",
+      "coordinates": {
+        "lat": -8.4249,
+        "lng": 115.3122
+      },
+      "images": [
+        "/images/spots/gunung-kawi.jpg"
+      ],
+      "openingHours": {
+        "open": "08:00",
+        "close": "17:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 75,
+      "cost": {
+        "currency": "IDR",
+        "min": 50000,
+        "max": 50000,
+        "note": "Entry includes sarong"
+      },
+      "bestTime": "08:00–10:00",
+      "tips": [
+        "Roughly 300 steps down and the same back up. Not suitable for limited mobility.",
+        "Cross the river to the far group of shrines — most visitors stop at the first five.",
+        "Pair it with Tirta Empul, ten minutes away, and do this one first while it is cool."
+      ],
+      "nearby": [
+        "tirta-empul",
+        "tegallalang-rice-terrace",
+        "tukad-cepung-waterfall"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "yoga-barn-ubud",
+      "name": "The Yoga Barn",
+      "description": "Ubud's original yoga campus, set in gardens above a river valley.",
+      "longDescription": "The place that arguably made Ubud a wellness destination — open-sided studios in a terraced garden, dozens of drop-in classes a day, plus sound healing, ecstatic dance and a café. No membership needed; walk in, pay for one class, leave.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.5140,115.2652",
+      "visited": false,
+      "rating": 4.5,
+      "distanceFromStayKm": 0.8,
+      "tags": [
+        "Memorable"
+      ],
+      "category": "wellness",
+      "region": "ubud",
+      "coordinates": {
+        "lat": -8.514,
+        "lng": 115.2652
+      },
+      "images": [
+        "/images/spots/yoga-barn-ubud.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "21:00",
+        "note": "Class schedule varies daily"
+      },
+      "visitDurationMin": 120,
+      "cost": {
+        "currency": "IDR",
+        "min": 130000,
+        "max": 200000,
+        "note": "Single drop-in class; multi-class passes cheaper per session"
+      },
+      "bestTime": "07:30 or 16:30",
+      "tips": [
+        "Book popular classes online — sound healing and ecstatic dance sell out.",
+        "Mats are provided. Bring a towel; the open studios get humid fast.",
+        "The lane in is unsigned and easy to ride past. Walk if you are staying central."
+      ],
+      "nearby": [
+        "sacred-monkey-forest",
+        "seniman-coffee-studio",
+        "campuhan-ridge-walk"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "seniman-coffee-studio",
+      "name": "Seniman Coffee Studio",
+      "description": "Serious Indonesian single origins, roasted and poured on site.",
+      "longDescription": "A roastery and cupping room that treats Indonesian coffee as something to study rather than sweeten — beans from Kintamani, Flores, Sumatra and Java, brewed on whatever method suits them. The rocking chairs out front are an Ubud institution.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.5041,115.2637",
+      "visited": false,
+      "rating": 4.6,
+      "distanceFromStayKm": 0.3,
+      "tags": [
+        "Memorable"
+      ],
+      "category": "cafes",
+      "region": "ubud",
+      "coordinates": {
+        "lat": -8.5041,
+        "lng": 115.2637
+      },
+      "images": [
+        "/images/spots/seniman-coffee-studio.jpg"
+      ],
+      "openingHours": {
+        "open": "07:30",
+        "close": "22:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 60,
+      "cost": {
+        "currency": "IDR",
+        "min": 35000,
+        "max": 120000,
+        "note": "Coffee; food menu extra"
+      },
+      "bestTime": "07:30–10:00",
+      "tips": [
+        "Ask for the current Kintamani lot — it is the local one and it changes often.",
+        "They run cupping sessions; worth booking if you actually care about the beans.",
+        "Beans are sold whole or ground and vacuum-packed for flights home."
+      ],
+      "nearby": [
+        "campuhan-ridge-walk",
+        "sacred-monkey-forest",
+        "yoga-barn-ubud"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "echo-beach-canggu",
+      "name": "Echo Beach",
+      "description": "Black sand, a reef break and the best sunset bars in Canggu.",
+      "longDescription": "A dark-sand beach with a punchy reef break at its northern end, lined with warungs and bars that fill from about five o'clock. Not a swimming beach — the current is strong and the break is over rock — but a very good place to end a day.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.6516,115.1290",
+      "visited": false,
+      "rating": 4.2,
+      "distanceFromStayKm": 21.8,
+      "tags": [
+        "Memorable"
+      ],
+      "category": "beaches",
+      "region": "south",
+      "coordinates": {
+        "lat": -8.6516,
+        "lng": 115.129
+      },
+      "images": [
+        "/images/spots/echo-beach-canggu.jpg"
+      ],
+      "openingHours": {
+        "note": "Open 24 hours; bars from late afternoon"
+      },
+      "visitDurationMin": 120,
+      "cost": {
+        "currency": "IDR",
+        "min": 0,
+        "max": 150000,
+        "note": "Beach free; drinks and sunbeds extra"
+      },
+      "bestTime": "16:30–19:00",
+      "tips": [
+        "The break is for experienced surfers only — it is shallow reef, not sand.",
+        "Grab a beanbag on the sand rather than a table; same drinks, better view.",
+        "Traffic on the Canggu shortcut at sunset is brutal. Leave early or ride."
+      ],
+      "nearby": [
+        "batu-bolong-beach",
+        "la-brisa-canggu",
+        "crate-cafe-canggu"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "batu-bolong-beach",
+      "name": "Batu Bolong Beach",
+      "description": "Canggu's main surf beach, with a sea temple on the headland.",
+      "longDescription": "A long stretch of grey sand with a mellow, forgiving wave that has taught half of Canggu to surf, and a small temple perched on the rocks at the northern end. Board rental and instructors line the sand; the sunset crowd arrives around five.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.6559,115.1290",
+      "visited": false,
+      "rating": 4.3,
+      "distanceFromStayKm": 22.1,
+      "tags": [
+        "Must Visit",
+        "Memorable"
+      ],
+      "category": "beaches",
+      "region": "south",
+      "coordinates": {
+        "lat": -8.6559,
+        "lng": 115.129
+      },
+      "images": [
+        "/images/spots/batu-bolong-beach.jpg"
+      ],
+      "openingHours": {
+        "note": "Open 24 hours"
+      },
+      "visitDurationMin": 150,
+      "cost": {
+        "currency": "IDR",
+        "min": 0,
+        "max": 400000,
+        "note": "Free; board hire ~100k/hr, lessons ~350k"
+      },
+      "bestTime": "06:30–08:30 for surf, 17:30 for sunset",
+      "tips": [
+        "Best beginner wave at mid-tide. Ask any rental shack what the tide is doing.",
+        "The sand is volcanic and gets genuinely painful underfoot by midday.",
+        "Respect the temple on the rocks — it is active, not a photo backdrop."
+      ],
+      "nearby": [
+        "echo-beach-canggu",
+        "crate-cafe-canggu",
+        "la-brisa-canggu"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "la-brisa-canggu",
+      "name": "La Brisa",
+      "description": "A driftwood beach club built from reclaimed fishing boat timber.",
+      "longDescription": "Handbuilt from old fishing boats into something closer to a rambling seaside village than a club — saltwater pool, oyster bar, hammocks, and a Sunday farmers market. Sustainability is genuinely part of the brief rather than a line on the menu.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.6478,115.1264",
+      "visited": false,
+      "rating": 4.4,
+      "distanceFromStayKm": 21.7,
+      "tags": [
+        "Memorable"
+      ],
+      "category": "food",
+      "region": "south",
+      "coordinates": {
+        "lat": -8.6478,
+        "lng": 115.1264
+      },
+      "images": [
+        "/images/spots/la-brisa-canggu.jpg"
+      ],
+      "openingHours": {
+        "open": "10:00",
+        "close": "23:00",
+        "note": "Daily; Sunday market from 10:00"
+      },
+      "visitDurationMin": 180,
+      "cost": {
+        "currency": "IDR",
+        "min": 150000,
+        "max": 500000,
+        "note": "Minimum spend applies for daybeds and pool access"
+      },
+      "bestTime": "16:00–19:00",
+      "tips": [
+        "Reserve for sunset — walk-ins are turned away on busy evenings.",
+        "Sunday's market is the best time to come if you would rather not drink.",
+        "Minimum spend on daybeds is per bed, not per person. Split it."
+      ],
+      "nearby": [
+        "echo-beach-canggu",
+        "batu-bolong-beach",
+        "crate-cafe-canggu"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "crate-cafe-canggu",
+      "name": "Crate Café",
+      "description": "Canggu's loudest breakfast: big plates, long queue, no bookings.",
+      "longDescription": "An industrial warehouse space that has been the default Canggu breakfast for years — enormous portions, strong coffee, and a queue out the door by eight. The food is genuinely good and absurdly cheap for the size; the wait is the tax.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.6420,115.1370",
+      "visited": false,
+      "rating": 4.4,
+      "distanceFromStayKm": 20.4,
+      "tags": [
+        "Memorable"
+      ],
+      "category": "cafes",
+      "region": "south",
+      "coordinates": {
+        "lat": -8.642,
+        "lng": 115.137
+      },
+      "images": [
+        "/images/spots/crate-cafe-canggu.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "16:00",
+        "note": "Daily; kitchen closes earlier than the café"
+      },
+      "visitDurationMin": 75,
+      "cost": {
+        "currency": "IDR",
+        "min": 45000,
+        "max": 120000,
+        "note": "Breakfast plus coffee"
+      },
+      "bestTime": "07:00–08:00",
+      "tips": [
+        "No reservations. Arrive before eight or expect thirty minutes standing outside.",
+        "Portions are large enough to share. Two people rarely need two mains.",
+        "Cash and card both fine, but the queue moves faster if you have cash ready."
+      ],
+      "nearby": [
+        "batu-bolong-beach",
+        "echo-beach-canggu",
+        "la-brisa-canggu"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "seminyak-beach",
+      "name": "Seminyak Beach",
+      "description": "A long golden strip where the sunset bars start at the sand.",
+      "longDescription": "Wider and softer underfoot than Canggu, with beanbag bars running the length of it and a swimmable beach when the flags are up. It is the most commercial sunset on the island and, on the right evening, still one of the best.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.6905,115.1600",
+      "visited": false,
+      "rating": 4.3,
+      "distanceFromStayKm": 23.3,
+      "tags": [
+        "Must Visit"
+      ],
+      "category": "beaches",
+      "region": "south",
+      "coordinates": {
+        "lat": -8.6905,
+        "lng": 115.16
+      },
+      "images": [
+        "/images/spots/seminyak-beach.jpg"
+      ],
+      "openingHours": {
+        "note": "Open 24 hours"
+      },
+      "visitDurationMin": 120,
+      "cost": {
+        "currency": "IDR",
+        "min": 0,
+        "max": 200000,
+        "note": "Free; beanbag usually comes with a drink minimum"
+      },
+      "bestTime": "17:00–18:45",
+      "tips": [
+        "Swim between the flags only. The rip here is serious and catches strong swimmers.",
+        "Beanbags are first-come from about four. Arriving at six means standing.",
+        "Walk north towards Petitenget for a noticeably quieter stretch of the same beach."
+      ],
+      "nearby": [
+        "petitenget-temple",
+        "double-six-sunset",
+        "la-brisa-canggu"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "petitenget-temple",
+      "name": "Pura Petitenget",
+      "description": "A sixteenth-century sea temple wedged into Seminyak's beach strip.",
+      "longDescription": "A small, still-active coastal temple founded by the priest Dang Hyang Nirartha, now surrounded by restaurants and villas. Ceremonies spill onto the beach beside it, and the contrast between offerings on the sand and beach clubs next door is the whole of modern Bali in one frame.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.6797,115.1519",
+      "visited": false,
+      "rating": 4.3,
+      "distanceFromStayKm": 22.7,
+      "tags": [
+        "Cultural"
+      ],
+      "category": "temples",
+      "region": "south",
+      "coordinates": {
+        "lat": -8.6797,
+        "lng": 115.1519
+      },
+      "images": [
+        "/images/spots/petitenget-temple.jpg"
+      ],
+      "openingHours": {
+        "open": "08:00",
+        "close": "18:00",
+        "note": "Closed to visitors during major ceremonies"
+      },
+      "visitDurationMin": 30,
+      "cost": {
+        "currency": "IDR",
+        "min": 0,
+        "max": 20000,
+        "note": "Donation; sarong required"
+      },
+      "bestTime": "17:00–18:30",
+      "tips": [
+        "Sarong and sash are mandatory and usually available at the gate for a donation.",
+        "If a ceremony is running, watch from the edge and do not walk in front of praying people.",
+        "Five minutes' walk from Seminyak Beach — pair them at sunset."
+      ],
+      "nearby": [
+        "seminyak-beach",
+        "double-six-sunset",
+        "la-brisa-canggu"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "double-six-sunset",
+      "name": "Double Six Beach",
+      "description": "Beanbags, cold beer and Bali's most reliable sunset ritual.",
+      "longDescription": "The southern end of the Seminyak strip, where dozens of bars set out beanbags in rows facing west every afternoon. Low effort, low cost, and consistently delivers — this is the sunset most people picture when they picture Bali.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.7043,115.1650",
+      "visited": false,
+      "rating": 4.2,
+      "distanceFromStayKm": 24.4,
+      "tags": [
+        "Memorable"
+      ],
+      "category": "beaches",
+      "region": "south",
+      "coordinates": {
+        "lat": -8.7043,
+        "lng": 115.165
+      },
+      "images": [
+        "/images/spots/double-six-sunset.jpg"
+      ],
+      "openingHours": {
+        "note": "Open 24 hours; beanbag bars from ~15:00"
+      },
+      "visitDurationMin": 120,
+      "cost": {
+        "currency": "IDR",
+        "min": 50000,
+        "max": 150000,
+        "note": "Beanbag free with a drink or two"
+      },
+      "bestTime": "17:15–18:45",
+      "tips": [
+        "Beanbags are free if you keep ordering. One beer per hour is the unspoken rate.",
+        "Check sunset time — it shifts by about forty minutes across the year.",
+        "Beach vendors are constant. A polite firm 'tidak, terima kasih' works."
+      ],
+      "nearby": [
+        "seminyak-beach",
+        "petitenget-temple",
+        "jimbaran-seafood-bay"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "sanur-beach-walk",
+      "name": "Sanur Beach Walk",
+      "description": "A flat five-kilometre promenade along calm, reef-sheltered water.",
+      "longDescription": "A paved path running the length of Sanur's coast, past fishing boats, old hotels and warungs, with a reef offshore keeping the water flat. Sanur faces east, so this is one of the few places on the island for a proper sunrise rather than a sunset.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.6870,115.2626",
+      "visited": false,
+      "rating": 4.4,
+      "distanceFromStayKm": 20,
+      "tags": [
+        "Memorable"
+      ],
+      "category": "beaches",
+      "region": "south",
+      "coordinates": {
+        "lat": -8.687,
+        "lng": 115.2626
+      },
+      "images": [
+        "/images/spots/sanur-beach-walk.jpg"
+      ],
+      "openingHours": {
+        "note": "Open 24 hours"
+      },
+      "visitDurationMin": 120,
+      "cost": {
+        "currency": "IDR",
+        "min": 0,
+        "max": 0,
+        "note": "Free"
+      },
+      "bestTime": "05:45–07:00 for sunrise",
+      "tips": [
+        "East-facing, so this is the sunrise coast. Sunset here is behind you.",
+        "Rent a bicycle — the promenade is flat, car-free and made for it.",
+        "The Nusa Penida fast boats leave from this beach, so pair it with a crossing day."
+      ],
+      "nearby": [
+        "bali-museum-denpasar",
+        "double-six-sunset",
+        "crystal-bay"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "bali-museum-denpasar",
+      "name": "Bali Museum",
+      "description": "Colonial-era pavilions holding the island's own history, quietly.",
+      "longDescription": "Four pavilions built in traditional regional styles, housing prehistoric tools, ceremonial textiles, masks and kris blades. Underfunded and often nearly empty, which is precisely why it is a good hour — the objects get to speak without a crowd.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.6572,115.2167",
+      "visited": false,
+      "rating": 4,
+      "distanceFromStayKm": 17.5,
+      "tags": [
+        "Cultural"
+      ],
+      "category": "culture",
+      "region": "south",
+      "coordinates": {
+        "lat": -8.6572,
+        "lng": 115.2167
+      },
+      "images": [
+        "/images/spots/bali-museum-denpasar.jpg"
+      ],
+      "openingHours": {
+        "open": "08:00",
+        "close": "15:30",
+        "note": "Closed some public holidays"
+      },
+      "visitDurationMin": 75,
+      "cost": {
+        "currency": "IDR",
+        "min": 50000,
+        "max": 50000,
+        "note": "Foreign visitor ticket"
+      },
+      "bestTime": "08:00–11:00",
+      "tips": [
+        "Closes mid-afternoon — this is a morning stop, not an afternoon one.",
+        "Labelling is thin. A guide at the entrance is worth the small fee.",
+        "Pura Jagatnatha next door is part of the same compound and free to look into."
+      ],
+      "nearby": [
+        "sanur-beach-walk",
+        "double-six-sunset",
+        "petitenget-temple"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "uluwatu-temple",
+      "name": "Uluwatu Temple",
+      "description": "A clifftop temple seventy metres above the surf, facing the sunset.",
+      "longDescription": "Pura Luhur Uluwatu sits on a limestone headland at the island's southwestern tip, with a cliff path running along the edge and a kecak fire dance performed in an amphitheatre at sunset. The temple itself is small; the setting is the reason to come.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.8291,115.0849",
+      "visited": false,
+      "rating": 4.6,
+      "distanceFromStayKm": 40.8,
+      "tags": [
+        "Must Visit",
+        "Cultural",
+        "Memorable"
+      ],
+      "category": "temples",
+      "region": "bukit",
+      "coordinates": {
+        "lat": -8.8291,
+        "lng": 115.0849
+      },
+      "images": [
+        "/images/spots/uluwatu-temple.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "19:00",
+        "note": "Kecak dance daily at sunset, usually 18:00"
+      },
+      "visitDurationMin": 120,
+      "cost": {
+        "currency": "IDR",
+        "min": 50000,
+        "max": 200000,
+        "note": "Temple entry ~50k; kecak dance ticket ~150k extra"
+      },
+      "bestTime": "16:30–19:00",
+      "tips": [
+        "The monkeys here steal glasses and phones with real skill. Secure everything.",
+        "Buy kecak tickets on arrival, not at 17:45 — it sells out in high season.",
+        "Sarongs are provided at the gate. Cliff path railings are low; mind children."
+      ],
+      "nearby": [
+        "suluban-beach",
+        "padang-padang-beach",
+        "nyang-nyang-beach"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "padang-padang-beach",
+      "name": "Padang Padang Beach",
+      "description": "A tiny cove reached through a crack in the limestone cliff.",
+      "longDescription": "You get in by squeezing down a staircase and through a narrow gap in the rock, which opens onto a small white-sand cove with a world-class barrel breaking off to one side. Small enough to fill by mid-morning, and famous enough that it does.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.8106,115.1030",
+      "visited": false,
+      "rating": 4.4,
+      "distanceFromStayKm": 38.1,
+      "tags": [
+        "Must Visit",
+        "Memorable"
+      ],
+      "category": "beaches",
+      "region": "bukit",
+      "coordinates": {
+        "lat": -8.8106,
+        "lng": 115.103
+      },
+      "images": [
+        "/images/spots/padang-padang-beach.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "19:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 120,
+      "cost": {
+        "currency": "IDR",
+        "min": 15000,
+        "max": 25000,
+        "note": "Entry plus parking"
+      },
+      "bestTime": "07:00–09:30",
+      "tips": [
+        "Come at opening. The cove is genuinely small and unpleasant when full.",
+        "The wave is an expert reef barrel — not a beginner's beach for surfing.",
+        "Monkeys work the staircase. Do not carry food down it."
+      ],
+      "nearby": [
+        "suluban-beach",
+        "uluwatu-temple",
+        "nyang-nyang-beach"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "suluban-beach",
+      "name": "Suluban Beach",
+      "description": "Sea caves framing the surf, revealed only when the tide drops.",
+      "longDescription": "Reached down staircases and through a limestone cave system that opens onto the sand — at low tide you can walk between chambers with the ocean framed in the cave mouth, and at high tide the beach essentially disappears. Tide timing is not optional here.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.8149,115.0885",
+      "visited": false,
+      "rating": 4.5,
+      "distanceFromStayKm": 39.2,
+      "tags": [
+        "Outworldly",
+        "Memorable"
+      ],
+      "category": "photography",
+      "region": "bukit",
+      "coordinates": {
+        "lat": -8.8149,
+        "lng": 115.0885
+      },
+      "images": [
+        "/images/spots/suluban-beach.jpg"
+      ],
+      "openingHours": {
+        "note": "Access depends entirely on tide, not opening hours"
+      },
+      "visitDurationMin": 120,
+      "cost": {
+        "currency": "IDR",
+        "min": 5000,
+        "max": 15000,
+        "note": "Parking only"
+      },
+      "bestTime": "Low tide, ideally late afternoon",
+      "tips": [
+        "Check the tide table first. At high tide there is no beach to stand on.",
+        "Many steps down through the cliff warungs, and the same back up.",
+        "Single Fin above it is the classic sunset stop, busiest on Sundays."
+      ],
+      "nearby": [
+        "uluwatu-temple",
+        "padang-padang-beach",
+        "nyang-nyang-beach"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "melasti-beach",
+      "name": "Melasti Beach",
+      "description": "A road cut through white limestone down to turquoise water.",
+      "longDescription": "The descent is the attraction — a switchback road carved through sheer white cliffs, opening onto a broad beach with unusually clear water for the Bukit. Wide enough that it absorbs a crowd, and calm enough to actually swim.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.8481,115.1585",
+      "visited": false,
+      "rating": 4.5,
+      "distanceFromStayKm": 39.6,
+      "tags": [
+        "Memorable",
+        "Outworldly"
+      ],
+      "category": "beaches",
+      "region": "bukit",
+      "coordinates": {
+        "lat": -8.8481,
+        "lng": 115.1585
+      },
+      "images": [
+        "/images/spots/melasti-beach.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "19:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 150,
+      "cost": {
+        "currency": "IDR",
+        "min": 10000,
+        "max": 20000,
+        "note": "Parking and small entry"
+      },
+      "bestTime": "08:00–10:00 or 16:30–18:30",
+      "tips": [
+        "Stop at the viewpoint partway down the cliff road — that is the photograph.",
+        "There is almost no natural shade. Rent an umbrella or come outside midday.",
+        "Melasti purification ceremonies happen here; if one is on, keep your distance."
+      ],
+      "nearby": [
+        "pandawa-beach",
+        "green-bowl-beach",
+        "uluwatu-temple"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "pandawa-beach",
+      "name": "Pandawa Beach",
+      "description": "Five giant statues carved into the cliff above a calm white bay.",
+      "longDescription": "Once a hidden fishermen's beach, now reached through a corridor blasted out of limestone with the five Pandawa brothers carved into niches along it. The water is calm and shallow, which makes it one of the better swimming beaches on the peninsula.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.8480,115.1880",
+      "visited": false,
+      "rating": 4.3,
+      "distanceFromStayKm": 38.8,
+      "tags": [
+        "Cultural",
+        "Memorable"
+      ],
+      "category": "beaches",
+      "region": "bukit",
+      "coordinates": {
+        "lat": -8.848,
+        "lng": 115.188
+      },
+      "images": [
+        "/images/spots/pandawa-beach.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "19:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 120,
+      "cost": {
+        "currency": "IDR",
+        "min": 15000,
+        "max": 25000,
+        "note": "Entry plus parking"
+      },
+      "bestTime": "08:00–10:30",
+      "tips": [
+        "Calm and shallow — the best Bukit beach for swimming with children.",
+        "Kayaks and paddleboards rent by the hour along the sand.",
+        "Ten minutes from Melasti; do both in a morning and skip the midday sun."
+      ],
+      "nearby": [
+        "melasti-beach",
+        "green-bowl-beach",
+        "jimbaran-seafood-bay"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "nyang-nyang-beach",
+      "name": "Nyang Nyang Beach",
+      "description": "Five hundred steps down to a kilometre of nearly empty sand.",
+      "longDescription": "The effort keeps it quiet — a long, steep descent from the clifftop delivers you to a wide beach with a rusting shipwreck at one end and, most days, almost nobody on it. There is no infrastructure, which is the point and also the warning.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.8404,115.1032",
+      "visited": false,
+      "rating": 4.4,
+      "distanceFromStayKm": 41,
+      "tags": [
+        "Outworldly",
+        "Memorable"
+      ],
+      "category": "hidden-gems",
+      "region": "bukit",
+      "coordinates": {
+        "lat": -8.8404,
+        "lng": 115.1032
+      },
+      "images": [
+        "/images/spots/nyang-nyang-beach.jpg"
+      ],
+      "openingHours": {
+        "note": "Daylight only — do not attempt the climb in the dark"
+      },
+      "visitDurationMin": 180,
+      "cost": {
+        "currency": "IDR",
+        "min": 10000,
+        "max": 20000,
+        "note": "Parking at the clifftop"
+      },
+      "bestTime": "07:00–09:00",
+      "tips": [
+        "Carry all your own water. There is no reliable warung at the bottom.",
+        "The climb back up is around 500 steps in full sun. Do not leave it until noon.",
+        "Strong currents and no lifeguards. Wade, do not swim out."
+      ],
+      "nearby": [
+        "uluwatu-temple",
+        "suluban-beach",
+        "padang-padang-beach"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "green-bowl-beach",
+      "name": "Green Bowl Beach",
+      "description": "A cave-backed cove below a long staircase, usually deserted.",
+      "longDescription": "Down several hundred steps at the southern tip of the Bukit, a small bay with two large caves in the cliff behind it, a bat colony inside, and reef exposed at low tide. The stairs keep the numbers down and it is often close to empty even in high season.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.8467,115.1770",
+      "visited": false,
+      "rating": 4.4,
+      "distanceFromStayKm": 38.9,
+      "tags": [
+        "Outworldly",
+        "Memorable"
+      ],
+      "category": "hidden-gems",
+      "region": "bukit",
+      "coordinates": {
+        "lat": -8.8467,
+        "lng": 115.177
+      },
+      "images": [
+        "/images/spots/green-bowl-beach.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "18:00",
+        "note": "Daylight only — the staircase is unlit"
+      },
+      "visitDurationMin": 150,
+      "cost": {
+        "currency": "IDR",
+        "min": 10000,
+        "max": 20000,
+        "note": "Parking and small entry"
+      },
+      "bestTime": "Low tide, 08:00–10:00",
+      "tips": [
+        "Around 300 steps down and back. There is no other way in or out.",
+        "At high tide the sand largely disappears — check the tide before committing to the climb.",
+        "The caves hold a bat colony. Look up, keep back, and do not use flash."
+      ],
+      "nearby": [
+        "pandawa-beach",
+        "melasti-beach",
+        "uluwatu-temple"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "jimbaran-seafood-bay",
+      "name": "Jimbaran Bay Seafood",
+      "description": "Grilled catch on plastic chairs, feet in sand, sun going down.",
+      "longDescription": "A line of seafood warungs setting tables directly onto the sand every evening, grilling the day's catch over coconut husks while the sun drops into the bay. Pick your fish by weight from the ice, agree the price first, then sit down.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.7900,115.1650",
+      "visited": false,
+      "rating": 4.4,
+      "distanceFromStayKm": 33.3,
+      "tags": [
+        "Must Visit",
+        "Memorable"
+      ],
+      "category": "food",
+      "region": "bukit",
+      "coordinates": {
+        "lat": -8.79,
+        "lng": 115.165
+      },
+      "images": [
+        "/images/spots/jimbaran-seafood-bay.jpg"
+      ],
+      "openingHours": {
+        "open": "11:00",
+        "close": "22:00",
+        "note": "Sunset service is the main event"
+      },
+      "visitDurationMin": 120,
+      "cost": {
+        "currency": "IDR",
+        "min": 200000,
+        "max": 600000,
+        "note": "Per person, depending on what you pick from the ice"
+      },
+      "bestTime": "17:30–19:30",
+      "tips": [
+        "Confirm the price per kilo AND the weight of your fish before it goes on the grill.",
+        "Book a table at sunset in high season, or arrive by five to get a front row.",
+        "The middle of the strip is generally better value than either end."
+      ],
+      "nearby": [
+        "pandawa-beach",
+        "melasti-beach",
+        "double-six-sunset"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "lempuyang-temple",
+      "name": "Pura Lempuyang Luhur",
+      "description": "The split gate framing Mount Agung, high on a forested ridge.",
+      "longDescription": "The 'Gates of Heaven' frame Mount Agung perfectly on a clear morning, and the queue for that photograph can run several hours. Beyond the first temple, a punishing staircase climbs to six more shrines and almost nobody goes — which is where the place gets its power back.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.3922,115.6317",
+      "visited": false,
+      "rating": 4.3,
+      "distanceFromStayKm": 42.6,
+      "tags": [
+        "Cultural",
+        "Outworldly",
+        "Must Visit"
+      ],
+      "category": "temples",
+      "region": "east",
+      "coordinates": {
+        "lat": -8.3922,
+        "lng": 115.6317
+      },
+      "images": [
+        "/images/spots/lempuyang-temple.jpg"
+      ],
+      "openingHours": {
+        "open": "06:00",
+        "close": "18:00",
+        "note": "Photo queue numbers issued from around 07:00"
+      },
+      "visitDurationMin": 180,
+      "cost": {
+        "currency": "IDR",
+        "min": 55000,
+        "max": 100000,
+        "note": "Entry, sarong and shuttle to the upper gate"
+      },
+      "bestTime": "06:00–07:30",
+      "tips": [
+        "The famous 'reflection' is a phone held under the lens, not a lake. Now you know.",
+        "Arrive by 6am or the queue for the gate photo can exceed two hours.",
+        "Agung hides in cloud by mid-morning. Early is the only way to see it."
+      ],
+      "nearby": [
+        "tirta-gangga",
+        "taman-ujung",
+        "amed-beach"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "tirta-gangga",
+      "name": "Tirta Gangga Water Palace",
+      "description": "Stepping stones across koi pools in a former royal water garden.",
+      "longDescription": "Built by the last raja of Karangasem in 1946, a garden of tiered pools, fountains and sandstone sculpture, with stepping stones running across water thick with koi. Partly destroyed by Agung's 1963 eruption and rebuilt — the layers of that history are visible if you look.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.4122,115.5872",
+      "visited": false,
+      "rating": 4.5,
+      "distanceFromStayKm": 37.2,
+      "tags": [
+        "Cultural",
+        "Memorable"
+      ],
+      "category": "culture",
+      "region": "east",
+      "coordinates": {
+        "lat": -8.4122,
+        "lng": 115.5872
+      },
+      "images": [
+        "/images/spots/tirta-gangga.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "19:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 90,
+      "cost": {
+        "currency": "IDR",
+        "min": 50000,
+        "max": 75000,
+        "note": "Entry; fish food and pool swimming extra"
+      },
+      "bestTime": "07:00–09:00",
+      "tips": [
+        "Buy fish food — the koi swarm the stepping stones and it makes the crossing.",
+        "The stones are slick and unevenly spaced. Watch your footing with a camera out.",
+        "Twenty minutes from Lempuyang, so most people pair them. Do Lempuyang first."
+      ],
+      "nearby": [
+        "lempuyang-temple",
+        "taman-ujung",
+        "sidemen-valley"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "taman-ujung",
+      "name": "Taman Ujung Water Palace",
+      "description": "A ruined royal palace on wide pools, framed by sea and volcano.",
+      "longDescription": "The other Karangasem water palace, built in 1909 and largely wrecked by the 1963 eruption and a later earthquake. What remains — long causeways, a colonnaded pavilion, water on every side with Agung behind and the ocean below — is more atmospheric for being incomplete.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.4587,115.6207",
+      "visited": false,
+      "rating": 4.4,
+      "distanceFromStayKm": 39.8,
+      "tags": [
+        "Cultural",
+        "Memorable"
+      ],
+      "category": "culture",
+      "region": "east",
+      "coordinates": {
+        "lat": -8.4587,
+        "lng": 115.6207
+      },
+      "images": [
+        "/images/spots/taman-ujung.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "19:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 75,
+      "cost": {
+        "currency": "IDR",
+        "min": 50000,
+        "max": 75000,
+        "note": "Entry"
+      },
+      "bestTime": "07:30–09:30",
+      "tips": [
+        "Climb to the hilltop pavilion at the back — sea on one side, Agung on the other.",
+        "Almost no shade across the causeways. Mornings are far more comfortable.",
+        "Quieter than Tirta Gangga and, for many people, the better of the two."
+      ],
+      "nearby": [
+        "tirta-gangga",
+        "lempuyang-temple",
+        "virgin-beach"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "besakih-temple",
+      "name": "Pura Besakih",
+      "description": "Bali's mother temple, climbing Mount Agung's slope in terraces.",
+      "longDescription": "The largest and holiest temple complex on the island — twenty-three temples rising in terraces up the flank of Mount Agung. The 1963 eruption destroyed everything around it and the lava stopped just short, which Balinese Hindus have never regarded as coincidence.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.3739,115.4520",
+      "visited": false,
+      "rating": 4.2,
+      "distanceFromStayKm": 25.6,
+      "tags": [
+        "Cultural",
+        "Must Visit"
+      ],
+      "category": "temples",
+      "region": "east",
+      "coordinates": {
+        "lat": -8.3739,
+        "lng": 115.452
+      },
+      "images": [
+        "/images/spots/besakih-temple.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "18:00",
+        "note": "Access restricted during major ceremonies"
+      },
+      "visitDurationMin": 120,
+      "cost": {
+        "currency": "IDR",
+        "min": 150000,
+        "max": 200000,
+        "note": "Entry, sarong and shuttle from the new visitor centre"
+      },
+      "bestTime": "07:00–09:00",
+      "tips": [
+        "Guides are effectively compulsory. Agree the fee up front and ignore 'donation' upsells.",
+        "Non-worshippers cannot enter the inner courtyards — you walk the terraces around them.",
+        "Cloud swallows Agung most days by 10am. Early is the only chance of the view."
+      ],
+      "nearby": [
+        "sidemen-valley",
+        "tukad-cepung-waterfall",
+        "tirta-gangga"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "sidemen-valley",
+      "name": "Sidemen Valley",
+      "description": "Terraced rice valley under Agung, with almost no tour buses.",
+      "longDescription": "What people imagine Ubud used to be — a wide green valley of working rice terraces and weaving villages beneath Mount Agung, with walking trails between the paddies and very little built for tourists. The reason to come is that nothing much happens here.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.4700,115.4300",
+      "visited": false,
+      "rating": 4.7,
+      "distanceFromStayKm": 18.9,
+      "tags": [
+        "Memorable",
+        "Must Visit"
+      ],
+      "category": "nature",
+      "region": "east",
+      "coordinates": {
+        "lat": -8.47,
+        "lng": 115.43
+      },
+      "images": [
+        "/images/spots/sidemen-valley.jpg"
+      ],
+      "openingHours": {
+        "note": "Open landscape; walk in daylight"
+      },
+      "visitDurationMin": 240,
+      "cost": {
+        "currency": "IDR",
+        "min": 0,
+        "max": 150000,
+        "note": "Free to walk; village guides ~150k for a half day"
+      },
+      "bestTime": "06:30–09:00",
+      "tips": [
+        "Hire a village guide for the paddy trails — the paths are unmarked and cross private land.",
+        "Agung is clearest at sunrise. By ten it is usually gone into cloud.",
+        "Songket weaving workshops in the village will show you the looms if you ask."
+      ],
+      "nearby": [
+        "besakih-temple",
+        "tirta-gangga",
+        "virgin-beach"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "amed-beach",
+      "name": "Amed",
+      "description": "Black volcanic sand, painted fishing boats and glassy calm water.",
+      "longDescription": "A string of small bays on the far east coast with dark sand, rows of traditional jukung outriggers pulled up on it, and water calm enough to snorkel straight off the beach. The pace is slow, the sunsets face back over Agung, and nothing here is in a hurry.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.3389,115.6553",
+      "visited": false,
+      "rating": 4.5,
+      "distanceFromStayKm": 47.1,
+      "tags": [
+        "Memorable",
+        "Must Visit"
+      ],
+      "category": "beaches",
+      "region": "east",
+      "coordinates": {
+        "lat": -8.3389,
+        "lng": 115.6553
+      },
+      "images": [
+        "/images/spots/amed-beach.jpg"
+      ],
+      "openingHours": {
+        "note": "Open 24 hours"
+      },
+      "visitDurationMin": 180,
+      "cost": {
+        "currency": "IDR",
+        "min": 0,
+        "max": 100000,
+        "note": "Free; snorkel hire ~50–100k per day"
+      },
+      "bestTime": "06:30–09:00",
+      "tips": [
+        "Snorkel straight off the beach at Jemeluk Bay — no boat needed.",
+        "Black sand gets extremely hot by mid-morning. Bring something for your feet.",
+        "Freediving schools here are among the best value in Southeast Asia."
+      ],
+      "nearby": [
+        "tulamben-liberty-wreck",
+        "lempuyang-temple",
+        "tirta-gangga"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "tulamben-liberty-wreck",
+      "name": "USAT Liberty Wreck, Tulamben",
+      "description": "A torpedoed WWII freighter lying in shore-reach shallow water.",
+      "longDescription": "A US Army cargo ship torpedoed in 1942 and pushed off the beach by Agung's 1963 eruption, now a coral-covered wreck starting five metres down and thirty metres from shore. Snorkellers reach the top of it; divers get the whole hull. One of the most accessible wreck dives anywhere.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.2745,115.5938",
+      "visited": false,
+      "rating": 4.7,
+      "distanceFromStayKm": 44.7,
+      "tags": [
+        "Outworldly",
+        "Memorable",
+        "Must Visit"
+      ],
+      "category": "adventure",
+      "region": "east",
+      "coordinates": {
+        "lat": -8.2745,
+        "lng": 115.5938
+      },
+      "images": [
+        "/images/spots/tulamben-liberty-wreck.jpg"
+      ],
+      "openingHours": {
+        "open": "06:00",
+        "close": "18:00",
+        "note": "Dive operators from early morning"
+      },
+      "visitDurationMin": 240,
+      "cost": {
+        "currency": "IDR",
+        "min": 100000,
+        "max": 1200000,
+        "note": "Snorkel hire cheap; two-tank guided dive at the upper end"
+      },
+      "bestTime": "06:00–08:00",
+      "tips": [
+        "Dive before 8am. After that it becomes the busiest wreck in Indonesia.",
+        "The entry is over large loose stones in surf — booties are genuinely necessary.",
+        "Snorkellers can see the shallow end of the wreck without a tank."
+      ],
+      "nearby": [
+        "amed-beach",
+        "lempuyang-temple",
+        "tirta-gangga"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "virgin-beach",
+      "name": "Virgin Beach (Pasir Putih)",
+      "description": "A white crescent behind the cliffs, with warungs and no crowd.",
+      "longDescription": "A curve of white sand unusual for the east coast, reached down a rough side road and backed by a handful of bamboo warungs renting loungers. Calm swimming, grilled fish, and generally a fraction of the people you would find on an equivalent beach in the south.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.4930,115.5670",
+      "visited": false,
+      "rating": 4.4,
+      "distanceFromStayKm": 33.5,
+      "tags": [
+        "Memorable"
+      ],
+      "category": "hidden-gems",
+      "region": "east",
+      "coordinates": {
+        "lat": -8.493,
+        "lng": 115.567
+      },
+      "images": [
+        "/images/spots/virgin-beach.jpg"
+      ],
+      "openingHours": {
+        "note": "Daylight hours; warungs from ~09:00"
+      },
+      "visitDurationMin": 180,
+      "cost": {
+        "currency": "IDR",
+        "min": 10000,
+        "max": 150000,
+        "note": "Parking plus loungers and lunch"
+      },
+      "bestTime": "09:00–12:00",
+      "tips": [
+        "The access road is steep and rough — take it slowly on a scooter.",
+        "Loungers are free if you eat at that warung. Ask before you sit down.",
+        "Weekends bring local families; weekdays it can be close to empty."
+      ],
+      "nearby": [
+        "taman-ujung",
+        "sidemen-valley",
+        "tirta-gangga"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "sekumpul-waterfall",
+      "name": "Sekumpul Waterfall",
+      "description": "Seven falls dropping together into one deep jungle amphitheatre.",
+      "longDescription": "Widely considered the finest waterfall in Bali — a cluster of tall falls plunging into a green bowl of jungle, reached by a long descent, a river crossing and a climb back. The effort is real and it filters out most of the crowd.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.1560,115.1930",
+      "visited": false,
+      "rating": 4.8,
+      "distanceFromStayKm": 39.8,
+      "tags": [
+        "Must Visit",
+        "Outworldly",
+        "Memorable"
+      ],
+      "category": "waterfalls",
+      "region": "north",
+      "coordinates": {
+        "lat": -8.156,
+        "lng": 115.193
+      },
+      "images": [
+        "/images/spots/sekumpul-waterfall.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "17:00",
+        "note": "Last descent well before closing"
+      },
+      "visitDurationMin": 240,
+      "cost": {
+        "currency": "IDR",
+        "min": 125000,
+        "max": 250000,
+        "note": "Entry and mandatory local guide"
+      },
+      "bestTime": "07:00–10:00",
+      "tips": [
+        "Guides are compulsory and there are competing 'official' entrances. Use the village one.",
+        "Expect hundreds of steps down, a waist-deep river crossing, and the climb back.",
+        "Skip it after heavy rain — the crossing floods and the trail turns to mud."
+      ],
+      "nearby": [
+        "gitgit-waterfall",
+        "banyumala-twin-waterfall",
+        "lovina-beach"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "banyumala-twin-waterfall",
+      "name": "Banyumala Twin Waterfall",
+      "description": "Twin cascades into a clear green pool you can actually swim in.",
+      "longDescription": "Two falls sliding down a mossy rock face into a shallow, startlingly clear pool ringed by jungle. The descent is steep but short, and unlike most Bali waterfalls the pool here is calm enough for a proper swim.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.2378,115.1428",
+      "visited": false,
+      "rating": 4.7,
+      "distanceFromStayKm": 32.7,
+      "tags": [
+        "Outworldly",
+        "Memorable"
+      ],
+      "category": "waterfalls",
+      "region": "north",
+      "coordinates": {
+        "lat": -8.2378,
+        "lng": 115.1428
+      },
+      "images": [
+        "/images/spots/banyumala-twin-waterfall.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "17:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 120,
+      "cost": {
+        "currency": "IDR",
+        "min": 30000,
+        "max": 50000,
+        "note": "Entry plus parking"
+      },
+      "bestTime": "08:00–10:30",
+      "tips": [
+        "Bring swimwear — this is one of the few Bali falls with a genuinely swimmable pool.",
+        "The access road is steep and badly surfaced; a car may need to park higher up.",
+        "Combine with Wanagiri and Ulun Danu — all within twenty minutes of each other."
+      ],
+      "nearby": [
+        "wanagiri-hidden-hills",
+        "ulun-danu-beratan",
+        "munduk-waterfall"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "munduk-waterfall",
+      "name": "Munduk Waterfall",
+      "description": "Cool highland forest, clove trees and a chain of jungle falls.",
+      "longDescription": "Up in the coffee and clove country at around 800 metres, where trails link several waterfalls through dense forest and the air is genuinely cool. Golden Valley and Melanting are the usual pair; the walk between them is as good as the falls.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.2650,115.0770",
+      "visited": false,
+      "rating": 4.5,
+      "distanceFromStayKm": 33.8,
+      "tags": [
+        "Memorable"
+      ],
+      "category": "waterfalls",
+      "region": "north",
+      "coordinates": {
+        "lat": -8.265,
+        "lng": 115.077
+      },
+      "images": [
+        "/images/spots/munduk-waterfall.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "17:30",
+        "note": "Daily"
+      },
+      "visitDurationMin": 180,
+      "cost": {
+        "currency": "IDR",
+        "min": 20000,
+        "max": 60000,
+        "note": "Entry per waterfall on the trail"
+      },
+      "bestTime": "07:30–11:00",
+      "tips": [
+        "Bring a layer. At 800m Munduk is properly cool, especially in the morning.",
+        "Trails are muddy year-round. Trainers with grip beat sandals here.",
+        "Afternoon cloud rolls in most days and swallows the valley views."
+      ],
+      "nearby": [
+        "banyumala-twin-waterfall",
+        "wanagiri-hidden-hills",
+        "ulun-danu-beratan"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "gitgit-waterfall",
+      "name": "Gitgit Waterfall",
+      "description": "A tall single drop reached on a short, easy jungle walkway.",
+      "longDescription": "One of Bali's most accessible big waterfalls — a 35-metre column into a rocky pool, reached on a paved path through coffee and clove plantations. Easy enough for almost anyone, which makes it the sensible choice when Sekumpul's trek is too much.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.1930,115.1330",
+      "visited": false,
+      "rating": 4.2,
+      "distanceFromStayKm": 37.7,
+      "tags": [
+        "Memorable"
+      ],
+      "category": "waterfalls",
+      "region": "north",
+      "coordinates": {
+        "lat": -8.193,
+        "lng": 115.133
+      },
+      "images": [
+        "/images/spots/gitgit-waterfall.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "18:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 75,
+      "cost": {
+        "currency": "IDR",
+        "min": 20000,
+        "max": 40000,
+        "note": "Entry plus parking"
+      },
+      "bestTime": "08:00–10:00",
+      "tips": [
+        "The easiest major waterfall in the north — paved path, roughly ten minutes' walk.",
+        "Unofficial 'guides' will attach themselves at the gate. You do not need one.",
+        "The spray reaches the viewing area. Keep cameras covered until you are set."
+      ],
+      "nearby": [
+        "sekumpul-waterfall",
+        "lovina-beach",
+        "banyumala-twin-waterfall"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "ulun-danu-beratan",
+      "name": "Pura Ulun Danu Beratan",
+      "description": "A tiered shrine standing out in a crater lake, often in mist.",
+      "longDescription": "The temple on the 50,000 rupiah note — a multi-tiered meru appearing to float on Lake Beratan, with the Bedugul highlands behind it. Dedicated to the lake goddess who feeds the island's irrigation. Cool, often misty, and best before the coaches.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.2751,115.1668",
+      "visited": false,
+      "rating": 4.5,
+      "distanceFromStayKm": 27.8,
+      "tags": [
+        "Must Visit",
+        "Cultural",
+        "Memorable"
+      ],
+      "category": "temples",
+      "region": "north",
+      "coordinates": {
+        "lat": -8.2751,
+        "lng": 115.1668
+      },
+      "images": [
+        "/images/spots/ulun-danu-beratan.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "19:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 90,
+      "cost": {
+        "currency": "IDR",
+        "min": 75000,
+        "max": 100000,
+        "note": "Entry; parking extra"
+      },
+      "bestTime": "07:00–09:00",
+      "tips": [
+        "Arrive at opening — tour coaches from the south start landing around ten.",
+        "Bring a jacket. At 1,200m it is often fifteen degrees cooler than the coast.",
+        "Water level changes the shot completely; in dry season the shrine is less 'floating'."
+      ],
+      "nearby": [
+        "wanagiri-hidden-hills",
+        "banyumala-twin-waterfall",
+        "jatiluwih-rice-terraces"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "wanagiri-hidden-hills",
+      "name": "Wanagiri Hidden Hills",
+      "description": "Cliff-edge swings and nests looking down over the twin lakes.",
+      "longDescription": "A ridge of viewpoint platforms — swings, nests, bamboo gates — built out over the drop between Lakes Buyan and Tamblingan. Unapologetically constructed for photographs, and on a clear morning the view behind the props genuinely earns it.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.2450,115.1420",
+      "visited": false,
+      "rating": 4.3,
+      "distanceFromStayKm": 32,
+      "tags": [
+        "Memorable",
+        "Outworldly"
+      ],
+      "category": "photography",
+      "region": "north",
+      "coordinates": {
+        "lat": -8.245,
+        "lng": 115.142
+      },
+      "images": [
+        "/images/spots/wanagiri-hidden-hills.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "18:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 60,
+      "cost": {
+        "currency": "IDR",
+        "min": 30000,
+        "max": 100000,
+        "note": "Entry; each swing or platform charged separately"
+      },
+      "bestTime": "07:30–10:00",
+      "tips": [
+        "Several competing viewpoints on the same ridge. The first is not the best.",
+        "Cloud fills the valley from late morning most days — go early or see nothing.",
+        "Every platform is a separate fee. Decide what you actually want before paying."
+      ],
+      "nearby": [
+        "ulun-danu-beratan",
+        "banyumala-twin-waterfall",
+        "munduk-waterfall"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "lovina-beach",
+      "name": "Lovina Beach",
+      "description": "Sleepy black-sand north coast, known for dawn dolphin boats.",
+      "longDescription": "A quiet stretch of dark sand on the calm north coast, best known for outrigger boats that head out before sunrise to find spinner dolphins. The town moves slowly and prices are noticeably lower than the south.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.1620,115.0250",
+      "visited": false,
+      "rating": 4,
+      "distanceFromStayKm": 46.4,
+      "tags": [
+        "Memorable"
+      ],
+      "category": "beaches",
+      "region": "north",
+      "coordinates": {
+        "lat": -8.162,
+        "lng": 115.025
+      },
+      "images": [
+        "/images/spots/lovina-beach.jpg"
+      ],
+      "openingHours": {
+        "note": "Open 24 hours; dolphin boats depart ~06:00"
+      },
+      "visitDurationMin": 150,
+      "cost": {
+        "currency": "IDR",
+        "min": 0,
+        "max": 200000,
+        "note": "Beach free; dolphin trip per person"
+      },
+      "bestTime": "05:45–08:00",
+      "tips": [
+        "Dolphin trips can turn into a dozen boats chasing one pod. Choose an operator that keeps its distance.",
+        "Book directly at the beach the evening before rather than through a hotel desk.",
+        "The water is calm and flat here — good swimming, poor surf."
+      ],
+      "nearby": [
+        "brahmavihara-arama",
+        "gitgit-waterfall",
+        "sekumpul-waterfall"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "brahmavihara-arama",
+      "name": "Brahmavihara Arama",
+      "description": "Bali's largest Buddhist monastery, terraced above the north coast.",
+      "longDescription": "A Theravada Buddhist monastery in the hills behind Lovina, with a miniature Borobudur, meditation halls and gardens stepping down the slope towards the sea. Silent, almost always empty, and a striking counterpoint to the island's Hindu temples.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.1770,115.0490",
+      "visited": false,
+      "rating": 4.5,
+      "distanceFromStayKm": 43.6,
+      "tags": [
+        "Cultural",
+        "Memorable"
+      ],
+      "category": "culture",
+      "region": "north",
+      "coordinates": {
+        "lat": -8.177,
+        "lng": 115.049
+      },
+      "images": [
+        "/images/spots/brahmavihara-arama.jpg"
+      ],
+      "openingHours": {
+        "open": "08:00",
+        "close": "18:00",
+        "note": "Closed to visitors during retreats"
+      },
+      "visitDurationMin": 60,
+      "cost": {
+        "currency": "IDR",
+        "min": 0,
+        "max": 20000,
+        "note": "Donation; sarong required"
+      },
+      "bestTime": "08:00–10:00",
+      "tips": [
+        "An active monastery — keep your voice down and do not photograph monks without asking.",
+        "Sarongs are provided at the entrance. Shoulders must be covered too.",
+        "Banjar hot springs are ten minutes away and pair well with this."
+      ],
+      "nearby": [
+        "lovina-beach",
+        "gitgit-waterfall",
+        "sekumpul-waterfall"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "tanah-lot",
+      "name": "Tanah Lot",
+      "description": "A sea temple stranded on its own rock as the tide comes in.",
+      "longDescription": "A sixteenth-century temple on a rock formation offshore, cut off completely at high tide and walkable at low. It is the island's most visited sunset and it is unquestionably crowded — but the silhouette against the surf still works.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.6212,115.0868",
+      "visited": false,
+      "rating": 4.4,
+      "distanceFromStayKm": 23.1,
+      "tags": [
+        "Must Visit",
+        "Cultural",
+        "Memorable"
+      ],
+      "category": "temples",
+      "region": "west",
+      "coordinates": {
+        "lat": -8.6212,
+        "lng": 115.0868
+      },
+      "images": [
+        "/images/spots/tanah-lot.jpg"
+      ],
+      "openingHours": {
+        "open": "06:00",
+        "close": "19:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 120,
+      "cost": {
+        "currency": "IDR",
+        "min": 60000,
+        "max": 75000,
+        "note": "Entry plus parking"
+      },
+      "bestTime": "16:30–18:45",
+      "tips": [
+        "Non-Balinese cannot enter the temple itself — you view it from the shore.",
+        "Low tide lets you walk to the base rock; high tide leaves it fully surrounded.",
+        "Walk south along the cliff path away from the main viewing area for room to breathe."
+      ],
+      "nearby": [
+        "pura-taman-ayun",
+        "jatiluwih-rice-terraces",
+        "echo-beach-canggu"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "jatiluwih-rice-terraces",
+      "name": "Jatiluwih Rice Terraces",
+      "description": "UNESCO rice country rolling to the horizon, with real walks.",
+      "longDescription": "Far larger and far quieter than Tegallalang — hundreds of hectares of terraces under Mount Batukaru, UNESCO-listed for the thousand-year-old subak water system that runs them. Marked walking trails let you get properly into the fields rather than photographing them from a road.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.3706,115.1330",
+      "visited": false,
+      "rating": 4.7,
+      "distanceFromStayKm": 20.8,
+      "tags": [
+        "Must Visit",
+        "Memorable",
+        "Outworldly"
+      ],
+      "category": "nature",
+      "region": "west",
+      "coordinates": {
+        "lat": -8.3706,
+        "lng": 115.133
+      },
+      "images": [
+        "/images/spots/jatiluwih-rice-terraces.jpg"
+      ],
+      "openingHours": {
+        "open": "08:00",
+        "close": "18:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 180,
+      "cost": {
+        "currency": "IDR",
+        "min": 40000,
+        "max": 75000,
+        "note": "Entry plus vehicle fee"
+      },
+      "bestTime": "08:00–10:30",
+      "tips": [
+        "Walk one of the marked loops — most visitors never leave the roadside café view.",
+        "Greenest just after planting; check where the cycle is before making the drive.",
+        "Roughly two hours from Ubud on winding roads. Treat it as a full day out."
+      ],
+      "nearby": [
+        "pura-taman-ayun",
+        "ulun-danu-beratan",
+        "tanah-lot"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "pura-taman-ayun",
+      "name": "Pura Taman Ayun",
+      "description": "A moated royal temple of tiered merus, calm and rarely busy.",
+      "longDescription": "The former state temple of the Mengwi kingdom, built in 1634 and surrounded by a wide moat, with rows of thatched meru towers reflected in the water. UNESCO-listed as part of the subak system, and usually far quieter than its quality warrants.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.5410,115.1720",
+      "visited": false,
+      "rating": 4.5,
+      "distanceFromStayKm": 10.6,
+      "tags": [
+        "Cultural",
+        "Memorable"
+      ],
+      "category": "temples",
+      "region": "west",
+      "coordinates": {
+        "lat": -8.541,
+        "lng": 115.172
+      },
+      "images": [
+        "/images/spots/pura-taman-ayun.jpg"
+      ],
+      "openingHours": {
+        "open": "08:00",
+        "close": "18:15",
+        "note": "Daily"
+      },
+      "visitDurationMin": 60,
+      "cost": {
+        "currency": "IDR",
+        "min": 30000,
+        "max": 50000,
+        "note": "Entry includes sarong"
+      },
+      "bestTime": "08:00–10:00 or 16:00–17:30",
+      "tips": [
+        "You walk the perimeter rather than entering the inner courtyard — the moat is the view.",
+        "Directly on the road between Canggu and Bedugul; an easy add to a north-bound day.",
+        "Late afternoon light on the merus is better than harsh midday."
+      ],
+      "nearby": [
+        "tanah-lot",
+        "jatiluwih-rice-terraces",
+        "ulun-danu-beratan"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "menjangan-island",
+      "name": "Menjangan Island",
+      "description": "Bali's best wall diving, inside the western national park.",
+      "longDescription": "An uninhabited island in West Bali National Park with steep coral walls, exceptional visibility and none of the crowding of the south. Reached by boat from Labuan Lalang, and far enough from everything that most visitors stay overnight nearby.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.1300,114.5100",
+      "visited": false,
+      "rating": 4.7,
+      "distanceFromStayKm": 92.8,
+      "tags": [
+        "Outworldly",
+        "Memorable"
+      ],
+      "category": "adventure",
+      "region": "west",
+      "coordinates": {
+        "lat": -8.13,
+        "lng": 114.51
+      },
+      "images": [
+        "/images/spots/menjangan-island.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "16:00",
+        "note": "Boats from Labuan Lalang; last return mid-afternoon"
+      },
+      "visitDurationMin": 360,
+      "cost": {
+        "currency": "IDR",
+        "min": 300000,
+        "max": 1500000,
+        "note": "Park fee and boat charter; guided dives at the upper end"
+      },
+      "bestTime": "07:00–09:00",
+      "tips": [
+        "Four to five hours from Ubud or the south — stay in Pemuteran, do not day-trip it.",
+        "Visibility is best April to November; the wall drops off within metres of the shore.",
+        "Snorkellers do well here too — the reef top is shallow and vivid."
+      ],
+      "nearby": [
+        "lovina-beach",
+        "brahmavihara-arama"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "kelingking-beach",
+      "name": "Kelingking Beach",
+      "description": "The T-Rex headland above a white beach few people reach.",
+      "longDescription": "The image that sells Nusa Penida — a limestone headland shaped like a dinosaur's head, with a white beach at the bottom of a 400-metre near-vertical descent. The viewpoint takes minutes; the climb down and back takes hours and is genuinely dangerous in the wet.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.7513,115.4711",
+      "visited": false,
+      "rating": 4.8,
+      "distanceFromStayKm": 35.6,
+      "tags": [
+        "Must Visit",
+        "Outworldly",
+        "Memorable"
+      ],
+      "category": "beaches",
+      "region": "nusa",
+      "coordinates": {
+        "lat": -8.7513,
+        "lng": 115.4711
+      },
+      "images": [
+        "/images/spots/kelingking-beach.jpg"
+      ],
+      "openingHours": {
+        "open": "06:00",
+        "close": "18:00",
+        "note": "Do not start the descent after 15:00"
+      },
+      "visitDurationMin": 180,
+      "cost": {
+        "currency": "IDR",
+        "min": 10000,
+        "max": 25000,
+        "note": "Parking and small entry"
+      },
+      "bestTime": "07:00–09:00",
+      "tips": [
+        "The descent is a steep bamboo-railed scramble, not a path. People are injured here every season.",
+        "Allow 45 minutes down and 90 back up, with no shade and no water for sale below.",
+        "Swimming at the bottom is unsafe — the current is strong and there are no lifeguards."
+      ],
+      "nearby": [
+        "angels-billabong",
+        "broken-beach",
+        "crystal-bay"
+      ],
+      "ferry": "nusa-penida"
+    },
+    {
+      "id": "angels-billabong",
+      "name": "Angel's Billabong",
+      "description": "A natural rock channel filled with startlingly clear seawater.",
+      "longDescription": "A shallow tidal pool carved into the rock shelf where a channel meets the ocean, so clear that boats appear to float above the bottom. Swimmable at genuinely low tide only — at any swell, waves break straight over the lip.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.7746,115.4560",
+      "visited": false,
+      "rating": 4.5,
+      "distanceFromStayKm": 36.6,
+      "tags": [
+        "Outworldly",
+        "Memorable"
+      ],
+      "category": "nature",
+      "region": "nusa",
+      "coordinates": {
+        "lat": -8.7746,
+        "lng": 115.456
+      },
+      "images": [
+        "/images/spots/angels-billabong.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "17:00",
+        "note": "Access governed by tide"
+      },
+      "visitDurationMin": 60,
+      "cost": {
+        "currency": "IDR",
+        "min": 10000,
+        "max": 20000,
+        "note": "Shared entry with Broken Beach"
+      },
+      "bestTime": "Low tide, morning",
+      "tips": [
+        "People have been swept out of this pool and died. Do not enter unless it is flat and low.",
+        "The rock is sharp and slick with algae. Reef shoes, not flip-flops.",
+        "Broken Beach is a five-minute walk from the same car park."
+      ],
+      "nearby": [
+        "broken-beach",
+        "kelingking-beach",
+        "crystal-bay"
+      ],
+      "ferry": "nusa-penida"
+    },
+    {
+      "id": "broken-beach",
+      "name": "Broken Beach (Pasih Uug)",
+      "description": "A collapsed sea cave leaving a giant arch and a round cove.",
+      "longDescription": "A circular cove open to the sea through a natural stone archway, formed when the roof of a sea cave fell in. You walk the rim looking down at turquoise water washing through the arch, and manta rays are often visible from above.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.7736,115.4535",
+      "visited": false,
+      "rating": 4.6,
+      "distanceFromStayKm": 36.3,
+      "tags": [
+        "Outworldly",
+        "Must Visit",
+        "Memorable"
+      ],
+      "category": "nature",
+      "region": "nusa",
+      "coordinates": {
+        "lat": -8.7736,
+        "lng": 115.4535
+      },
+      "images": [
+        "/images/spots/broken-beach.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "17:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 60,
+      "cost": {
+        "currency": "IDR",
+        "min": 10000,
+        "max": 20000,
+        "note": "Shared entry with Angel's Billabong"
+      },
+      "bestTime": "07:30–09:30",
+      "tips": [
+        "Walk the full rim loop — the arch only reads properly from the far side.",
+        "Look down for manta rays in the channel, particularly in the morning.",
+        "No barriers on most of the rim. Keep well back from the edge in wind."
+      ],
+      "nearby": [
+        "angels-billabong",
+        "kelingking-beach",
+        "crystal-bay"
+      ],
+      "ferry": "nusa-penida"
+    },
+    {
+      "id": "diamond-beach",
+      "name": "Diamond Beach",
+      "description": "White sand and limestone spires on Penida's wild east coast.",
+      "longDescription": "A cove of bright white sand backed by jagged limestone stacks, with a carved staircase down the cliff that was hand-cut into the rock. Swimming is often impossible because of the swell, but the descent and the view are the reason people cross the island for it.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.7326,115.6380",
+      "visited": false,
+      "rating": 4.7,
+      "distanceFromStayKm": 48.3,
+      "tags": [
+        "Outworldly",
+        "Memorable",
+        "Must Visit"
+      ],
+      "category": "beaches",
+      "region": "nusa",
+      "coordinates": {
+        "lat": -8.7326,
+        "lng": 115.638
+      },
+      "images": [
+        "/images/spots/diamond-beach.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "18:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 150,
+      "cost": {
+        "currency": "IDR",
+        "min": 15000,
+        "max": 25000,
+        "note": "Entry plus parking"
+      },
+      "bestTime": "07:00–09:30",
+      "tips": [
+        "The road across Penida to the east coast is rough and slow. Allow well over an hour.",
+        "Swim only if it is genuinely flat — the shorebreak here is heavy and there are no lifeguards.",
+        "Atuh Beach is a short walk along the same clifftop and usually quieter."
+      ],
+      "nearby": [
+        "kelingking-beach",
+        "broken-beach",
+        "crystal-bay"
+      ],
+      "ferry": "nusa-penida"
+    },
+    {
+      "id": "crystal-bay",
+      "name": "Crystal Bay",
+      "description": "Penida's calmest swim, and the launch point for manta dives.",
+      "longDescription": "A sheltered west-facing bay with clear water, a small island offshore and the most swimmable sand on Nusa Penida. It is also the main dive site for mola mola in season, and one of the few places on the island where you can watch the sun set over water.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.7180,115.4470",
+      "visited": false,
+      "rating": 4.5,
+      "distanceFromStayKm": 31,
+      "tags": [
+        "Memorable",
+        "Must Visit"
+      ],
+      "category": "beaches",
+      "region": "nusa",
+      "coordinates": {
+        "lat": -8.718,
+        "lng": 115.447
+      },
+      "images": [
+        "/images/spots/crystal-bay.jpg"
+      ],
+      "openingHours": {
+        "open": "07:00",
+        "close": "19:00",
+        "note": "Daily"
+      },
+      "visitDurationMin": 150,
+      "cost": {
+        "currency": "IDR",
+        "min": 10000,
+        "max": 20000,
+        "note": "Entry plus parking; snorkel hire extra"
+      },
+      "bestTime": "08:00–10:00 or 17:00–18:30",
+      "tips": [
+        "Currents beyond the bay are severe — snorkel inside the sheltered water only.",
+        "Mola mola season runs roughly July to October and draws serious dive traffic.",
+        "One of the only west-facing beaches on Penida, so the sunset actually works here."
+      ],
+      "nearby": [
+        "kelingking-beach",
+        "angels-billabong",
+        "devils-tear-lembongan"
+      ],
+      "ferry": "nusa-penida"
+    },
+    {
+      "id": "devils-tear-lembongan",
+      "name": "Devil's Tear",
+      "description": "Swell exploding up a rock blowhole into spray and rainbows.",
+      "longDescription": "A rocky outcrop on Nusa Lembongan where incoming swell funnels into a cleft and detonates upward, throwing spray tens of metres into the air. On a big swell at golden hour the mist catches the light and the whole headland turns iridescent.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.6871,115.4372",
+      "visited": false,
+      "rating": 4.6,
+      "distanceFromStayKm": 27.8,
+      "tags": [
+        "Outworldly",
+        "Memorable"
+      ],
+      "category": "nature",
+      "region": "nusa",
+      "coordinates": {
+        "lat": -8.6871,
+        "lng": 115.4372
+      },
+      "images": [
+        "/images/spots/devils-tear-lembongan.jpg"
+      ],
+      "openingHours": {
+        "note": "Open access; best on an incoming tide"
+      },
+      "visitDurationMin": 60,
+      "cost": {
+        "currency": "IDR",
+        "min": 0,
+        "max": 10000,
+        "note": "Free; occasional parking fee"
+      },
+      "bestTime": "16:30–18:30",
+      "tips": [
+        "Stay well back from the edge. People have been swept off these rocks.",
+        "Biggest spray on an incoming tide with swell running — check before you ride over.",
+        "Dream Beach is two minutes away and makes the obvious pairing."
+      ],
+      "nearby": [
+        "crystal-bay",
+        "kelingking-beach",
+        "broken-beach"
+      ],
+      "ferry": "nusa-lembongan"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build output
+dist/
+dist-ssr/
+build/
+*.local
+
+# Environment — .env.example is tracked, everything else is not
+.env
+.env.*
+!.env.example
+
+# Vite / tooling caches
+.vite/
+.turbo/
+*.tsbuildinfo
+
+# Test output
+coverage/
+.nyc_output/
+
+# Vercel
+.vercel
+
+# Editors
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
