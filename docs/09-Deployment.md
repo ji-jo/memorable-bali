@@ -169,6 +169,6 @@ If the cause was data rather than code, revert the data commit and redeploy — 
 |---|---|
 | Vercel Hobby | Free — static site, well inside limits |
 | GitHub Actions | Free on public repos |
-| Google Maps | Covered by the monthly free credit at MVP traffic, **provided** Places uses session tokens and Directions results are cached (`07-Google-Maps.md`) |
+| Google Maps | Free at MVP traffic — the Essentials tier includes ~10k calls per SKU per month, allocated per product rather than as one shared pot. Holds **provided** Places uses session tokens and Directions results are cached (`07-Google-Maps.md`) |
 
 The realistic risk is not traffic. It is an uncapped key plus a render loop calling Directions. Set the quota caps.

@@ -29,11 +29,14 @@ If a key leaks, rotate it in Google Cloud and update the Vercel env var. Rotatio
 
 ## Setup
 
+The console UI moves things around between redesigns. Searching the product name in the top search bar is more reliable than following a menu path.
+
 1. Google Cloud Console → new project.
-2. Enable **Maps JavaScript API**, **Places API**, **Directions API**.
-3. Enable billing (required even inside the free tier).
-4. Credentials → Create API key → apply the restrictions above.
-5. Maps → Map Management → create a **Map ID** with vector rendering. Required for `AdvancedMarkerElement` and for cloud-based styling.
+2. Enable **Maps JavaScript API**, **Places API**, **Directions API**. Pick **Places API**, not *Places API (Legacy)* — the legacy one does not serve `AutocompleteSuggestion`.
+3. Enable billing (required even inside the free tier — without it the Maps SDK returns `BillingNotEnabledMapError`).
+4. Credentials → Create API key → apply the restrictions above. Restrictions can take ~5 minutes to propagate; do not start debugging a failure before then.
+5. Maps → Map Management → create a **Map ID** with **vector** rendering. Required for `AdvancedMarkerElement` and for cloud-based styling. Create two (light and dark) and a Map Style for each.
+6. **Quotas & reservations** → set a daily cap on each of the three APIs. This is a separate console area from the key's restriction page and is easy to miss — but it is the control that actually bounds spend.
 
 ```bash
 cp .env.example .env.local
@@ -234,7 +237,13 @@ On mobile these open the native app when installed. Do not try to detect it — 
 
 ## Cost model
 
-Google's monthly free credit covers a small MVP comfortably, but the shape of usage matters more than the volume:
+Google **retired the $200 monthly credit in March 2025**. If you find a tutorial that mentions it, that tutorial is out of date.
+
+The current model is a monthly free call allowance **per SKU**, in the Essentials tier 10,000 calls per SKU per month (Map Tiles SKUs get 100,000). It resets on the 1st at midnight Pacific. Check the [pricing page](https://developers.google.com/maps/billing-and-pricing/pricing) for the current figures and which tier each API sits in — both change, and neither is worth hardcoding into this doc.
+
+**The allowances are per-product, not a shared pot.** That is the consequential difference. A render loop calling Directions will burn through the Directions allowance while Maps and Places sit barely touched, so nothing in an aggregate view looks wrong until the bill arrives. This is why per-API daily quota caps are load-bearing rather than merely prudent.
+
+At MVP traffic this is comfortably free. The shape of usage matters far more than the volume:
 
 | API | Charged per | Watch for |
 |---|---|---|
