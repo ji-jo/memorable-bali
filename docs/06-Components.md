@@ -139,7 +139,20 @@ interface MapPinProps {
   visited?: boolean;
 }
 ```
-Custom `AdvancedMarkerElement` content. Selected pins scale up and lift; visited pins show a check. Do not use default red Google pins — they undo the design system in one stroke.
+Custom `AdvancedMarkerElement` content — a circular thumbnail of the spot's cover image (via `SpotImage`), with a thin ring in `color` (the category colour) and a small checkmark overlay when `visited`. Not a price bubble, not a generic dot — the image itself is the pin, consistent with the photography-first system.
+
+Selected pins scale up and lift. Tapping a pin does not open its own popup — it drives the sync described below. Never the default red Google pin; combined with `clickableIcons: false` on the map (`07-Google-Maps.md`), only the curated 54 should ever appear on it.
+
+### Explore layout — composition, not a new component
+
+Explore's map+list view is `MapView` and a list of `PlaceCard`s (`compact` variant) composed two different ways depending on breakpoint, both driven by `MapView`'s existing `selectedId` / `onSelectSpot` pair.
+
+- **< `--bp-lg`** — `MapView` full-bleed and fixed, with a `Sheet` (`snapPoints: ['peek', 'half', 'full']`) layered on top containing the card list.
+- **≥ `--bp-lg`** — `MapView` and the card list in a plain two-column layout; no `Sheet` involved, both panels are simply always visible.
+
+The sync rule is the same in both: tapping a pin calls `onSelectSpot`, which highlights and scrolls to the matching card (and, below `--bp-lg`, snaps the `Sheet` to `half`); hovering or tapping a card sets the same `selectedId`, which highlights the matching `MapPin`. One state variable, two renderings — do not build separate mobile and desktop sync logic.
+
+The `Sheet`'s drag handle is not the only way to reach `full` — pair it with a small explicit button (see `05-User-Flows.md` Flow 3), since dragging is not keyboard- or screen-reader-reachable.
 
 ### `FilterBar`
 ```ts

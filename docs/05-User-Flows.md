@@ -15,7 +15,7 @@ Onboarding 1..5 ──skip──┐
    ├── Card ───────────► Place detail
    └── Map preview ────► Explore (map)
 
-Explore  ⇄  map | list          (filters preserved across the toggle)
+Explore   map + list, synced    (filters preserved; mobile: sheet snap points)
    └── pin / card ────────────► Place detail
 
 Place detail
@@ -68,19 +68,38 @@ Filters live in the URL (`/explore?category=waterfalls&maxKm=25`), so a filtered
 
 ---
 
-## Flow 3 — Map ⇄ List
+## Flow 3 — Map and list, synced
 
-**Goal**: switch representation without losing your place.
+**Goal**: browse the same result set as a map or a list without ever "switching" — because there is no switch, just two containers for the same synced state.
 
-The toggle is persistent in the Explore header. The invariant that matters: **switching modes must never reset filters, the result set, or scroll position.**
+**The invariant that matters**: filters, the result set, and scroll/selection state persist through every interaction below. Nothing here ever resets them.
 
-- Map → list: the list opens scrolled to whichever spot was last previewed.
-- List → map: the map fits bounds to the current filtered set.
-- Pin tap → bottom sheet (image, name, category, distance, rating, "View details"). Dismiss by swipe down, backdrop tap, or Escape.
+### < `--bp-lg` (1024px) — sheet over map
+
+The map is full-bleed and fixed behind a draggable bottom sheet holding the list. Three snap points:
+
+- **peek** — map dominant, the top of one card visible as a drag handle.
+- **half** — map and list both usable at once. This is the default on entering Explore.
+- **full** — list dominant, map mostly covered. Equivalent to what used to be "list mode."
+
+Drag the sheet between them, or tap a small explicit toggle button that jumps between `peek` and `full` — the button exists because a drag gesture is not reachable by keyboard or screen reader, and the sheet must be.
+
+- **Tap a pin** → its card highlights and scrolls into view in the sheet, and the sheet snaps to at least `half` so the card is actually visible. Tapping a cluster zooms in instead.
+- **Tap a card, or scroll it into focus** → its pin highlights on the map.
 - Above ~30 visible pins, cluster.
-- From `--bp-lg`, both render side by side: list left, sticky map right. Hovering a card highlights its pin.
 
-**Failure**: map fails to load → automatically fall back to list with an inline note, not a blank panel.
+### ≥ `--bp-lg` (1024px) — side by side
+
+List in a fixed left panel, map fixed right, both always fully visible. Same two rules, no sheet involved:
+
+- **Hovering or tapping a card** → its pin highlights.
+- **Tapping a pin** → its card highlights and scrolls into view in the left panel.
+
+### Pin appearance (both breakpoints)
+
+Circular cover-image thumbnail, thin ring in the category colour, a checkmark overlay if the spot is marked visited. Selected pins scale up. Never the default red Google pin — see `07-Google-Maps.md` on `clickableIcons: false` too, so Google's own POI pins don't clutter a map that is supposed to show only the curated 54.
+
+**Failure**: map fails to load → the sheet/panel opens at `full`/its equivalent automatically, with an inline note where the map would be, not a blank panel.
 
 ---
 

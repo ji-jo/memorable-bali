@@ -231,12 +231,21 @@ Because CSS custom properties do not work in media query conditions, keep the li
 
 Shell:
 
-| Viewport | Navigation | Explore |
-|---|---|---|
-| < 768px | Fixed bottom tab bar, 4 items, 56px tall + safe-area inset | Map **or** list, toggled |
-| ≥ 768px | Top bar, horizontal nav | Split: list left, sticky map right |
+| Viewport | Navigation |
+|---|---|
+| < `--bp-md` (768px) | Fixed bottom tab bar, 4 items, 56px tall + safe-area inset |
+| ≥ `--bp-md` (768px) | Top bar, horizontal nav |
 
 Reserve safe areas on mobile — `padding-bottom: max(var(--space-4), env(safe-area-inset-bottom))` on the tab bar, or it sits under the iOS home indicator.
+
+Explore has its own breakpoint, independent of the nav shell above — it needs more horizontal room than the nav bar does before a side-by-side layout is usable:
+
+| Viewport | Explore |
+|---|---|
+| < `--bp-lg` (1024px) | Full-bleed map behind a draggable bottom sheet holding the list |
+| ≥ `--bp-lg` (1024px) | Split: list in a fixed left panel, map fixed right |
+
+Both layouts are the same view, synced — never a toggle between two separate screens. See `05-User-Flows.md` Flow 3 and `06-Components.md`'s Explore layout note for the interaction model.
 
 ---
 

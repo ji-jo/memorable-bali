@@ -73,20 +73,30 @@ The dashboard. Sections, in order:
 
 ## F5 — Explore
 
-Two modes over the same filtered result set. **The mode toggle must never reset filters or scroll position.**
+Map and list are **one synced view, not two modes to switch between.** The layout differs by breakpoint; the interaction model does not.
 
-### Map view
-- Google Map, pins coloured by category, clustered when zoomed out.
-- Tapping a pin opens a bottom sheet preview: cover image, name, category, distance, rating, and a link through to the detail page.
+### Layout
+- **< `--bp-lg` (1024px)** — map is full-bleed and always at least partly visible. The list lives in a draggable bottom sheet on top of it, with snap points `peek` (map dominant, one card visible as a drag handle) / `half` (both usable) / `full` (list dominant, map mostly covered). A non-drag button also jumps between `peek` and `full` — the sheet must be reachable without a drag gesture, for keyboard and screen-reader users.
+- **≥ `--bp-lg` (1024px)** — list in a fixed left panel, map fixed right, both always fully visible.
+
+### Sync (both breakpoints)
+- Hovering or tapping a card highlights its pin on the map.
+- Tapping a pin highlights the matching card and scrolls it into view. On mobile this also snaps the sheet to at least `half`, so the card is actually visible.
+- Tapping a cluster zooms in. Clusters never open a card.
+- **Filters and the result set persist across everything above.** Nothing in this flow ever resets them.
+
+### Map
+- Pins: circular cover-image thumbnail, thin ring in the category colour, checkmark overlay if visited. Selected pins scale up. Never the default red Google pin.
+- Clustered above ~30 visible pins.
 - "Recenter" control returns to the stay anchor.
 
-### List view
+### List (in the sheet or side panel)
 Each card shows exactly: cover image, category, distance from stay, estimated duration, rating, and the 50–80 character description. Nothing else — the card is deliberately spare.
 
-### Filters (both modes)
+### Filters
 Category, tag, region, max distance, max duration. Active filters shown as removable chips with a "clear all". Filter state lives in the URL query string so a filtered view is linkable and survives refresh.
 
-**Done when**: switching modes preserves filters and result set, and 54 pins render without jank on a mid-range phone.
+**Done when**: hovering/tapping a card and tapping its pin produce the same highlight from either direction, the sheet's `peek`/`half`/`full` states are reachable by keyboard, filters survive every interaction above, and 54 pins render without jank on a mid-range phone.
 
 ---
 

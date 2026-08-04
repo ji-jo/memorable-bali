@@ -124,7 +124,7 @@ VisitedContext      Set<spotId>, toggled from anywhere
 ItineraryContext    Itinerary[], add / remove / reorder / rename
 ```
 
-Ephemeral state — filters, search text, map mode — lives in the URL query string, not in context. That makes filtered views linkable and refresh-safe for free.
+Ephemeral state — filters and search text — lives in the URL query string, not in context. That makes filtered views linkable and refresh-safe for free. Map and list are not a mode to track; they're one synced view rendered two ways by breakpoint (`01-PRD.md` §F5), driven by `MapView`'s `selectedId`, which is transient UI state, not URL state.
 
 `useLocalStorage` must be defensive. A stale record from an earlier build must never crash the app:
 
@@ -156,7 +156,7 @@ localStorage throws in Safari private mode and when quota is exceeded. Every rea
 /                       Landing         (redirects to /home if onboarded)
 /onboarding/:step       Onboarding      (step: 1–5)
 /home                   Home
-/explore                Explore         (?view=map|list&category=&tag=&region=&maxKm=)
+/explore                Explore         (?category=&tag=&region=&maxKm=&maxDurationMin=)
 /place/:id              PlaceDetail
 /itinerary              Itinerary list
 /itinerary/:id          Itinerary detail

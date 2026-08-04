@@ -52,7 +52,7 @@ It is written to need no follow-up questions: every decision the other docs alre
 > Search entry, category chips, and the rails: Recommended Today, Hidden Gems, Trending, Nearby, map preview. Seed the "Recommended Today" shuffle from the date so it does not reorder on every render. **Label the Trending rail honestly** — with no backend there is no trend signal, so call it "Editor's picks this month" rather than implying analytics that do not exist.
 >
 > **6. Explore**
-> Map and list over one filtered set. **Switching modes must never reset filters, results or scroll position.** Filter state lives in the URL query string. From 1024px, render both side by side with card-hover highlighting the matching pin.
+> Map and list are **one synced view, never two modes to switch between** — read `docs/01-PRD.md` §F5 and `docs/05-User-Flows.md` Flow 3 before building this, the interaction model is specific. Below 1024px the map is full-bleed and fixed, with a draggable `Sheet` (`peek`/`half`/`full` snap points) holding the list on top of it, plus a non-drag button between `peek` and `full` for keyboard/screen-reader users. At 1024px and above, list and map sit in a fixed two-column layout instead — same sync, no sheet. Either way: tapping a pin highlights and scrolls to its card (snapping the sheet to `half` below 1024px); hovering or tapping a card highlights its pin. One `selectedId`, two renderings — do not write separate mobile and desktop sync logic. Filter state lives in the URL query string and must survive every interaction above.
 >
 > **7. Place detail**
 > Everything in `docs/01-PRD.md` §F6, in that order. The `tips` array is the highest-value content on the page — give it visual weight, do not bury it below the fold.
