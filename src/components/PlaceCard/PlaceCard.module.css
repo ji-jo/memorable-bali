@@ -2,24 +2,28 @@
   display: block;
   position: relative;
   background-color: var(--color-surface);
-  border: 0.5px solid rgba(100, 149, 237, 0.2);
+  /* Subtle blue outline — not the warm/dark border token (reads black in dark mode). */
+  border: none;
+  outline: 0.5px solid rgba(100, 149, 237, 0.2);
+  outline-offset: 0;
   border-radius: var(--radius-lg);
   overflow: hidden;
+  box-shadow: none;
   transition:
-    border-color var(--duration-base) var(--ease-out),
+    outline-color var(--duration-base) var(--ease-out),
     transform var(--duration-base) var(--ease-out),
     box-shadow var(--duration-base) var(--ease-out);
 }
 
 .card:hover {
-  border-color: rgba(100, 149, 237, 0.35);
+  outline-color: rgba(100, 149, 237, 0.35);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 16px rgba(100, 149, 237, 0.12);
 }
 
 /* Selected — driven by Explore's selectedId, synced with the map pin. */
 .selected {
-  border-color: var(--color-accent);
+  outline-color: var(--color-accent);
   box-shadow: 0 0 0 1px var(--color-accent);
 }
 
