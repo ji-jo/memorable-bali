@@ -14,6 +14,7 @@ There is a single service (the Vite dev server). Standard commands are defined i
 
 ### Non-obvious notes
 
+- **Local working tree is the source of truth for UI/components.** Treat the checked-out local codebase (and any local-only / unpushed work the user points you at) as authoritative. Remote GitHub can lag with outdated components — do not assume `origin/main` or GitHub history reflects the current design system or component set.
 - **Google Maps is optional for dev.** Without `VITE_GOOGLE_MAPS_API_KEY` / `VITE_GOOGLE_MAPS_MAP_ID` in `.env.local`, the app runs degraded but fully usable: list view, place detail, itineraries, and haversine distances all work; only map rendering, Places autocomplete, and Directions show placeholders. Core flows can be tested with no credentials.
 - **First load starts at the Landing page and requires completing the 5-step onboarding** (interests → stay length → area → transport → style) before `/home` is reachable. To reset onboarding, clear `localStorage` keys prefixed `bali-explorer:` (or use a fresh browser profile / incognito).
 - `compute:distances` is anchored on Ubud and CI fails if `data/bali-spots.json` is stale; re-run it after editing spot coordinates.
