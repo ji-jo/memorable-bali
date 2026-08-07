@@ -1,35 +1,37 @@
+/* Shared edge for every PlaceCard in Explore listBody (and elsewhere).
+   Explicit border — outline+antialiasing was reading as black. */
 .card {
+  --place-card-edge: color-mix(in srgb, var(--color-accent) 20%, transparent);
+  --place-card-edge-strong: color-mix(in srgb, var(--color-accent) 35%, transparent);
+
   display: block;
   position: relative;
   background-color: transparent;
-  /* Subtle blue outline — 0.5px at 20% opacity via accent token. */
-  border: none;
-  outline: 0.5px solid color-mix(in srgb, var(--color-accent) 20%, transparent);
-  outline-offset: 0;
+  border: 0.5px solid var(--place-card-edge);
+  outline: none;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: none;
   transition:
+    border-color var(--duration-base) var(--ease-out),
     transform var(--duration-base) var(--ease-out),
-    outline-color var(--duration-base) var(--ease-out),
-    background-color var(--duration-base) var(--ease-out);
+    background-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
 }
 
 .card:hover {
-  outline-color: color-mix(in srgb, var(--color-accent) 35%, transparent);
+  border-color: var(--place-card-edge-strong);
 }
 
-/* Selected — driven by Explore's selectedId after a map pin (or list) selection.
-   One shared treatment for every variant (default / compact / grid / feature / wide):
-   1px solid blue outline + 1px left accent (never the old 4px inset). */
+/* Selected — same 0.5px blue@20% edge for EVERY variant + 1px left accent.
+   Driven by Explore selectedId (list click OR map pin click). */
 .selected,
 .card.selected,
 .card[data-selected='true'] {
-  border: none !important;
-  outline: 1px solid var(--color-accent);
-  outline-offset: 0;
+  border: 0.5px solid var(--place-card-edge) !important;
+  outline: none !important;
   background-color: color-mix(in srgb, var(--color-accent-subtle) 88%, transparent);
-  box-shadow: inset 1px 0 0 var(--color-accent);
+  box-shadow: inset 1px 0 0 var(--color-accent) !important;
 }
 
 .compact.selected,
@@ -41,10 +43,9 @@
 .grid.selected,
 .card.grid.selected,
 .card.grid[data-selected='true'] {
-  /* Same 1px blue edge + left accent as list cards — no thicker inset ring. */
-  outline: 1px solid var(--color-accent);
-  outline-offset: 0;
-  box-shadow: inset 1px 0 0 var(--color-accent);
+  border: 0.5px solid var(--place-card-edge) !important;
+  outline: none !important;
+  box-shadow: inset 1px 0 0 var(--color-accent) !important;
 }
 
 .media {
@@ -186,12 +187,12 @@
 .feature {
   min-height: calc(var(--space-8) * 5);
   background-color: var(--color-surface-sunken);
-  border-color: transparent;
+  /* Keep the shared blue@20% edge — do not wipe to transparent. */
 }
 
 .feature:hover {
   background-color: var(--color-surface-sunken);
-  border-color: transparent;
+  border-color: var(--place-card-edge-strong);
 }
 
 .feature .media {
@@ -243,7 +244,7 @@
   corner-shape: squircle;
   overflow: hidden;
   background-color: var(--color-surface-sunken);
-  border-color: transparent;
+  /* Inherit .card blue@20% border — do not set transparent. */
 }
 
 .grid .media {
@@ -253,7 +254,7 @@
 
 .grid:hover {
   background-color: var(--color-surface-sunken);
-  border-color: transparent;
+  border-color: var(--place-card-edge-strong);
 }
 
 .grid .media > * {
@@ -324,12 +325,11 @@
   right: var(--space-2);
 }
 
-/* Selected must win over later variant border resets (.grid, .feature, :hover). */
+/* Selected must win over later variant resets (.grid, .feature, :hover). */
 .card.selected,
 .card[data-selected='true'] {
-  border: none !important;
-  outline: 1px solid var(--color-accent) !important;
-  outline-offset: 0;
+  border: 0.5px solid var(--place-card-edge) !important;
+  outline: none !important;
   background-color: color-mix(in srgb, var(--color-accent-subtle) 90%, var(--color-surface));
   box-shadow: inset 1px 0 0 var(--color-accent) !important;
 }
@@ -341,8 +341,8 @@
 
 .card.grid.selected,
 .card.grid[data-selected='true'] {
-  outline: 1px solid var(--color-accent) !important;
-  outline-offset: 0;
+  border: 0.5px solid var(--place-card-edge) !important;
+  outline: none !important;
   box-shadow: inset 1px 0 0 var(--color-accent) !important;
 }
 
