@@ -177,6 +177,19 @@
   transform: scale(1.35);
 }
 
+/* Selected pin preview matches PlaceCard: 1px blue outline + 1px left accent. */
+:global(.bali-pin--selected .bali-pin__preview) {
+  outline: 1px solid var(--color-accent);
+  outline-offset: 0;
+  box-shadow:
+    inset 1px 0 0 var(--color-accent),
+    var(--shadow-md);
+}
+
+:global(.bali-pin--selected .bali-pin__dot) {
+  outline: 1px solid var(--color-accent);
+}
+
 :global(.bali-pin:hover),
 :global(.bali-pin:focus-visible),
 :global(.bali-pin--selected),
