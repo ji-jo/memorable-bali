@@ -2594,7 +2594,7 @@
     },
     {
       "id": "akasa-batur",
-      "name": "AKASA",
+      "name": "AKASA Coffee shop",
       "description": "Lake-view coffee stop above Batur with slow, careful pours.",
       "longDescription": "A small coffee shop in Central Batur aimed at people who want a proper cup between volcano plans — clean space, lake glimpses, and espresso that is not an afterthought. Easy to combine with hot springs or a cabin stay nearby.",
       "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.279617,115.357559",
@@ -2961,19 +2961,19 @@
       "id": "tukies-coconut-shop",
       "name": "Tukie's Coconut Shop",
       "description": "Everything coconut — sweets, drinks and Ubud snack runs.",
-      "longDescription": "A coconut-obsessed shop in Ubud for drinks, sweets and edible souvenirs that actually taste like the fruit. Useful as a quick sweet stop between temples or a gift run before the airport.",
-      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.507562,115.264187",
+      "longDescription": "A coconut-obsessed shop in Ubud for drinks, sweets and edible souvenirs that actually taste like the fruit. Useful as a quick sweet stop between temples or a gift run before the airport. Located at F7J7+56, Ubud, Gianyar Regency, Bali.",
+      "googleMapsUrl": "https://maps.app.goo.gl/DBDi6hjUpkHiWBER8",
       "visited": false,
       "rating": 4.7,
-      "distanceFromStayKm": 0.2,
+      "distanceFromStayKm": 1.4,
       "tags": [
         "Memorable"
       ],
       "category": "food",
       "region": "ubud",
       "coordinates": {
-        "lat": -8.507562,
-        "lng": 115.264187
+        "lat": -8.5195545,
+        "lng": 115.2630203
       },
       "images": [
         "/images/spots/tukies-coconut-shop.jpg"
@@ -2993,7 +2993,7 @@
       "bestTime": "14:00–16:00",
       "tips": [
         "Packaged coconut sweets survive suitcase heat better than soft cakes.",
-        "Combine with a walk past the Saraswati lotus ponds nearby.",
+        "Plus code F7J7+56 — south of central Ubud, easy scooter stop.",
         "Card readers sometimes flake — keep cash for small orders."
       ],
       "nearby": [
