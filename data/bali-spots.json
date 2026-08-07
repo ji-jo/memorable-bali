@@ -1,8 +1,8 @@
 {
   "_meta": {
     "version": "0.1.0",
-    "count": 69,
-    "lastUpdated": "2026-08-06",
+    "count": 70,
+    "lastUpdated": "2026-08-07",
     "distanceAnchor": {
       "stayAreaId": "ubud",
       "center": {
@@ -2705,7 +2705,7 @@
         "lng": 115.398188
       },
       "images": [
-        "/images/spots/inap-retreat-boutique-cabin.jpg"
+        "/images/spots/inap-retreat-boutique-cabin.webp"
       ],
       "openingHours": {
         "note": "Check-in by arrangement"
@@ -2794,7 +2794,7 @@
         "lng": 115.274563
       },
       "images": [
-        "/images/spots/padma-resort-ubud.jpg"
+        "/images/spots/padma-resort-ubud.webp"
       ],
       "openingHours": {
         "note": "Hotel; day guests by reservation"
@@ -3023,7 +3023,7 @@
         "lng": 115.550172
       },
       "images": [
-        "/images/spots/sate-pepes-bu-ribu.jpg"
+        "/images/spots/sate-pepes-bu-ribu.png"
       ],
       "openingHours": {
         "open": "10:00",
@@ -3070,7 +3070,7 @@
         "lng": 115.262938
       },
       "images": [
-        "/images/spots/warung-mak-beng.jpg"
+        "/images/spots/warung-mak-beng.webp"
       ],
       "openingHours": {
         "open": "08:00",
@@ -3099,7 +3099,7 @@
     },
     {
       "id": "lolas-sanur",
-      "name": "Lola's Tap Craft Beer Bar",
+      "name": "Lola's - Tap Craft Beer Bar",
       "description": "Craft beer taproom in Sanur with a serious local following.",
       "longDescription": "A craft-beer focused bar in Sanur — rotating taps, a crowd that actually cares about what is pouring, and a calmer night out than Canggu club circuits. Good after a beach walk when you want hops instead of another Bintang.",
       "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.693688,115.263562",
@@ -3116,7 +3116,7 @@
         "lng": 115.263562
       },
       "images": [
-        "/images/spots/lolas-sanur.jpg"
+        "/images/spots/lolas-sanur-tap-craft-beer-bar.webp"
       ],
       "openingHours": {
         "open": "16:00",
@@ -3232,6 +3232,53 @@
         "pura-taman-kemuda-saraswati",
         "seniman-coffee-studio",
         "tukies-coconut-shop"
+      ],
+      "ferry": null
+    },
+    {
+      "id": "warung-amel",
+      "name": "Warung Amel",
+      "description": "Casual Ubud warung for simple local plates and quick lunches.",
+      "longDescription": "A casual warung stop for simple Balinese plates when you want something local and unfussy between Ubud errands. Treat the pin as provisional until the Maps location is confirmed.",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=-8.5082,115.2631",
+      "visited": false,
+      "rating": 4.4,
+      "distanceFromStayKm": 0.2,
+      "tags": [
+        "Memorable",
+        "Cultural"
+      ],
+      "category": "food",
+      "region": "ubud",
+      "coordinates": {
+        "lat": -8.5082,
+        "lng": 115.2631
+      },
+      "images": [
+        "/images/spots/amel.jpg"
+      ],
+      "openingHours": {
+        "open": "10:00",
+        "close": "21:00",
+        "note": "Daily; hours vary"
+      },
+      "visitDurationMin": 45,
+      "cost": {
+        "currency": "IDR",
+        "min": 25000,
+        "max": 100000,
+        "note": "Per person; cash preferred"
+      },
+      "bestTime": "12:00–14:00",
+      "tips": [
+        "Confirm the pin on Maps — coordinates are provisional.",
+        "Good for a quick local lunch between Ubud temple stops.",
+        "Keep small bills; card is not always available."
+      ],
+      "nearby": [
+        "pura-taman-kemuda-saraswati",
+        "tukies-coconut-shop",
+        "seniman-coffee-studio"
       ],
       "ferry": null
     }
