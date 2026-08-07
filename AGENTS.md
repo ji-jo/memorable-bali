@@ -43,9 +43,9 @@ Treat the checked-out working tree as authoritative for UI. Prefer the latest lo
 
 ### Services / commands
 
-Single service: Vite on **port 1234** (`strictPort: true` in `vite.config.ts` — not 5173).
+Single service: Vite on **port 1234** (`host: '127.0.0.1'`, `strictPort: true` in `vite.config.ts` — not 5173). Without an explicit IPv4 host, Vite may listen on `::1` only and browsers hitting `127.0.0.1:1234` get `ERR_CONNECTION_REFUSED`.
 
-- `npm run dev` — start the app
+- `npm run dev` — start the app (`http://127.0.0.1:1234/`)
 - `npm run test` — Vitest (currently green)
 - `npm run validate:data` — curated JSON checks
 - `npm run lint` / `npm run typecheck` / `npm run build` — see known issues below
