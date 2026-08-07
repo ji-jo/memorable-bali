@@ -59,6 +59,16 @@
   flex-shrink: 0;
 }
 
+.headerSnapOnly {
+  justify-content: flex-end;
+  padding-top: 0;
+}
+
+.headerMain {
+  flex: 1;
+  min-width: 0;
+}
+
 .title {
   font-size: var(--text-sm);
   color: var(--color-text-secondary);

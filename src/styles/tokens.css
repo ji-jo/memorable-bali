@@ -8,41 +8,45 @@
 
 :root {
   /* ─── Surfaces ─────────────────────────────────────────────────────── */
-  --color-bg: #fcfbf8; /* warm off-white, not pure white */
+  --color-bg: #f5f5f7;
   --color-surface: #ffffff;
   --color-surface-raised: #ffffff;
-  --color-surface-sunken: #f4f1eb;
+  --color-surface-sunken: #f5f5f7;
+
+  /* Sky wash — Home / Onboarding page backdrop */
+  --color-sky-top: #56abf5;
+  --color-sky-bottom: #ffffff;
 
   /* ─── Text ─────────────────────────────────────────────────────────── */
-  --color-text: #1a1815;
-  --color-text-secondary: #5c574e;
-  --color-text-tertiary: #8b8579; /* metadata only — never body copy */
-  --color-text-inverse: #fcfbf8;
+  --color-text: #1d1d1f;
+  --color-text-secondary: #6e6e73;
+  --color-text-tertiary: #86868b;
+  --color-text-inverse: #ffffff;
 
   /* ─── Lines ────────────────────────────────────────────────────────── */
-  --color-border: #e6e1d8;
-  --color-border-strong: #cfc8ba;
+  --color-border: transparent;
+  --color-border-strong: rgba(29, 29, 31, 0.12);
 
   /* ─── Brand: volcanic clay, from Balinese terracotta ───────────────── */
-  --color-accent: #c0553b;
-  --color-accent-hover: #a9462f;
-  --color-accent-subtle: #f7e9e4;
+  --color-accent: #007aff;
+  --color-accent-hover: #0071e3;
+  --color-accent-subtle: #e8f2ff;
   --color-accent-text: #ffffff;
 
   /* ─── Secondary: rice-terrace green, for visited + success ─────────── */
-  --color-success: #3f7d5c;
-  --color-success-subtle: #e4efe8;
+  --color-success: #34c759;
+  --color-success-subtle: #e7f8ec;
 
-  --color-warning: #b8763e;
-  --color-danger: #b3392b;
+  --color-warning: #ff9f0a;
+  --color-danger: #ff3b30;
 
   /* ─── Scrims for text over photography ─────────────────────────────── */
   --color-scrim: rgba(20, 18, 15, 0.55);
   --color-scrim-strong: linear-gradient(180deg, transparent 30%, rgba(20, 18, 15, 0.85) 100%);
 
   /* ─── Type ─────────────────────────────────────────────────────────── */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
 
   /* Fluid scale — min at 360px, max at 1280px */
   --text-xs: 0.75rem;
@@ -74,20 +78,26 @@
   --space-7: 3rem;
   --space-8: 4rem;
 
+  /* Controls — kept separate from spacing so compact icon controls can be
+     specified precisely without introducing ad-hoc values in components. */
+  --control-compact: 1.5rem;
+  --icon-compact: 1.125rem;
+
   --gutter: clamp(1rem, 0.6rem + 2vw, 2rem);
   --content-max: 72rem;
 
   /* ─── Radius ───────────────────────────────────────────────────────── */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-ios: 16px; /* iOS continuous / squircle corner size */
+  --radius-lg: 20px;
+  --radius-xl: 28px;
   --radius-full: 999px;
 
   /* ─── Elevation — soft and low. Premium reads as restraint. ────────── */
-  --shadow-sm: 0 1px 2px rgba(20, 18, 15, 0.06);
-  --shadow-md: 0 4px 16px rgba(20, 18, 15, 0.08);
-  --shadow-lg: 0 12px 32px rgba(20, 18, 15, 0.12);
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
 
   /* ─── Motion ───────────────────────────────────────────────────────── */
   --duration-fast: 120ms;
@@ -95,6 +105,12 @@
   --duration-slow: 320ms;
   --ease-out: cubic-bezier(0.2, 0, 0, 1);
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ─── Dream filter (soft editorial photography) ───────────────────── */
+  --dream-filter-image: saturate(1.08) contrast(0.96) brightness(1.01);
+  --dream-warm-glow: color-mix(in srgb, #e8c89a 22%, transparent);
+  --dream-cool-mist: color-mix(in srgb, #b8d4f0 22%, transparent);
+  --dream-vignette: color-mix(in srgb, #1d1d1f 18%, transparent);
 
   /* ─── Breakpoints ──────────────────────────────────────────────────────
    * Custom properties do not work inside media query conditions, so these
@@ -119,6 +135,9 @@
   --color-surface: #1c1a18;
   --color-surface-raised: #24211e;
   --color-surface-sunken: #0e0d0c;
+
+  --color-sky-top: #1a2740;
+  --color-sky-bottom: #131211;
 
   --color-text: #f2efe9;
   --color-text-secondary: #a8a197;
@@ -147,4 +166,9 @@
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.6);
+
+  --dream-filter-image: saturate(1.05) contrast(0.92) brightness(0.94);
+  --dream-warm-glow: color-mix(in srgb, #c9a06a 18%, transparent);
+  --dream-cool-mist: color-mix(in srgb, #6a8fb8 16%, transparent);
+  --dream-vignette: color-mix(in srgb, #000000 32%, transparent);
 }

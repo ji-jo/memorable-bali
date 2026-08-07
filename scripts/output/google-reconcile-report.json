@@ -1,0 +1,329 @@
+{
+  "generatedAt": "2026-08-06T15:03:17.170Z",
+  "results": [
+    {
+      "id": "tegallalang-rice-terrace",
+      "name": "Tegallalang Rice Terrace",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "sacred-monkey-forest",
+      "name": "Sacred Monkey Forest Sanctuary",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "tirta-empul",
+      "name": "Tirta Empul Temple",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "goa-gajah",
+      "name": "Goa Gajah (Elephant Cave)",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "campuhan-ridge-walk",
+      "name": "Campuhan Ridge Walk",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "tegenungan-waterfall",
+      "name": "Tegenungan Waterfall",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "tukad-cepung-waterfall",
+      "name": "Tukad Cepung Waterfall",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "kanto-lampo-waterfall",
+      "name": "Kanto Lampo Waterfall",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "gunung-kawi",
+      "name": "Gunung Kawi Temple",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "yoga-barn-ubud",
+      "name": "The Yoga Barn",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "seniman-coffee-studio",
+      "name": "Seniman Coffee Studio",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "echo-beach-canggu",
+      "name": "Echo Beach",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "batu-bolong-beach",
+      "name": "Batu Bolong Beach",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "la-brisa-canggu",
+      "name": "La Brisa",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "crate-cafe-canggu",
+      "name": "Crate Café",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "seminyak-beach",
+      "name": "Seminyak Beach",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "petitenget-temple",
+      "name": "Pura Petitenget",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "double-six-sunset",
+      "name": "Double Six Beach",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "sanur-beach-walk",
+      "name": "Sanur Beach Walk",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "bali-museum-denpasar",
+      "name": "Bali Museum",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "uluwatu-temple",
+      "name": "Uluwatu Temple",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "padang-padang-beach",
+      "name": "Padang Padang Beach",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "suluban-beach",
+      "name": "Suluban Beach",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "melasti-beach",
+      "name": "Melasti Beach",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "pandawa-beach",
+      "name": "Pandawa Beach",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "nyang-nyang-beach",
+      "name": "Nyang Nyang Beach",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "green-bowl-beach",
+      "name": "Green Bowl Beach",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "jimbaran-seafood-bay",
+      "name": "Jimbaran Bay Seafood",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "lempuyang-temple",
+      "name": "Pura Lempuyang Luhur",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "tirta-gangga",
+      "name": "Tirta Gangga Water Palace",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "taman-ujung",
+      "name": "Taman Ujung Water Palace",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "besakih-temple",
+      "name": "Pura Besakih",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "sidemen-valley",
+      "name": "Sidemen Valley",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "amed-beach",
+      "name": "Amed",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "tulamben-liberty-wreck",
+      "name": "USAT Liberty Wreck, Tulamben",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "virgin-beach",
+      "name": "Virgin Beach (Pasir Putih)",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "sekumpul-waterfall",
+      "name": "Sekumpul Waterfall",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "banyumala-twin-waterfall",
+      "name": "Banyumala Twin Waterfall",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "munduk-waterfall",
+      "name": "Munduk Waterfall",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "gitgit-waterfall",
+      "name": "Gitgit Waterfall",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "ulun-danu-beratan",
+      "name": "Pura Ulun Danu Beratan",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "wanagiri-hidden-hills",
+      "name": "Wanagiri Hidden Hills",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "lovina-beach",
+      "name": "Lovina Beach",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "brahmavihara-arama",
+      "name": "Brahmavihara Arama",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "tanah-lot",
+      "name": "Tanah Lot",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "jatiluwih-rice-terraces",
+      "name": "Jatiluwih Rice Terraces",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "pura-taman-ayun",
+      "name": "Pura Taman Ayun",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "menjangan-island",
+      "name": "Menjangan Island",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "kelingking-beach",
+      "name": "Kelingking Beach",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "angels-billabong",
+      "name": "Angel's Billabong",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "broken-beach",
+      "name": "Broken Beach (Pasih Uug)",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "diamond-beach",
+      "name": "Diamond Beach",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "crystal-bay",
+      "name": "Crystal Bay",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    },
+    {
+      "id": "devils-tear-lembongan",
+      "name": "Devil's Tear",
+      "status": "error",
+      "error": "403 {\n  \"error\": {\n    \"code\": 403,\n    \"message\": \"The caller does not have permission\",\n    \"status\": \"PERMISSION_DENIED\"\n  }\n}\n"
+    }
+  ]
+}

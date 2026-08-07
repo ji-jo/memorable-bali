@@ -48,10 +48,10 @@ node scripts/validate-spots.mjs
 ```
 
 ```
-  54 spots, 11 categories, 7 regions, 9 stay areas
-  by region:   ubud 11  south 9  bukit 8  east 8  north 8  west 4  nusa 6
-  by category: nature 8  temples 8  culture 6  waterfalls 7  wellness 1
-               cafes 2  beaches 13  food 2  photography 2  hidden-gems 3  adventure 2
+  69 spots, 11 categories, 7 regions, 9 stay areas
+  by region:   ubud 17  south 12  bukit 8  east 10  north 11  west 5  nusa 6
+  by category: nature 8  temples 9  culture 6  waterfalls 7  wellness 2  food 13
+               beaches 13  photography 2  hidden-gems 3  adventure 2  hotels 4
 
   All data valid.
 ```

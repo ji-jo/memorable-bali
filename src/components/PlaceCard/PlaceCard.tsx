@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'motion/react';
+import type { MouseEvent } from 'react';
 
 import { SpotImage } from '@/components/SpotImage';
 import { TagBadge } from '@/components/TagBadge';
@@ -10,15 +12,17 @@ import type { Spot } from '@/data/types';
 
 import styles from './PlaceCard.module.css';
 
+const MotionLink = motion(Link);
+
 export interface PlaceCardProps {
   spot: Spot;
-  variant?: 'default' | 'compact' | 'wide';
+  variant?: 'default' | 'compact' | 'wide' | 'feature' | 'grid';
   /** From the live anchor — overrides the JSON's precomputed baseline. */
   distanceKm?: number;
   showVisited?: boolean;
   selected?: boolean;
   onHover?: (spotId: string | null) => void;
-  onClick?: () => void;
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 }
 
 /**
@@ -42,13 +46,21 @@ export function PlaceCard({
   const classes = [
     styles.card,
     variant === 'compact' ? styles.compact : '',
+    variant === 'wide' ? styles.wide : '',
+    variant === 'feature' ? styles.feature : '',
+    variant === 'grid' ? styles.grid : '',
     selected ? styles.selected : '',
   ]
     .filter(Boolean)
     .join(' ');
 
+  const hoverMotion =
+    variant === 'grid'
+      ? { scale: 1.02 }
+      : { transform: 'translateY(-2px)' };
+
   return (
-    <Link
+    <MotionLink
       to={`/place/${spot.id}`}
       className={classes}
       onClick={onClick}
@@ -56,17 +68,30 @@ export function PlaceCard({
       onMouseLeave={() => onHover?.(null)}
       onFocus={() => onHover?.(spot.id)}
       data-spot-id={spot.id}
+      data-selected={selected ? 'true' : undefined}
+      aria-current={selected ? 'true' : undefined}
+      whileHover={hoverMotion}
+      whileTap={{ scale: 0.985 }}
+      transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
     >
       <div className={styles.media}>
         <SpotImage
           src={spot.images[0]}
           alt={spot.name}
           name={spot.name}
-          aspect={variant === 'wide' ? '16/9' : variant === 'compact' ? '1/1' : '4/3'}
+          priority={variant === 'feature'}
+          className={variant === 'feature' ? styles.featureImage : undefined}
+          aspect={
+            variant === 'wide' || variant === 'feature'
+              ? '16/9'
+              : variant === 'compact' || variant === 'grid'
+                ? '1/1'
+                : '4/3'
+          }
           categoryColor={category?.color}
           rounded={variant === 'compact'}
         />
-        {spot.tags[0] && (
+        {spot.tags[0] && variant !== 'grid' && (
           <div className={styles.tagSlot}>
             <TagBadge tag={spot.tags[0]} />
           </div>
@@ -84,10 +109,12 @@ export function PlaceCard({
         <p className={styles.description}>{spot.description}</p>
         <div className={styles.meta}>
           <span className={styles.metaItem}>{formatDistance(distance)}</span>
-          <span className={styles.metaItem}>{formatDuration(spot.visitDurationMin)}</span>
+          {variant !== 'grid' && (
+            <span className={styles.metaItem}>{formatDuration(spot.visitDurationMin)}</span>
+          )}
           <Rating value={spot.rating} />
         </div>
       </div>
-    </Link>
+    </MotionLink>
   );
 }

@@ -1,0 +1,77 @@
+.footer {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 100%;
+  margin-top: var(--space-5);
+  margin-bottom: 0;
+}
+
+.frame {
+  position: relative;
+  width: 100%;
+  /* Let the photo define height — no crop box. */
+  line-height: 0;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Natural aspect — never cover-crop the pura. */
+  object-fit: contain;
+  object-position: center bottom;
+  filter: var(--dream-filter-image);
+  vertical-align: bottom;
+}
+
+/* Soft dream wash — keep the photo readable. */
+.dreamFilter {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 120% 70% at 50% 100%, var(--dream-warm-glow), transparent 55%),
+    radial-gradient(ellipse 70% 45% at 15% 20%, var(--dream-cool-mist), transparent 60%);
+  mix-blend-mode: soft-light;
+  opacity: 0.35;
+}
+
+/* Subtle sky blend only — short fade, does not cut the meru. */
+.topFade {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 12%;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg) 0%,
+    color-mix(in srgb, var(--color-bg) 40%, transparent) 55%,
+    transparent 100%
+  );
+}
+
+/* Sit on the photo — no separate white band below. */
+.caption {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  margin: 0;
+  padding: var(--space-4) var(--gutter) calc(var(--space-8) + var(--space-5));
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-inverse);
+  text-align: center;
+  text-shadow: 0 1px 2px color-mix(in srgb, #000 35%, transparent);
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, #000 40%, transparent) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+}

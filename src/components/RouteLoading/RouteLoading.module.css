@@ -1,0 +1,25 @@
+.root {
+  display: grid;
+  min-height: 60dvh;
+  place-items: center;
+  padding: var(--space-8) var(--gutter);
+}
+
+.row {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.loader,
+.text {
+  color: var(--color-text-secondary);
+}
+
+.text {
+  margin: 0;
+  font-size: var(--text-base);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}

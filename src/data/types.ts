@@ -53,8 +53,10 @@ export interface Spot {
   category: string;
   /** FK → Region.id. Where the place IS, not where the visitor sleeps. */
   region: string;
+  /** Optional Google Places resource name after reconcile. */
+  placeId?: string;
   coordinates: Coordinates;
-  /** Paths under public/. These assets do not exist yet — SpotImage falls back. */
+  /** Paths under public/images/spots/. SpotImage falls back to a gradient if missing. */
   images: string[];
   openingHours: OpeningHours;
   visitDurationMin: number;

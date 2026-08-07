@@ -25,7 +25,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
 
-    "types": ["vitest/globals", "google.maps"],
+    "types": ["vitest/globals"],
 
     "baseUrl": ".",
     "paths": {

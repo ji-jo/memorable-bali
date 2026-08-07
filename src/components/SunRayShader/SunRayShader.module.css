@@ -1,0 +1,38 @@
+/* Fixed under the page header — full viewport so rays aren't hard-clipped. */
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100dvh;
+  pointer-events: none;
+  overflow: visible;
+  background: transparent;
+  /* Soft dissolve — keep presence near the top, fade out before mid-page. */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 28%,
+    transparent 58%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 28%,
+    transparent 58%
+  );
+}
+
+.canvasWrap {
+  position: absolute;
+  inset: -600px;
+  pointer-events: none;
+  background: transparent;
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}

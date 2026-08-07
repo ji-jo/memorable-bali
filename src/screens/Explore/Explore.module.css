@@ -1,7 +1,6 @@
 .explore {
   position: relative;
-  /* Fill the viewport minus the tab bar. */
-  height: calc(100dvh - 56px - env(safe-area-inset-bottom));
+  height: 100dvh;
 }
 
 /* Below --bp-lg: map is full-bleed, the Sheet floats over it. */
@@ -14,46 +13,170 @@
   display: none;
 }
 
-.list {
+.listScroll {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.listBody {
   display: grid;
-  gap: var(--space-2);
-  padding-bottom: var(--space-6);
+  gap: var(--space-3);
+  /* Same inset on top / left / right so cards sit evenly in the panel. */
+  padding: var(--space-5);
+  padding-bottom: var(--space-8);
 }
 
-@media (min-width: 768px) {
-  .explore {
-    height: calc(100dvh - 73px); /* top bar instead of tab bar */
-  }
+.resultsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: var(--space-3) var(--space-5);
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border-strong);
 }
 
-/* From --bp-lg: side by side, no sheet. */
+.resultsCount {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  min-height: 2.625rem;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  line-height: 1;
+  color: var(--color-text-secondary);
+}
+
+.viewTabs {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.viewTabsList {
+  background-color: var(--color-surface) !important;
+  border: 1px solid var(--color-border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.viewTab {
+  height: 2rem;
+  min-width: 2rem;
+  padding-inline: var(--space-2);
+  gap: 0;
+}
+
+.viewTab :global(svg) {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.viewTab :global(span.inline-grid) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+  align-items: start;
+}
+
+.showList {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+}
+
+.showList:hover {
+  background-color: var(--color-surface-sunken);
+}
+
+/*
+ * From --bp-lg: map stays full-bleed; the list panel floats over it so the
+ * iOS squircle corners on the header/list actually reveal the map.
+ */
 @media (min-width: 1024px) {
-  .explore {
-    display: grid;
-    grid-template-columns: minmax(24rem, 34rem) 1fr;
-  }
-
   .mapPane {
-    position: relative;
-    inset: auto;
-    grid-column: 2;
-    height: 100%;
+    position: absolute;
+    inset: 0;
   }
 
   .panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    grid-column: 1;
-    grid-row: 1;
+    width: min(34rem, 42vw);
+    min-width: 24rem;
+    overflow: visible;
+    background-color: transparent;
+    pointer-events: none;
+  }
+
+  .mapFocus .panel {
+    display: none;
+  }
+
+  .panelHeader,
+  .panel .listScroll {
+    pointer-events: auto;
+  }
+
+  .panel .listScroll {
+    position: relative;
+    flex: 1;
+    min-height: 0;
     overflow: hidden;
-    border-right: 1px solid var(--color-border);
+    overflow-y: auto;
+    padding: 0;
     background-color: var(--color-bg);
+    border-bottom-right-radius: var(--radius-ios);
+    corner-bottom-right-shape: squircle;
+    /* Native scrollbar chevrons stay hidden — Perfect Scrollbar shows on hover. */
+    scrollbar-width: none;
+  }
+
+  .panel .listScroll::-webkit-scrollbar {
+    display: none;
   }
 
   .panelHeader {
     flex-shrink: 0;
     padding: var(--space-5) var(--space-5) 0;
     border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-bg);
+    border-top-right-radius: var(--radius-ios);
+    corner-top-right-shape: squircle;
   }
 
   .title {
@@ -62,11 +185,5 @@
     font-weight: var(--weight-semibold);
     letter-spacing: var(--tracking-tight);
     color: var(--color-text);
-  }
-
-  .panel .list {
-    flex: 1;
-    overflow-y: auto;
-    padding: var(--space-4) var(--space-5) var(--space-8);
   }
 }

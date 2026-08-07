@@ -5,24 +5,22 @@
   padding: var(--space-2) var(--space-4);
   min-height: 40px;
   border-radius: var(--radius-full);
-  border: 1px solid var(--color-border);
-  background-color: var(--color-surface);
+  border: 0;
+  background-color: var(--color-surface-sunken);
   color: var(--color-text);
   font-size: var(--text-sm);
   white-space: nowrap;
   transition:
     background-color var(--duration-fast) var(--ease-out),
-    border-color var(--duration-fast) var(--ease-out);
+    color var(--duration-fast) var(--ease-out);
 }
 
 button.chip:hover {
-  border-color: var(--color-border-strong);
   background-color: var(--color-surface-sunken);
 }
 
 .selected {
   /* --chip-color is set inline from the category colour. */
-  border-color: var(--chip-color, var(--color-accent));
   background-color: var(--color-accent-subtle);
   color: var(--color-text);
   font-weight: var(--weight-medium);
@@ -58,6 +56,6 @@ button.selected:hover {
 }
 
 .remove:hover {
-  background-color: var(--color-border);
+  background-color: var(--color-surface);
   color: var(--color-text);
 }

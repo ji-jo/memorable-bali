@@ -7,7 +7,9 @@
   font-weight: var(--weight-medium);
   white-space: nowrap;
   /* Quiet by design — a card with three loud badges is noise. */
-  border: 1px solid transparent;
+  border: 0;
+  /* Every tag needs a readable, self-contained surface over photography. */
+  opacity: 0.9;
 }
 
 .sm {
@@ -24,7 +26,6 @@
 .memorable {
   background-color: var(--color-accent-subtle);
   color: var(--color-accent);
-  border-color: color-mix(in srgb, var(--color-accent) 25%, transparent);
 }
 
 .mustVisit {
@@ -33,13 +34,11 @@
 }
 
 .cultural {
-  background-color: transparent;
+  background-color: var(--color-surface-sunken);
   color: var(--color-text-secondary);
-  border-color: var(--color-border-strong);
 }
 
 .outworldly {
   background-color: var(--color-success-subtle);
   color: var(--color-success);
-  border-color: color-mix(in srgb, var(--color-success) 25%, transparent);
 }

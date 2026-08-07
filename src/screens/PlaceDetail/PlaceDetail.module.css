@@ -1,30 +1,141 @@
 .detail {
-  max-width: 48rem;
-  margin-inline: auto;
-  padding-bottom: var(--space-8);
+  min-height: 100dvh;
+  overflow: hidden;
+  background-color: var(--color-surface-sunken);
 }
 
 .notFound {
   padding: var(--gutter);
 }
 
+.mapBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Peek / map-focus: let pins and map controls receive taps above the sheet. */
+.detail[data-map-focused] .sheet {
+  pointer-events: none;
+}
+
+.detail[data-map-focused] .handle {
+  pointer-events: auto;
+}
+
 .hero {
   position: relative;
+  flex: 0 0 auto;
+}
+
+.sheet {
+  position: fixed;
+  z-index: 60;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  width: min(100%, 48rem);
+  height: 100dvh;
+  margin-inline: auto;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  background-color: var(--color-surface);
+  outline: none;
+}
+
+.handle {
+  /* Expand beyond Vaul's default 32×5 pill so the whole grab strip is draggable. */
+  flex: 0 0 auto;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 44px;
+  margin: 0 !important;
+  padding: var(--space-3) 0;
+  border: 0;
+  border-radius: 0 !important;
+  background: transparent !important;
+  opacity: 1 !important;
+  cursor: grab;
+  touch-action: none !important;
+  z-index: 2;
+}
+
+.handle::before {
+  content: '';
+  width: var(--space-8);
+  height: var(--space-1);
+  border-radius: var(--radius-full);
+  background-color: var(--color-text-tertiary);
+  pointer-events: none;
+}
+
+.handle:active {
+  cursor: grabbing;
+}
+
+.handle :global([data-vaul-handle-hitarea]) {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  transform: none !important;
+  left: 0 !important;
+  top: 0 !important;
+  touch-action: none;
+}
+
+.sheetScroll {
+  min-height: 0;
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  /* Let vertical pans scroll content; drawer drag stays on the handle (handleOnly). */
+  touch-action: pan-y;
+  scrollbar-width: none;
+  /*
+   * Snap points translate the 100dvh sheet. Without this pad, the action bar
+   * lands in the off-screen band below the visible snap height.
+   */
+  padding-bottom: calc(var(--snap-point-height, 0px) + env(safe-area-inset-bottom, 0px) + var(--space-6));
+}
+
+.sheetScroll::-webkit-scrollbar {
+  display: none;
 }
 
 .back {
   position: absolute;
   top: var(--space-4);
   left: var(--space-4);
-  width: 44px;
-  height: 44px;
   display: grid;
+  width: var(--space-11);
+  height: var(--space-11);
+  padding: 0;
+  border: 0;
   place-items: center;
-  border-radius: var(--radius-full);
-  background-color: var(--color-scrim);
-  color: #fff;
-  font-size: var(--text-lg);
-  backdrop-filter: blur(4px);
+  line-height: 1;
+  background-color: transparent;
+  color: var(--color-text-inverse);
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.back:hover {
+  opacity: 0.72;
+}
+
+.back:active {
+  opacity: 0.5;
+}
+
+.back svg {
+  width: var(--space-5);
+  height: var(--space-5);
 }
 
 .body {
@@ -102,40 +213,162 @@
   line-height: var(--leading-snug);
 }
 
-/* Given real visual weight — this is the curation the product sells. */
 .tips {
-  margin-top: var(--space-6);
-  padding: var(--space-5);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-accent);
-  background-color: var(--color-accent-subtle);
+  margin-top: var(--space-8);
+  padding-block: var(--space-1) var(--space-2);
+  counter-reset: tip;
+}
+
+.tipsKicker {
+  margin: 0 0 var(--space-2);
+  color: var(--color-accent);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
 }
 
 .tipsTitle {
+  margin: 0;
   font-family: var(--font-display);
-  font-size: var(--text-lg);
+  font-size: var(--text-xl);
   font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tight);
   color: var(--color-text);
-  margin-bottom: var(--space-3);
 }
 
 .tipsList {
   display: grid;
-  gap: var(--space-3);
+  gap: var(--space-4);
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  list-style: none;
 }
 
 .tip {
-  position: relative;
-  padding-left: var(--space-5);
+  display: grid;
+  grid-template-columns: var(--space-6) minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: start;
+  counter-increment: tip;
   line-height: var(--leading-snug);
   color: var(--color-text);
 }
 
 .tip::before {
-  content: '→';
-  position: absolute;
-  left: 0;
+  content: counter(tip, decimal-leading-zero);
+  padding-top: var(--space-1);
+  color: var(--color-text-tertiary);
+  font-size: var(--text-xs);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--tracking-wide);
+}
+
+.plan {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-sunken);
+  border: 1px solid color-mix(in srgb, var(--color-text) 6%, transparent);
+}
+
+.planActions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.planActions > * {
+  min-width: 0;
+  width: 100%;
+}
+
+.planActions :global(button) {
+  border-radius: var(--radius-md);
+  width: 100%;
+  justify-content: center;
+}
+
+.planLinks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.planLinks > * {
+  min-width: 0;
+  width: 100%;
+}
+
+.planLink,
+.planLinkMuted {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  min-width: 0;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-snug);
+  text-align: center;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.planLink {
   color: var(--color-accent);
+}
+
+.planLink:hover {
+  background-color: var(--color-accent-subtle);
+  border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+}
+
+.planLinkMuted {
+  color: var(--color-text-secondary);
+}
+
+.planLinkMuted:hover {
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border-color: var(--color-border-strong);
+}
+
+.routeMeta {
+  margin: 0;
+  padding-top: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+  line-height: var(--leading-snug);
+  text-align: center;
+}
+
+.tripLink {
+  display: block;
+  padding-top: var(--space-1);
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+  text-align: center;
+}
+
+@media (max-width: 420px) {
+  .planActions,
+  .planLinks {
+    grid-template-columns: 1fr;
+  }
 }
 
 .section {
@@ -165,49 +398,3 @@
   border-top: 1px solid var(--color-border);
 }
 
-/* Actions stay reachable while scrolling. */
-.actionBar {
-  position: sticky;
-  bottom: 0;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  flex-wrap: wrap;
-  margin-top: var(--space-6);
-  padding: var(--space-4) var(--gutter);
-  background-color: var(--color-surface);
-  border-top: 1px solid var(--color-border);
-}
-
-.mapsLink {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius-full);
-  color: var(--color-accent);
-  font-size: var(--text-sm);
-}
-
-.mapsLink:hover {
-  background-color: var(--color-accent-subtle);
-}
-
-.tripLink {
-  display: block;
-  padding: var(--space-4) var(--gutter);
-  color: var(--color-accent);
-  font-size: var(--text-sm);
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .actionBar {
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--color-border);
-    margin-inline: var(--gutter);
-    bottom: var(--space-5);
-    box-shadow: var(--shadow-md);
-  }
-}

@@ -23,12 +23,7 @@ export default tseslint.config(
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     languageOptions: {
       ecmaVersion: 2022,
-      globals: {
-        ...globals.browser,
-        // The Maps SDK is loaded at runtime by useGoogleMaps, so `google` is
-        // a global rather than an import.
-        google: 'readonly',
-      },
+      globals: globals.browser,
     },
     plugins: {
       'react-hooks': reactHooks,

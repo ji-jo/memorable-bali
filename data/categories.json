@@ -2,7 +2,7 @@
   "_meta": {
     "description": "Primary category buckets for curated spots. Every spot in bali-spots.json has exactly one `category` drawn from this list.",
     "note": "Categories are the primary filter. Cross-cutting qualities (Memorable, Must Visit, Cultural, Outworldly) live in each spot's `tags` array instead.",
-    "lastUpdated": "2026-08-04"
+    "lastUpdated": "2026-08-06"
   },
   "categories": [
     {
@@ -41,18 +41,11 @@
       "description": "Pura across the island, from sea temples to mountain sanctuaries."
     },
     {
-      "id": "cafes",
-      "label": "Cafés",
-      "icon": "coffee",
-      "color": "#8A6B4F",
-      "description": "Specialty coffee, slow mornings and long laptop afternoons."
-    },
-    {
       "id": "food",
       "label": "Food",
       "icon": "utensils",
       "color": "#D08C2E",
-      "description": "Warungs, seafood grills and places worth planning a day around."
+      "description": "Warungs, cafés, bakeries and places worth planning a meal around."
     },
     {
       "id": "hidden-gems",
@@ -81,6 +74,13 @@
       "icon": "lotus",
       "color": "#7FA88B",
       "description": "Yoga, healing, spas and deliberate slowness."
+    },
+    {
+      "id": "hotels",
+      "label": "Hotels",
+      "icon": "bed",
+      "color": "#8B6F5C",
+      "description": "Boutique cabins, villas and resorts worth a night or a look."
     }
   ],
   "onboardingInterests": [
@@ -91,13 +91,60 @@
       "matchesTags": [],
       "note": "Selecting All clears every other interest and disables filtering."
     },
-    { "id": "food", "label": "Food", "matchesCategories": ["food"], "matchesTags": [] },
-    { "id": "nature", "label": "Nature", "matchesCategories": ["nature", "waterfalls"], "matchesTags": [] },
-    { "id": "beaches", "label": "Beaches", "matchesCategories": ["beaches"], "matchesTags": [] },
-    { "id": "culture", "label": "Culture", "matchesCategories": ["culture", "temples"], "matchesTags": ["Cultural"] },
-    { "id": "cafes", "label": "Cafés", "matchesCategories": ["cafes"], "matchesTags": [] },
-    { "id": "adventure", "label": "Adventure", "matchesCategories": ["adventure"], "matchesTags": [] },
-    { "id": "hidden-gems", "label": "Hidden Gems", "matchesCategories": ["hidden-gems"], "matchesTags": ["Outworldly"] },
+    {
+      "id": "food",
+      "label": "Food",
+      "matchesCategories": [
+        "food"
+      ],
+      "matchesTags": []
+    },
+    {
+      "id": "nature",
+      "label": "Nature",
+      "matchesCategories": [
+        "nature",
+        "waterfalls"
+      ],
+      "matchesTags": []
+    },
+    {
+      "id": "beaches",
+      "label": "Beaches",
+      "matchesCategories": [
+        "beaches"
+      ],
+      "matchesTags": []
+    },
+    {
+      "id": "culture",
+      "label": "Culture",
+      "matchesCategories": [
+        "culture",
+        "temples"
+      ],
+      "matchesTags": [
+        "Cultural"
+      ]
+    },
+    {
+      "id": "adventure",
+      "label": "Adventure",
+      "matchesCategories": [
+        "adventure"
+      ],
+      "matchesTags": []
+    },
+    {
+      "id": "hidden-gems",
+      "label": "Hidden Gems",
+      "matchesCategories": [
+        "hidden-gems"
+      ],
+      "matchesTags": [
+        "Outworldly"
+      ]
+    },
     {
       "id": "sunset",
       "label": "Sunset",
@@ -113,6 +160,21 @@
       "matchesTags": [],
       "note": "Listed in the onboarding spec but has no curated spots yet. Hide this chip until the dataset supports it."
     },
-    { "id": "wellness", "label": "Wellness", "matchesCategories": ["wellness"], "matchesTags": [] }
+    {
+      "id": "hotels",
+      "label": "Hotels",
+      "matchesCategories": [
+        "hotels"
+      ],
+      "matchesTags": []
+    },
+    {
+      "id": "wellness",
+      "label": "Wellness",
+      "matchesCategories": [
+        "wellness"
+      ],
+      "matchesTags": []
+    }
   ]
 }

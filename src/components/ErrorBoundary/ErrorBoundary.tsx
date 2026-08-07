@@ -6,6 +6,8 @@ interface Props {
   children: ReactNode;
   /** Named in the fallback so the user knows what broke. */
   label?: string;
+  /** Clear the captured error when this value changes (e.g. route pathname). */
+  resetKey?: string;
 }
 
 interface State {
@@ -24,6 +26,12 @@ export class ErrorBoundary extends Component<Props, State> {
     console.error('[ErrorBoundary]', this.props.label ?? '', error, info.componentStack);
   }
 
+  componentDidUpdate(prevProps: Props) {
+    if (this.state.error && prevProps.resetKey !== this.props.resetKey) {
+      this.setState({ error: null });
+    }
+  }
+
   render() {
     if (this.state.error) {
       return (
@@ -36,8 +44,30 @@ export class ErrorBoundary extends Component<Props, State> {
                 ? `The ${this.props.label} screen hit an error. Reloading usually clears it.`
                 : 'This screen hit an error. Reloading usually clears it.'
             }
-            action={{ label: 'Reload', onClick: () => window.location.reload() }}
+            action={{
+              label: 'Reload',
+              onClick: () => {
+                this.setState({ error: null });
+                window.location.reload();
+              },
+            }}
           />
+          {import.meta.env.DEV ? (
+            <pre
+              style={{
+                marginTop: 'var(--space-4)',
+                padding: 'var(--space-3)',
+                borderRadius: 'var(--radius-md)',
+                background: 'var(--color-surface-sunken)',
+                color: 'var(--color-text-secondary)',
+                fontSize: 'var(--text-xs)',
+                whiteSpace: 'pre-wrap',
+                overflow: 'auto',
+              }}
+            >
+              {this.state.error.message}
+            </pre>
+          ) : null}
         </div>
       );
     }

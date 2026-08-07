@@ -1,9 +1,10 @@
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 import { fileURLToPath, URL } from 'node:url';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
 
   server: {
     // 5173 is in use on this machine — see docs/08-Developer-Guide.md.
@@ -17,6 +18,8 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       '@data': fileURLToPath(new URL('./data', import.meta.url)),
+      // vaul lists style.css in "files" but not "exports" — Vite 6 rejects the bare import.
+      'vaul/style.css': fileURLToPath(new URL('./node_modules/vaul/style.css', import.meta.url)),
     },
   },
 

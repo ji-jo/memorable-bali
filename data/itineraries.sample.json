@@ -13,7 +13,7 @@
       "lengthOfStay": "1-day",
       "travelStyle": "balanced",
       "suggestedStayArea": "ubud",
-      "interests": ["culture", "nature", "cafes"],
+      "interests": ["culture", "nature", "food"],
       "transportation": ["scooter", "private-driver"],
       "estimatedTotalMinutes": 600,
       "estimatedCost": { "currency": "IDR", "min": 300000, "max": 700000, "note": "Entries, lunch and driver share" },

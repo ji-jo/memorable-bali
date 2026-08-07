@@ -9,6 +9,8 @@ export interface SheetProps {
   snap: SnapPoint;
   onSnapChange: (next: SnapPoint) => void;
   title?: string;
+  /** Custom header content — replaces `title` when provided. */
+  header?: ReactNode;
   children: ReactNode;
 }
 
@@ -26,7 +28,7 @@ const ORDER: SnapPoint[] = ['peek', 'half', 'full'];
  * 1024px. The map remains visible behind it — this is not a modal and it never
  * traps focus or blocks the page.
  */
-export function Sheet({ snap, onSnapChange, title, children }: SheetProps) {
+export function Sheet({ snap, onSnapChange, title, header, children }: SheetProps) {
   const [dragOffset, setDragOffset] = useState<number | null>(null);
   const dragState = useRef<{ startY: number; startOffset: number } | null>(null);
   const sheetRef = useRef<HTMLDivElement>(null);
@@ -92,8 +94,12 @@ export function Sheet({ snap, onSnapChange, title, children }: SheetProps) {
         <div className={styles.handle} aria-hidden="true" />
       </div>
 
-      <div className={styles.header}>
-        {title && <span className={styles.title}>{title}</span>}
+      <div className={`${styles.header} ${!header && !title ? styles.headerSnapOnly : ''}`}>
+        {(header || title) && (
+          <div className={styles.headerMain}>
+            {header ?? (title ? <span className={styles.title}>{title}</span> : null)}
+          </div>
+        )}
         {/* Required: drag gestures are not keyboard- or screen-reader-reachable. */}
         <button
           type="button"

@@ -11,75 +11,221 @@
 }
 
 .degraded {
+
   height: 100%;
   display: grid;
   place-items: center;
   padding: var(--gutter);
 }
 
-.recenter {
+.controls {
   position: absolute;
   top: var(--space-4);
   right: var(--space-4);
   z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  min-height: 44px;
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-full);
-  border: 1px solid var(--color-border);
-  background-color: var(--color-surface);
-  color: var(--color-text);
-  font-size: var(--text-sm);
-  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
 }
 
-.recenter:hover {
-  background-color: var(--color-surface-sunken);
+.iconGlass {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+}
+
+.zoomGlass {
+  width: 44px;
+  border-radius: 22px;
+}
+
+.iconButton {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: inherit;
+  background-color: transparent;
+  color: inherit;
+  transition: background-color var(--duration-fast) var(--ease-out);
+  cursor: pointer;
+}
+
+.iconButton:hover {
+  background-color: color-mix(in srgb, currentColor 10%, transparent);
+}
+
+.iconButton:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.zoomGroup {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.zoomButton {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  transition: background-color var(--duration-fast) var(--ease-out);
+  cursor: pointer;
+}
+
+.zoomButton:hover {
+  background-color: color-mix(in srgb, currentColor 10%, transparent);
+}
+
+.zoomButton:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -2px;
+}
+
+.zoomDivider {
+  height: 1px;
+  background-color: color-mix(in srgb, currentColor 12%, transparent);
+  width: 100%;
 }
 
 /* Pin styling — applied to AdvancedMarkerElement DOM content, so it is a
    global class rather than a CSS module hash. */
 :global(.bali-pin) {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-full);
-  border: 2px solid var(--pin-color, #c0553b);
-  background-color: var(--pin-color, #c0553b);
-  background-size: cover;
-  background-position: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  width: var(--space-5);
+  height: var(--space-5);
+  border: 0;
+  background: transparent;
   cursor: pointer;
   display: grid;
   place-items: center;
-  color: #fff;
-  font-family: Georgia, serif;
-  font-weight: 600;
-  font-size: 15px;
-  transition:
-    transform 160ms cubic-bezier(0.2, 0, 0, 1),
-    box-shadow 160ms cubic-bezier(0.2, 0, 0, 1);
+  color: var(--color-text);
+  isolation: isolate;
+}
+
+:global(.bali-pin__dot) {
+  width: var(--space-3);
+  height: var(--space-3);
+  border-radius: var(--radius-full);
+  background-color: var(--pin-color);
+  outline: var(--space-1) solid color-mix(in srgb, var(--color-surface) 76%, transparent);
+}
+
+:global(.bali-pin__preview) {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + var(--space-2));
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: max-content;
+  max-width: min(22rem, 80vw);
+  padding: var(--space-2) var(--space-3) var(--space-2) var(--space-2);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  z-index: 1;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 8px) scale(0.96);
+  transform-origin: bottom center;
+  will-change: transform, opacity;
+}
+
+:global(.bali-pin__thumb) {
+  flex: 0 0 auto;
+  width: var(--space-7);
+  height: var(--space-7);
+  border-radius: var(--radius-sm);
+  background-position: center;
+  background-size: cover;
+}
+
+:global(.bali-pin__copy) {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+  text-align: left;
+}
+
+:global(.bali-pin__copy strong) {
+  overflow: hidden;
+  max-width: 16rem;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+:global(.bali-pin__copy small) {
+  color: var(--color-text-secondary);
+  font-size: var(--text-xs);
+  white-space: nowrap;
+}
+
+:global(.bali-pin:hover .bali-pin__dot),
+:global(.bali-pin--selected .bali-pin__dot),
+:global(.bali-pin--hover .bali-pin__dot) {
+  transform: scale(1.35);
+}
+
+:global(.bali-pin:hover),
+:global(.bali-pin:focus-visible),
+:global(.bali-pin--selected),
+:global(.bali-pin--hover) {
+  z-index: 20;
+}
+
+/* MapLibre gives every marker its own positioned wrapper. Raising only the
+   button is not enough when another marker wrapper overlaps the preview. */
+:global(.maplibregl-marker:has(.bali-pin:hover)),
+:global(.maplibregl-marker:has(.bali-pin:focus-visible)),
+:global(.maplibregl-marker:has(.bali-pin--selected)),
+:global(.maplibregl-marker:has(.bali-pin--hover)) {
+  z-index: 20 !important;
 }
 
 :global(.bali-pin--selected) {
-  transform: scale(1.35);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
-  z-index: 10;
+  z-index: 20;
 }
 
 :global(.bali-pin--visited::after) {
   content: '✓';
   position: absolute;
-  right: -3px;
-  bottom: -3px;
-  width: 16px;
-  height: 16px;
+  right: 0;
+  bottom: 0;
+  width: var(--space-3);
+  height: var(--space-3);
   border-radius: 50%;
-  background-color: #3f7d5c;
-  color: #fff;
-  font-size: 10px;
+  background-color: var(--color-success);
+  color: var(--color-text-inverse);
+  font-size: var(--text-xs);
   display: grid;
   place-items: center;
-  border: 2px solid #fff;
+  outline: var(--space-1) solid var(--color-surface);
+}
+
+:global(.bali-stay-pin) {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-surface, #fff);
+  color: var(--color-text, #1d1d1f);
+  border: 1.5px solid color-mix(in srgb, var(--color-text, #1d1d1f) 14%, transparent);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+}
+
+:global(.bali-stay-pin__icon) {
+  display: block;
+  pointer-events: none;
 }

@@ -1,5 +1,197 @@
+@import 'tailwindcss';
 @import './tokens.css';
 @import './reset.css';
+
+@theme inline {
+  --color-muted: var(--color-surface-sunken);
+  --color-foreground: var(--color-text);
+  --color-muted-foreground: var(--color-text-secondary);
+  --color-hover: color-mix(in srgb, var(--color-text) 6%, transparent);
+  --color-surface-1: var(--color-bg);
+  --color-surface-2: var(--color-surface-sunken);
+  --color-surface-3: var(--color-surface-sunken);
+  --color-surface-4: var(--color-surface);
+  --color-surface-5: var(--color-surface-raised);
+  --color-surface-6: var(--color-surface-raised);
+  --color-surface-7: var(--color-surface-raised);
+  --color-surface-8: var(--color-surface-raised);
+  --shadow-surface-1: var(--shadow-sm);
+  --shadow-surface-2: var(--shadow-sm);
+  --shadow-surface-3: var(--shadow-sm);
+  --shadow-surface-4: var(--shadow-md);
+  --shadow-surface-5: var(--shadow-md);
+  --shadow-surface-6: var(--shadow-md);
+  --shadow-surface-7: var(--shadow-lg);
+  --shadow-surface-8: var(--shadow-lg);
+  --color-focus-ring: var(--color-accent);
+  --color-border: var(--color-border-strong);
+  --color-background: var(--color-bg);
+}
+
+/* Scroll-mask utilities (https://twilson.net/scroll-mask). */
+@property --scroll-mask-t-from {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+@property --scroll-mask-b-from {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+@property --scroll-mask-l-from {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+@property --scroll-mask-r-from {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+@keyframes scroll-mask-y-scroll {
+  0% {
+    --scroll-mask-t-from: 100%;
+  }
+  10%,
+  100% {
+    --scroll-mask-t-from: var(--scroll-mask-fade-from-t, 100%);
+  }
+  0%,
+  90% {
+    --scroll-mask-b-from: var(--scroll-mask-fade-from-b, 100%);
+  }
+  100% {
+    --scroll-mask-b-from: 100%;
+  }
+}
+
+@keyframes scroll-mask-x-scroll {
+  0% {
+    --scroll-mask-l-from: 100%;
+  }
+  10%,
+  100% {
+    --scroll-mask-l-from: var(--scroll-mask-fade-from-l, 100%);
+  }
+  0%,
+  90% {
+    --scroll-mask-r-from: var(--scroll-mask-fade-from-r, 100%);
+  }
+  100% {
+    --scroll-mask-r-from: 100%;
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  :where([class^="scroll-mask-"], [class*=" scroll-mask-"]) {
+    --scroll-mask-t: linear-gradient(
+      to top,
+      black,
+      black var(--scroll-mask-t-from),
+      transparent
+    );
+    --scroll-mask-b: linear-gradient(
+      to bottom,
+      black,
+      black var(--scroll-mask-b-from),
+      transparent
+    );
+    --scroll-mask-l: linear-gradient(
+      to left,
+      black,
+      black var(--scroll-mask-l-from),
+      transparent
+    );
+    --scroll-mask-r: linear-gradient(
+      to right,
+      black,
+      black var(--scroll-mask-r-from),
+      transparent
+    );
+    mask-image:
+      var(--scroll-mask-t), var(--scroll-mask-b), var(--scroll-mask-l),
+      var(--scroll-mask-r);
+    mask-composite: intersect;
+    -webkit-mask-composite: source-in;
+    animation:
+      scroll-mask-y-scroll linear,
+      scroll-mask-x-scroll linear;
+    animation-timeline: scroll(self block), scroll(self inline);
+  }
+}
+
+@utility scroll-mask-t {
+  --scroll-mask-fade-from-t: 80%;
+}
+
+@utility scroll-mask-t-from-* {
+  --scroll-mask-fade-from-t: --spacing(--value(integer));
+  --scroll-mask-fade-from-t: --value(percentage);
+  --scroll-mask-fade-from-t: --value([length], [percentage]);
+}
+
+@utility scroll-mask-b {
+  --scroll-mask-fade-from-b: 80%;
+}
+
+@utility scroll-mask-b-from-* {
+  --scroll-mask-fade-from-b: --spacing(--value(integer));
+  --scroll-mask-fade-from-b: --value(percentage);
+  --scroll-mask-fade-from-b: --value([length], [percentage]);
+}
+
+@utility scroll-mask-y {
+  --scroll-mask-fade-from-t: 80%;
+  --scroll-mask-fade-from-b: 80%;
+}
+
+@utility scroll-mask-y-from-* {
+  --scroll-mask-fade-from-t: --spacing(--value(integer));
+  --scroll-mask-fade-from-t: --value(percentage);
+  --scroll-mask-fade-from-t: --value([length], [percentage]);
+  --scroll-mask-fade-from-b: --spacing(--value(integer));
+  --scroll-mask-fade-from-b: --value(percentage);
+  --scroll-mask-fade-from-b: --value([length], [percentage]);
+}
+
+@utility scroll-mask-l {
+  --scroll-mask-fade-from-l: 80%;
+}
+
+@utility scroll-mask-l-from-* {
+  --scroll-mask-fade-from-l: --spacing(--value(integer));
+  --scroll-mask-fade-from-l: --value(percentage);
+  --scroll-mask-fade-from-l: --value([length], [percentage]);
+}
+
+@utility scroll-mask-r {
+  --scroll-mask-fade-from-r: 80%;
+}
+
+@utility scroll-mask-r-from-* {
+  --scroll-mask-fade-from-r: --spacing(--value(integer));
+  --scroll-mask-fade-from-r: --value(percentage);
+  --scroll-mask-fade-from-r: --value([length], [percentage]);
+}
+
+@utility scroll-mask-x {
+  --scroll-mask-fade-from-l: 80%;
+  --scroll-mask-fade-from-r: 80%;
+}
+
+@utility scroll-mask-x-from-* {
+  --scroll-mask-fade-from-l: --spacing(--value(integer));
+  --scroll-mask-fade-from-l: --value(percentage);
+  --scroll-mask-fade-from-l: --value([length], [percentage]);
+  --scroll-mask-fade-from-r: --spacing(--value(integer));
+  --scroll-mask-fade-from-r: --value(percentage);
+  --scroll-mask-fade-from-r: --value([length], [percentage]);
+}
 
 body {
   font-family: var(--font-sans);
@@ -23,6 +215,33 @@ body {
 ::selection {
   background-color: var(--color-accent-subtle);
   color: var(--color-text);
+}
+
+/* Perfect Scrollbar: a quiet indicator, not a permanent rail. */
+.ps {
+  overflow: hidden !important;
+}
+
+.ps > .ps__rail-y {
+  width: var(--space-3);
+  background-color: transparent;
+  opacity: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.ps:hover > .ps__rail-y,
+.ps--scrolling-y > .ps__rail-y,
+.ps--focus > .ps__rail-y {
+  opacity: 0.6;
+  pointer-events: auto;
+}
+
+.ps > .ps__rail-y > .ps__thumb-y {
+  right: var(--space-1);
+  width: var(--space-1);
+  border-radius: var(--radius-full);
+  background-color: var(--color-text-tertiary);
 }
 
 /* Skip link — first tab stop, hidden until focused. */

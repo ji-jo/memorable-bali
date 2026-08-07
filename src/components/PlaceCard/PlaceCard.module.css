@@ -1,26 +1,37 @@
 .card {
   display: block;
   position: relative;
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background-color: transparent;
+  border: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition:
-    border-color var(--duration-base) var(--ease-out),
     transform var(--duration-base) var(--ease-out),
-    box-shadow var(--duration-base) var(--ease-out);
+    border-color var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out);
 }
 
 .card:hover {
-  border-color: var(--color-border-strong);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  border-color: color-mix(in srgb, var(--color-accent) 28%, transparent);
 }
 
-/* Selected — driven by Explore's selectedId, synced with the map pin. */
+/* Selected — driven by Explore's selectedId after a map pin (or list) selection. */
 .selected {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 1px var(--color-accent);
+  background-color: color-mix(in srgb, var(--color-accent-subtle) 88%, transparent);
+  box-shadow:
+    inset 4px 0 0 var(--color-accent),
+    0 0 0 1px color-mix(in srgb, var(--color-accent) 35%, transparent);
+}
+
+.compact.selected {
+  background-color: color-mix(in srgb, var(--color-accent-subtle) 92%, transparent);
+}
+
+.grid.selected {
+  border-color: var(--color-accent);
+  box-shadow:
+    inset 0 0 0 2px color-mix(in srgb, var(--color-accent) 45%, transparent);
 }
 
 .media {
@@ -45,10 +56,24 @@
 
 .body {
   padding: var(--space-4);
+  /* Same frosted glass read as ExpandableTabs (bg-white/80). */
+  background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+
+:root[data-theme='dark'] .body {
+  background-color: color-mix(in srgb, var(--color-surface) 65%, transparent);
 }
 
 .category {
+  display: inline-flex;
+  width: fit-content;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-full);
+  background-color: color-mix(in srgb, var(--color-surface) 90%, transparent);
   font-size: var(--text-xs);
+  line-height: 1;
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   color: var(--color-text-tertiary);
@@ -93,11 +118,20 @@
   gap: var(--space-3);
   align-items: stretch;
   padding: var(--space-2);
+  min-height: calc(var(--space-8) + var(--space-7));
+  background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+
+:root[data-theme='dark'] .compact {
+  background-color: color-mix(in srgb, var(--color-surface) 65%, transparent);
 }
 
 .compact .media {
   flex-shrink: 0;
   width: 88px;
+  align-self: stretch;
 }
 
 .compact .body {
@@ -106,6 +140,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .compact .name {
@@ -130,4 +167,191 @@
 .compact .visitedSlot,
 .compact .tagSlot {
   display: none;
+}
+
+/* ─── feature: editorial lead story with information over photography ── */
+.feature {
+  min-height: calc(var(--space-8) * 5);
+  background-color: var(--color-surface-sunken);
+  border-color: transparent;
+}
+
+.feature:hover {
+  background-color: var(--color-surface-sunken);
+  border-color: transparent;
+}
+
+.feature .media {
+  height: 100%;
+}
+
+.featureImage {
+  height: 100%;
+}
+
+.feature .body {
+  position: absolute;
+  inset: auto 0 0;
+  padding: var(--space-7) var(--space-5) var(--space-5);
+  background: linear-gradient(to bottom, transparent, var(--color-scrim));
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.feature .category,
+.feature .description,
+.feature .meta {
+  color: color-mix(in srgb, var(--color-text-inverse) 78%, transparent);
+}
+
+.feature .category {
+  background-color: color-mix(in srgb, var(--color-surface) 90%, transparent);
+  color: var(--color-text);
+}
+
+.feature .name {
+  max-width: 18ch;
+  color: var(--color-text-inverse);
+  font-size: var(--text-2xl);
+}
+
+.feature .description {
+  max-width: 46ch;
+}
+
+.wide .description {
+  max-width: 52ch;
+}
+
+/* ─── grid: photo tiles for Explore's two-column mosaic ─────────────── */
+.grid {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-ios);
+  corner-shape: squircle;
+  overflow: hidden;
+  background-color: var(--color-surface-sunken);
+  border-color: transparent;
+}
+
+.grid .media {
+  position: absolute;
+  inset: 0;
+}
+
+.grid:hover {
+  background-color: var(--color-surface-sunken);
+  border-color: transparent;
+}
+
+.grid .media > * {
+  height: 100%;
+  aspect-ratio: unset;
+}
+
+.grid .body {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 42%;
+  padding: var(--space-3);
+  background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+:root[data-theme='dark'] .grid .body {
+  background-color: color-mix(in srgb, var(--color-surface) 70%, transparent);
+}
+
+.grid .category {
+  padding: 0;
+  background-color: transparent;
+  color: var(--color-text-tertiary);
+}
+
+.grid .name {
+  margin-top: var(--space-1);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.grid .description {
+  display: none;
+}
+
+.grid .meta {
+  margin-top: var(--space-2);
+  gap: var(--space-2);
+  color: var(--color-text-tertiary);
+}
+
+.grid .meta > span {
+  color: inherit;
+}
+
+.grid .meta span[aria-hidden='true'] {
+  color: var(--color-warning);
+}
+
+.grid .tagSlot {
+  display: none;
+}
+
+.grid .visitedSlot {
+  top: var(--space-2);
+  right: var(--space-2);
+}
+
+/* Selected must win over later variant border resets (.grid, .feature, :hover). */
+.card.selected,
+.card[data-selected='true'] {
+  border-color: var(--color-accent) !important;
+  background-color: color-mix(in srgb, var(--color-accent-subtle) 90%, var(--color-surface));
+  box-shadow:
+    inset 4px 0 0 var(--color-accent),
+    0 0 0 1px color-mix(in srgb, var(--color-accent) 40%, transparent);
+  outline: none;
+}
+
+.card.compact.selected,
+.card.compact[data-selected='true'] {
+  background-color: color-mix(in srgb, var(--color-accent-subtle) 94%, var(--color-surface));
+}
+
+.card.grid.selected,
+.card.grid[data-selected='true'] {
+  box-shadow:
+    inset 0 0 0 3px color-mix(in srgb, var(--color-accent) 55%, transparent),
+    0 0 0 1px var(--color-accent);
+}
+
+.card[data-flash-selected='true'] {
+  animation: cardSelectPulse 0.7s var(--ease-out);
+}
+
+@keyframes cardSelectPulse {
+  0% {
+    box-shadow:
+      inset 4px 0 0 var(--color-accent),
+      0 0 0 0 color-mix(in srgb, var(--color-accent) 45%, transparent);
+  }
+  40% {
+    box-shadow:
+      inset 4px 0 0 var(--color-accent),
+      0 0 0 4px color-mix(in srgb, var(--color-accent) 28%, transparent);
+  }
+  100% {
+    box-shadow:
+      inset 4px 0 0 var(--color-accent),
+      0 0 0 1px color-mix(in srgb, var(--color-accent) 40%, transparent);
+  }
 }

@@ -111,7 +111,7 @@ describe('matchesInterests', () => {
   });
 
   it('does not match an unrelated interest', () => {
-    expect(matchesInterests(waterfall, ['cafes'], interests)).toBe(false);
+    expect(matchesInterests(waterfall, ['hotels'], interests)).toBe(false);
   });
 });
 

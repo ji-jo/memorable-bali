@@ -1,0 +1,1910 @@
+{
+  "generatedAt": "2026-08-06T16:57:10.868Z",
+  "provider": "locationiq",
+  "apply": false,
+  "summary": {
+    "total": 69,
+    "matched": 51,
+    "ok": 26,
+    "warn": 19,
+    "far": 6,
+    "weak_match": 15,
+    "not_found": 0,
+    "error": 3
+  },
+  "results": [
+    {
+      "id": "tegallalang-rice-terrace",
+      "name": "Tegallalang Rice Terrace",
+      "status": "weak_match",
+      "query": "Tegallalang Rice Terrace, Bali, Indonesia",
+      "candidates": [
+        {
+          "displayName": "Bali, Badung, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.83292,
+            "lng": 115.147651
+          },
+          "deltaKm": 46.952,
+          "score": 0.1,
+          "nameScore": 0,
+          "type": null
+        }
+      ]
+    },
+    {
+      "id": "sacred-monkey-forest",
+      "name": "Sacred Monkey Forest Sanctuary",
+      "status": "weak_match",
+      "query": "Sacred Monkey Forest Sanctuary, Bali, Indonesia",
+      "candidates": [
+        {
+          "displayName": "Mandala Wisata Wenara Wana, Ubud, Kecamatan Ubud, Gianyar, Bali, Nusa Tenggara, 80571, Indonesia",
+          "coordinates": {
+            "lat": -8.5187349,
+            "lng": 115.2583202
+          },
+          "deltaKm": 0.021,
+          "score": 0.448,
+          "nameScore": 0,
+          "type": "forest"
+        }
+      ]
+    },
+    {
+      "id": "tirta-empul",
+      "name": "Tirta Empul Temple",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Tirta Empul Temple, Bali, Indonesia",
+      "displayName": "Templo Tirta Empul, Jalan Raya Penelokan, Temaga, Penglumbaran, Gianyar, Bali, Nusa Tenggara, 80661, Indonesia",
+      "placeId": "31119377",
+      "type": "attraction",
+      "class": "tourism",
+      "current": {
+        "lat": -8.4156,
+        "lng": 115.3153
+      },
+      "suggested": {
+        "lat": -8.4149338,
+        "lng": 115.3160258
+      },
+      "deltaKm": 0.109,
+      "score": 1.06,
+      "alternatives": []
+    },
+    {
+      "id": "goa-gajah",
+      "name": "Goa Gajah (Elephant Cave)",
+      "status": "weak_match",
+      "query": "Goa Gajah (Elephant Cave), Bali, Indonesia",
+      "candidates": [
+        {
+          "displayName": "Goa Gajah, Gianyar, Gianyar, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.52355,
+            "lng": 115.286708
+          },
+          "deltaKm": 0.054,
+          "score": 0.612,
+          "nameScore": 0.333,
+          "type": null
+        },
+        {
+          "displayName": "Goa Garba, Gianyar, Gianyar, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.507528,
+            "lng": 115.303624
+          },
+          "deltaKm": 2.541,
+          "score": 0.228,
+          "nameScore": 0,
+          "type": null
+        },
+        {
+          "displayName": "Goa Jepang, Klungkung, Klungkung, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.552533,
+            "lng": 115.381412
+          },
+          "deltaKm": 10.848,
+          "score": 0.1,
+          "nameScore": 0,
+          "type": null
+        }
+      ]
+    },
+    {
+      "id": "campuhan-ridge-walk",
+      "name": "Campuhan Ridge Walk",
+      "status": "matched",
+      "confidence": "warn",
+      "query": "Campuhan Ridge Walk, Bali, Indonesia",
+      "displayName": "Campuhan Ridge Walk, Ubud, Gianyar, Bali, Nusa Tenggara, 80571, Indonesia",
+      "placeId": "30802838",
+      "type": "path",
+      "class": "highway",
+      "current": {
+        "lat": -8.506,
+        "lng": 115.2536
+      },
+      "suggested": {
+        "lat": -8.4990226,
+        "lng": 115.2551592
+      },
+      "deltaKm": 0.795,
+      "score": 0.88,
+      "alternatives": [
+        {
+          "displayName": "Campuhan Ridge Walk, Ubud, Gianyar, Bali, Nusa Tenggara, 80571, Indonesia",
+          "coordinates": {
+            "lat": -8.4951181,
+            "lng": 115.2557751
+          },
+          "deltaKm": 1.233,
+          "score": 0.842,
+          "nameScore": 1,
+          "type": "steps"
+        },
+        {
+          "displayName": "Campuhan Ridge Walk, Ubud, Gianyar, Bali, Nusa Tenggara, 80571, Indonesia",
+          "coordinates": {
+            "lat": -8.4950213,
+            "lng": 115.2558368
+          },
+          "deltaKm": 1.245,
+          "score": 0.841,
+          "nameScore": 1,
+          "type": "footway"
+        }
+      ]
+    },
+    {
+      "id": "tegenungan-waterfall",
+      "name": "Tegenungan Waterfall",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Tegenungan Waterfall, Bali, Indonesia",
+      "displayName": "Tegenungan Blangsinga, Sukawati, Gianyar, Bali, Nusa Tenggara, 80582, Indonesia",
+      "placeId": "30665828",
+      "type": "waterfall",
+      "class": "waterway",
+      "current": {
+        "lat": -8.5754,
+        "lng": 115.2892
+      },
+      "suggested": {
+        "lat": -8.5752294,
+        "lng": 115.2907014
+      },
+      "deltaKm": 0.166,
+      "score": 1.055,
+      "alternatives": []
+    },
+    {
+      "id": "tukad-cepung-waterfall",
+      "name": "Tukad Cepung Waterfall",
+      "status": "matched",
+      "confidence": "warn",
+      "query": "Tukad Cepung Waterfall, Bali, Indonesia",
+      "displayName": "Air Terjun Tukad Cepung, Undisan, Bangli, Bali, Nusa Tenggara, 80863, Indonesia",
+      "placeId": "30515575",
+      "type": "waterfall",
+      "class": "waterway",
+      "current": {
+        "lat": -8.4364,
+        "lng": 115.3877
+      },
+      "suggested": {
+        "lat": -8.4423213,
+        "lng": 115.3879035
+      },
+      "deltaKm": 0.659,
+      "score": 1.012,
+      "alternatives": []
+    },
+    {
+      "id": "kanto-lampo-waterfall",
+      "name": "Kanto Lampo Waterfall",
+      "status": "matched",
+      "confidence": "warn",
+      "query": "Kanto Lampo Waterfall, Bali, Indonesia",
+      "displayName": "Kanto Lampo, Beng, Gianyar, Bali, Nusa Tenggara, 80512, Indonesia",
+      "placeId": "30583051",
+      "type": "waterfall",
+      "class": "waterway",
+      "current": {
+        "lat": -8.5372,
+        "lng": 115.317
+      },
+      "suggested": {
+        "lat": -8.5323414,
+        "lng": 115.3329825
+      },
+      "deltaKm": 1.839,
+      "score": 0.909,
+      "alternatives": []
+    },
+    {
+      "id": "gunung-kawi",
+      "name": "Gunung Kawi Temple",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Gunung Kawi Temple, Bali, Indonesia",
+      "displayName": "Gunung Kawi, Gianyar, Gianyar, Bali, Indonesia",
+      "placeId": "332305578385",
+      "type": null,
+      "class": null,
+      "current": {
+        "lat": -8.4249,
+        "lng": 115.3122
+      },
+      "suggested": {
+        "lat": -8.422595,
+        "lng": 115.312611
+      },
+      "deltaKm": 0.26,
+      "score": 0.927,
+      "alternatives": [
+        {
+          "displayName": "Gunung Kawi Sebatu, Gianyar, Gianyar, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.405268,
+            "lng": 115.293615
+          },
+          "deltaKm": 2.991,
+          "score": 0.688,
+          "nameScore": 1,
+          "type": null
+        },
+        {
+          "displayName": "Gang Gunung Kawi, Denpasar, Denpasar, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.6286,
+            "lng": 115.187076
+          },
+          "deltaKm": 26.502,
+          "score": 0.6,
+          "nameScore": 1,
+          "type": null
+        }
+      ]
+    },
+    {
+      "id": "yoga-barn-ubud",
+      "name": "The Yoga Barn",
+      "status": "matched",
+      "confidence": "warn",
+      "query": "The Yoga Barn, Bali, Indonesia",
+      "displayName": "The Yoga Barn Shortcut - Ubud to Peliatan, Peliatan, Kecamatan Ubud, Gianyar, Bali, Nusa Tenggara, 80515, Indonesia",
+      "placeId": "30597657",
+      "type": "steps",
+      "class": "highway",
+      "current": {
+        "lat": -8.514,
+        "lng": 115.2652
+      },
+      "suggested": {
+        "lat": -8.5191853,
+        "lng": 115.2650592
+      },
+      "deltaKm": 0.577,
+      "score": 0.9,
+      "alternatives": [
+        {
+          "displayName": "The Yoga Barn Shortcut - Ubud to Peliatan, Peliatan, Kecamatan Ubud, Gianyar, Bali, Nusa Tenggara, 80515, Indonesia",
+          "coordinates": {
+            "lat": -8.5192434,
+            "lng": 115.2659771
+          },
+          "deltaKm": 0.589,
+          "score": 0.898,
+          "nameScore": 1,
+          "type": "footway"
+        },
+        {
+          "displayName": "The Yoga Barn Shortcut - Ubud to Peliatan, Peliatan, Kecamatan Ubud, Gianyar, Bali, Nusa Tenggara, 80515, Indonesia",
+          "coordinates": {
+            "lat": -8.5194569,
+            "lng": 115.2661052
+          },
+          "deltaKm": 0.615,
+          "score": 0.896,
+          "nameScore": 1,
+          "type": "service"
+        }
+      ]
+    },
+    {
+      "id": "seniman-coffee-studio",
+      "name": "Seniman Coffee Studio",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Seniman Coffee Studio, Bali, Indonesia",
+      "displayName": "Seniman Coffee Studio, 5, Jalan Sri Wedari, Kutuh, Ubud, Kecamatan Ubud, Gianyar, Bali, Nusa Tenggara, 80571, Indonesia",
+      "placeId": "31141421",
+      "type": "cafe",
+      "class": "amenity",
+      "current": {
+        "lat": -8.5041,
+        "lng": 115.2637
+      },
+      "suggested": {
+        "lat": -8.5067323,
+        "lng": 115.2651985
+      },
+      "deltaKm": 0.336,
+      "score": 1.041,
+      "alternatives": []
+    },
+    {
+      "id": "echo-beach-canggu",
+      "name": "Echo Beach",
+      "status": "matched",
+      "confidence": "warn",
+      "query": "Echo Beach, Bali, Indonesia",
+      "displayName": "Echo Beach, 03, Canggu, Kuta Utara, Badung, Bali, Nusa Tenggara, 80351, Indonesia",
+      "placeId": "30572532",
+      "type": "beach",
+      "class": "natural",
+      "current": {
+        "lat": -8.6516,
+        "lng": 115.129
+      },
+      "suggested": {
+        "lat": -8.6548064,
+        "lng": 115.1248943
+      },
+      "deltaKm": 0.575,
+      "score": 1.02,
+      "alternatives": []
+    },
+    {
+      "id": "batu-bolong-beach",
+      "name": "Batu Bolong Beach",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Batu Bolong Beach, Bali, Indonesia",
+      "displayName": "Pantai Batu Bolong, Canggu, Kuta Utara, Badung, Bali, Nusa Tenggara, 08456, Indonesia",
+      "placeId": "31221886",
+      "type": "beach",
+      "class": "natural",
+      "current": {
+        "lat": -8.6559,
+        "lng": 115.129
+      },
+      "suggested": {
+        "lat": -8.6595273,
+        "lng": 115.1301437
+      },
+      "deltaKm": 0.422,
+      "score": 1.033,
+      "alternatives": []
+    },
+    {
+      "id": "la-brisa-canggu",
+      "name": "La Brisa",
+      "status": "matched",
+      "confidence": "warn",
+      "query": "La Brisa, Bali, Indonesia",
+      "displayName": "La brisa, Jalan Pantai Batu Mejan, Canggu, Kuta Utara, Badung, Bali, Nusa Tenggara, 08456, Indonesia",
+      "placeId": "30572511",
+      "type": "restaurant",
+      "class": "amenity",
+      "current": {
+        "lat": -8.6478,
+        "lng": 115.1264
+      },
+      "suggested": {
+        "lat": -8.6545804,
+        "lng": 115.1248107
+      },
+      "deltaKm": 0.774,
+      "score": 1.002,
+      "alternatives": []
+    },
+    {
+      "id": "crate-cafe-canggu",
+      "name": "Crate Café",
+      "status": "matched",
+      "confidence": "warn",
+      "query": "Crate Café, Bali, Indonesia",
+      "displayName": "Crate Cafe, Jalan Canggu Padang Linjong, Canggu, Kuta Utara, Badung, Bali, Nusa Tenggara, 80351, Indonesia",
+      "placeId": "30921891",
+      "type": "cafe",
+      "class": "amenity",
+      "current": {
+        "lat": -8.642,
+        "lng": 115.137
+      },
+      "suggested": {
+        "lat": -8.6486931,
+        "lng": 115.1371971
+      },
+      "deltaKm": 0.745,
+      "score": 1.005,
+      "alternatives": []
+    },
+    {
+      "id": "seminyak-beach",
+      "name": "Seminyak Beach",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Seminyak Beach, Bali, Indonesia",
+      "displayName": "Pantai Seminyak, Gang Sinta, Seminyak, Kuta, Badung, Bali, Nusa Tenggara, 80316, Indonesia",
+      "placeId": "30831025",
+      "type": "beach",
+      "class": "tourism",
+      "current": {
+        "lat": -8.6905,
+        "lng": 115.16
+      },
+      "suggested": {
+        "lat": -8.6901643,
+        "lng": 115.1565532
+      },
+      "deltaKm": 0.381,
+      "score": 1.037,
+      "alternatives": [
+        {
+          "displayName": "Pantai Seminyak, Seminyak, Kuta, Kuta Utara, Badung, Bali, Nusa Tenggara, Indonesia",
+          "coordinates": {
+            "lat": -8.6841121,
+            "lng": 115.1523646
+          },
+          "deltaKm": 1.1,
+          "score": 0.974,
+          "nameScore": 1,
+          "type": "beach"
+        }
+      ]
+    },
+    {
+      "id": "petitenget-temple",
+      "name": "Pura Petitenget",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Pura Petitenget, Bali, Indonesia",
+      "displayName": "Pura Petitenget, Jalan Petitenget, Kerobokan Kelod, Kuta Utara, Badung, Bali, Nusa Tenggara, 83061, Indonesia",
+      "placeId": "30902081",
+      "type": "place_of_worship",
+      "class": "amenity",
+      "current": {
+        "lat": -8.6797,
+        "lng": 115.1519
+      },
+      "suggested": {
+        "lat": -8.6820863,
+        "lng": 115.1526718
+      },
+      "deltaKm": 0.279,
+      "score": 1.046,
+      "alternatives": [
+        {
+          "displayName": "Pura Petitenget, Raya Pantai Pererenan, Pengembungan, Canggu, Munggu, Badung, Bali, Nusa Tenggara, 80351, Indonesia",
+          "coordinates": {
+            "lat": -8.6325001,
+            "lng": 115.1340654
+          },
+          "deltaKm": 5.603,
+          "score": 0.72,
+          "nameScore": 1,
+          "type": "place_of_worship"
+        }
+      ]
+    },
+    {
+      "id": "double-six-sunset",
+      "name": "Double Six Beach",
+      "status": "matched",
+      "confidence": "warn",
+      "query": "Double Six Beach, Bali, Indonesia",
+      "displayName": "Double Six Beach, Jalan Double Six, Seminyak, Kuta, Badung, Bali, Nusa Tenggara, 80316, Indonesia",
+      "placeId": "30527283",
+      "type": "beach",
+      "class": "tourism",
+      "current": {
+        "lat": -8.7043,
+        "lng": 115.165
+      },
+      "suggested": {
+        "lat": -8.693043,
+        "lng": 115.1584226
+      },
+      "deltaKm": 1.446,
+      "score": 0.944,
+      "alternatives": []
+    },
+    {
+      "id": "sanur-beach-walk",
+      "name": "Sanur Beach Walk",
+      "status": "matched",
+      "confidence": "warn",
+      "query": "Sanur Beach Walk, Bali, Indonesia",
+      "displayName": "Sanur Port, Jalan Sanur Beach Street Walk, Sanur Kaja, Denpasar Selatan, Denpasar, Bali, Nusa Tenggara, 80030, Indonesia",
+      "placeId": "31154136",
+      "type": "ticket",
+      "class": "shop",
+      "current": {
+        "lat": -8.687,
+        "lng": 115.2626
+      },
+      "suggested": {
+        "lat": -8.6698778,
+        "lng": 115.2608485
+      },
+      "deltaKm": 1.914,
+      "score": 0.783,
+      "alternatives": [
+        {
+          "displayName": "Pelabuhan Sanur, Jalan Sanur Beach Street Walk, Sanur Kaja, Denpasar Selatan, Denpasar, Bali, Nusa Tenggara, 80030, Indonesia",
+          "coordinates": {
+            "lat": -8.6696303,
+            "lng": 115.2608321
+          },
+          "deltaKm": 1.941,
+          "score": 0.78,
+          "nameScore": 1,
+          "type": "yes"
+        }
+      ]
+    },
+    {
+      "id": "bali-museum-denpasar",
+      "name": "Bali Museum",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Bali Museum, Bali, Indonesia",
+      "displayName": "Museum Bali, Gang I, Dangin Puri, Denpasar Timur, Denpasar, Bali, Nusa Tenggara, 80232, Indonesia",
+      "placeId": "30848494",
+      "type": "museum",
+      "class": "tourism",
+      "current": {
+        "lat": -8.6572,
+        "lng": 115.2167
+      },
+      "suggested": {
+        "lat": -8.6575395,
+        "lng": 115.2186817
+      },
+      "deltaKm": 0.221,
+      "score": 1.051,
+      "alternatives": [
+        {
+          "displayName": "Bali Shell Museum, Sunset Road, Pemogan, Denpasar Selatan, Denpasar, Bali, Nusa Tenggara, 80612, Indonesia",
+          "coordinates": {
+            "lat": -8.7142647,
+            "lng": 115.1867151
+          },
+          "deltaKm": 7.15,
+          "score": 0.72,
+          "nameScore": 1,
+          "type": "museum"
+        },
+        {
+          "displayName": "The Ogoh Ogoh Bali Museum, 1, Jalan Ayodia, Mengwi, Badung, Bali, Nusa Tenggara, 80351, Indonesia",
+          "coordinates": {
+            "lat": -8.5437371,
+            "lng": 115.1706193
+          },
+          "deltaKm": 13.596,
+          "score": 0.72,
+          "nameScore": 1,
+          "type": "museum"
+        }
+      ]
+    },
+    {
+      "id": "uluwatu-temple",
+      "name": "Uluwatu Temple",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Uluwatu Temple, Bali, Indonesia",
+      "displayName": "Pura Luhur Uluwatu, Jalan Raya Uluwatu, Uluwatu, Pecatu, Kuta Selatan, Badung, Bali, Nusa Tenggara, 80361, Indonesia",
+      "placeId": "31207189",
+      "type": "place_of_worship",
+      "class": "amenity",
+      "current": {
+        "lat": -8.8291,
+        "lng": 115.0849
+      },
+      "suggested": {
+        "lat": -8.8293693,
+        "lng": 115.0843428
+      },
+      "deltaKm": 0.068,
+      "score": 1.064,
+      "alternatives": []
+    },
+    {
+      "id": "padang-padang-beach",
+      "name": "Padang Padang Beach",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Padang Padang Beach, Bali, Indonesia",
+      "displayName": "Pantai Padang Padang, Pecatu, Kuta Selatan, Badung, Bali, Nusa Tenggara, 80361, Indonesia",
+      "placeId": "30537877",
+      "type": "beach",
+      "class": "natural",
+      "current": {
+        "lat": -8.8106,
+        "lng": 115.103
+      },
+      "suggested": {
+        "lat": -8.8112154,
+        "lng": 115.103637
+      },
+      "deltaKm": 0.098,
+      "score": 1.061,
+      "alternatives": []
+    },
+    {
+      "id": "suluban-beach",
+      "name": "Suluban Beach",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Suluban Beach, Bali, Indonesia",
+      "displayName": "Suluban Beach, Jalan Pantai Suluban, Uluwatu, Pecatu, Kuta Selatan, Badung, Bali, Nusa Tenggara, Indonesia",
+      "placeId": "30507824",
+      "type": "attraction",
+      "class": "tourism",
+      "current": {
+        "lat": -8.8149,
+        "lng": 115.0885
+      },
+      "suggested": {
+        "lat": -8.8155477,
+        "lng": 115.088317
+      },
+      "deltaKm": 0.075,
+      "score": 1.063,
+      "alternatives": [
+        {
+          "displayName": "Nyang Nyang, Uluwatu, Pecatu, Kuta Selatan, Badung, Bali, Nusa Tenggara, Indonesia",
+          "coordinates": {
+            "lat": -8.8397509,
+            "lng": 115.0943268
+          },
+          "deltaKm": 2.836,
+          "score": 0.322,
+          "nameScore": 0,
+          "type": "beach"
+        }
+      ]
+    },
+    {
+      "id": "melasti-beach",
+      "name": "Melasti Beach",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Melasti Beach, Bali, Indonesia",
+      "displayName": "Pantai Melasti, Ungasan, Kuta Selatan, Badung, Bali, Nusa Tenggara, Indonesia",
+      "placeId": "30835943",
+      "type": "beach",
+      "class": "natural",
+      "current": {
+        "lat": -8.8481,
+        "lng": 115.1585
+      },
+      "suggested": {
+        "lat": -8.8482915,
+        "lng": 115.1575716
+      },
+      "deltaKm": 0.104,
+      "score": 1.061,
+      "alternatives": []
+    },
+    {
+      "id": "pandawa-beach",
+      "name": "Pandawa Beach",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Pandawa Beach, Bali, Indonesia",
+      "displayName": "Pantai Pandawa, Kutuh, Kuta Selatan, Badung, Bali, Nusa Tenggara, Indonesia",
+      "placeId": "30882790",
+      "type": "beach",
+      "class": "natural",
+      "current": {
+        "lat": -8.848,
+        "lng": 115.188
+      },
+      "suggested": {
+        "lat": -8.8458046,
+        "lng": 115.1850876
+      },
+      "deltaKm": 0.402,
+      "score": 1.035,
+      "alternatives": []
+    },
+    {
+      "id": "nyang-nyang-beach",
+      "name": "Nyang Nyang Beach",
+      "status": "matched",
+      "confidence": "warn",
+      "query": "Nyang Nyang Beach, Bali, Indonesia",
+      "displayName": "Nyang Nyang, Uluwatu, Pecatu, Kuta Selatan, Badung, Bali, Nusa Tenggara, Indonesia",
+      "placeId": "31487775",
+      "type": "beach",
+      "class": "natural",
+      "current": {
+        "lat": -8.8404,
+        "lng": 115.1032
+      },
+      "suggested": {
+        "lat": -8.8397509,
+        "lng": 115.0943268
+      },
+      "deltaKm": 0.978,
+      "score": 0.984,
+      "alternatives": []
+    },
+    {
+      "id": "green-bowl-beach",
+      "name": "Green Bowl Beach",
+      "status": "matched",
+      "confidence": "warn",
+      "query": "Green Bowl Beach, Bali, Indonesia",
+      "displayName": "Green bowl beach, Jalan Raya Bali Cliff, Ungasan, Kuta Selatan, Badung, Bali, Nusa Tenggara, 80366, Indonesia",
+      "placeId": "30504232",
+      "type": "attraction",
+      "class": "tourism",
+      "current": {
+        "lat": -8.8467,
+        "lng": 115.177
+      },
+      "suggested": {
+        "lat": -8.8486313,
+        "lng": 115.1710541
+      },
+      "deltaKm": 0.688,
+      "score": 1.01,
+      "alternatives": []
+    },
+    {
+      "id": "jimbaran-seafood-bay",
+      "name": "Jimbaran Bay Seafood",
+      "status": "matched",
+      "confidence": "far",
+      "query": "Jimbaran Bay Seafood, Bali, Indonesia",
+      "displayName": "Jimbaran Bay Seafood Club, Jalan Pantai Kedonganan, Kedonganan, Kuta, Kuta Selatan, Badung, Bali, Nusa Tenggara, 80361, Indonesia",
+      "placeId": "30495142",
+      "type": "restaurant",
+      "class": "amenity",
+      "current": {
+        "lat": -8.79,
+        "lng": 115.165
+      },
+      "suggested": {
+        "lat": -8.7594106,
+        "lng": 115.1692206
+      },
+      "deltaKm": 3.433,
+      "score": 0.77,
+      "alternatives": []
+    },
+    {
+      "id": "lempuyang-temple",
+      "name": "Pura Lempuyang Luhur",
+      "status": "matched",
+      "confidence": "warn",
+      "query": "Pura Lempuyang Luhur, Bali, Indonesia",
+      "displayName": "Pura Lempuyang Luhur, Temple Path Steps, Kecamatan Abang, Sega, Kecamatan Abang, Karangasem, Bali, Nusa Tenggara, Indonesia",
+      "placeId": "30446614",
+      "type": "place_of_worship",
+      "class": "amenity",
+      "current": {
+        "lat": -8.3922,
+        "lng": 115.6317
+      },
+      "suggested": {
+        "lat": -8.3951892,
+        "lng": 115.6480606
+      },
+      "deltaKm": 1.83,
+      "score": 0.91,
+      "alternatives": []
+    },
+    {
+      "id": "tirta-gangga",
+      "name": "Tirta Gangga Water Palace",
+      "status": "weak_match",
+      "query": "Tirta Gangga Water Palace, Bali, Indonesia",
+      "candidates": [
+        {
+          "displayName": "Gangga Homestay, Jalan Petaluh, Munduk, Buleleng, Bali, 81152, Indonesia",
+          "coordinates": {
+            "lat": -8.275525,
+            "lng": 115.058506
+          },
+          "deltaKm": 60.118,
+          "score": 0.35,
+          "nameScore": 0.5,
+          "type": null
+        },
+        {
+          "displayName": "Gangga, Munduk, Buleleng, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.275535,
+            "lng": 115.058439
+          },
+          "deltaKm": 60.125,
+          "score": 0.35,
+          "nameScore": 0.5,
+          "type": null
+        },
+        {
+          "displayName": "Yeh Gangga Beach, Tabanan, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.590801,
+            "lng": 115.068111
+          },
+          "deltaKm": 60.442,
+          "score": 0.35,
+          "nameScore": 0.5,
+          "type": null
+        }
+      ]
+    },
+    {
+      "id": "taman-ujung",
+      "name": "Taman Ujung Water Palace",
+      "status": "matched",
+      "confidence": "warn",
+      "query": "Taman Ujung Water Palace, Bali, Indonesia",
+      "displayName": "Taman Ujung Water Palace, Ujung Tengah, Amlapura, Kecamatan Karangasem, Karangasem, Bali, Nusa Tenggara, Indonesia",
+      "placeId": "31391069",
+      "type": "garden",
+      "class": "leisure",
+      "current": {
+        "lat": -8.4587,
+        "lng": 115.6207
+      },
+      "suggested": {
+        "lat": -8.464546,
+        "lng": 115.6304955
+      },
+      "deltaKm": 1.258,
+      "score": 0.96,
+      "alternatives": []
+    },
+    {
+      "id": "besakih-temple",
+      "name": "Pura Besakih",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Pura Besakih, Bali, Indonesia",
+      "displayName": "Pura Besakih, Trail Besakih - Gunung Agung, Kedulingkretek, Kecamatan Rendang, Besakih, Kecamatan Rendang, Karangasem, Bali, Nusa Tenggara, Indonesia",
+      "placeId": "30706097",
+      "type": "place_of_worship",
+      "class": "amenity",
+      "current": {
+        "lat": -8.3739,
+        "lng": 115.452
+      },
+      "suggested": {
+        "lat": -8.3753612,
+        "lng": 115.4507063
+      },
+      "deltaKm": 0.216,
+      "score": 1.051,
+      "alternatives": []
+    },
+    {
+      "id": "sidemen-valley",
+      "name": "Sidemen Valley",
+      "status": "weak_match",
+      "query": "Sidemen Valley, Bali, Indonesia",
+      "candidates": [
+        {
+          "displayName": "sideman, Karang Asem, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.4842,
+            "lng": 115.4452
+          },
+          "deltaKm": 2.3,
+          "score": 0.249,
+          "nameScore": 0,
+          "type": null
+        }
+      ]
+    },
+    {
+      "id": "amed-beach",
+      "name": "Amed",
+      "status": "matched",
+      "confidence": "warn",
+      "query": "Amed, Bali, Indonesia",
+      "displayName": "Amed, Kecamatan Abang, Karangasem, Bali, Nusa Tenggara, 80852, Indonesia",
+      "placeId": "30718539",
+      "type": "hamlet",
+      "class": "place",
+      "current": {
+        "lat": -8.3389,
+        "lng": 115.6553
+      },
+      "suggested": {
+        "lat": -8.334584,
+        "lng": 115.6409359
+      },
+      "deltaKm": 1.652,
+      "score": 0.805,
+      "alternatives": []
+    },
+    {
+      "id": "tulamben-liberty-wreck",
+      "name": "USAT Liberty Wreck, Tulamben",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "USAT Liberty Wreck, Tulamben, Bali, Indonesia",
+      "displayName": "USAT Liberty Wreck, Jalan Raya Amlapura-Singaraja, Tulamben, Kecamatan Kubu, Karangasem, Bali, Nusa Tenggara, 80853, Indonesia",
+      "placeId": "30515537",
+      "type": "attraction",
+      "class": "tourism",
+      "current": {
+        "lat": -8.2745,
+        "lng": 115.5938
+      },
+      "suggested": {
+        "lat": -8.2739054,
+        "lng": 115.5926122
+      },
+      "deltaKm": 0.146,
+      "score": 1.057,
+      "alternatives": []
+    },
+    {
+      "id": "virgin-beach",
+      "name": "Virgin Beach (Pasir Putih)",
+      "status": "weak_match",
+      "query": "Virgin Beach (Pasir Putih), Bali, Indonesia",
+      "candidates": [
+        {
+          "displayName": "White sand beach / Virgin Beach, Karangasem, Karang Asem, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.500055,
+            "lng": 115.610999
+          },
+          "deltaKm": 4.902,
+          "score": 0.267,
+          "nameScore": 0.333,
+          "type": null
+        }
+      ]
+    },
+    {
+      "id": "sekumpul-waterfall",
+      "name": "Sekumpul Waterfall",
+      "status": "matched",
+      "confidence": "far",
+      "query": "Sekumpul Waterfall, Bali, Indonesia",
+      "displayName": "Sekumpul Waterfall, Sekumpul, Sawan, Buleleng, Bali, Nusa Tenggara, 81171, Indonesia",
+      "placeId": "30616211",
+      "type": "waterfall",
+      "class": "waterway",
+      "current": {
+        "lat": -8.156,
+        "lng": 115.193
+      },
+      "suggested": {
+        "lat": -8.1778099,
+        "lng": 115.1826914
+      },
+      "deltaKm": 2.677,
+      "score": 0.836,
+      "alternatives": []
+    },
+    {
+      "id": "banyumala-twin-waterfall",
+      "name": "Banyumala Twin Waterfall",
+      "status": "weak_match",
+      "query": "Banyumala Twin Waterfall, Bali, Indonesia",
+      "candidates": [
+        {
+          "displayName": "Twin Lake, Buleleng, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.246106,
+            "lng": 115.100784
+          },
+          "deltaKm": 4.715,
+          "score": 0.35,
+          "nameScore": 0.5,
+          "type": null
+        },
+        {
+          "displayName": "Warung Liko Twins, Banjar Badung, Badung, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.680059,
+            "lng": 115.164205
+          },
+          "deltaKm": 49.233,
+          "score": 0.35,
+          "nameScore": 0.5,
+          "type": null
+        },
+        {
+          "displayName": "Twin Island Dive, Seaweed Road, Lembongan Village, Lembongan Kawan, Klungkung, Bali, 80771, Indonesia",
+          "coordinates": {
+            "lat": -8.693332,
+            "lng": 115.448138
+          },
+          "deltaKm": 60.774,
+          "score": 0.35,
+          "nameScore": 0.5,
+          "type": null
+        }
+      ]
+    },
+    {
+      "id": "munduk-waterfall",
+      "name": "Munduk Waterfall",
+      "status": "matched",
+      "confidence": "warn",
+      "query": "Munduk Waterfall, Bali, Indonesia",
+      "displayName": "Munduk / Red Coral, Buleleng, Bali, Nusa Tenggara, 81152, Indonesia",
+      "placeId": "30809697",
+      "type": "waterfall",
+      "class": "waterway",
+      "current": {
+        "lat": -8.265,
+        "lng": 115.077
+      },
+      "suggested": {
+        "lat": -8.2571061,
+        "lng": 115.0703818
+      },
+      "deltaKm": 1.141,
+      "score": 0.97,
+      "alternatives": [
+        {
+          "displayName": "Munduk Tutub Waterfall, Buleleng, Bali, Nusa Tenggara, 81152, Indonesia",
+          "coordinates": {
+            "lat": -8.2535298,
+            "lng": 115.0792203
+          },
+          "deltaKm": 1.299,
+          "score": 0.956,
+          "nameScore": 1,
+          "type": "waterfall"
+        }
+      ]
+    },
+    {
+      "id": "gitgit-waterfall",
+      "name": "Gitgit Waterfall",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Gitgit Waterfall, Bali, Indonesia",
+      "displayName": "Gitgit Waterfall, Gitgit, Buleleng, Bali, Nusa Tenggara, Indonesia",
+      "placeId": "31421504",
+      "type": "waterfall",
+      "class": "waterway",
+      "current": {
+        "lat": -8.193,
+        "lng": 115.133
+      },
+      "suggested": {
+        "lat": -8.1935621,
+        "lng": 115.1350753
+      },
+      "deltaKm": 0.237,
+      "score": 1.049,
+      "alternatives": [
+        {
+          "displayName": "Gitgit Waterfall, Buleleng, Bali, Nusa Tenggara, 81162, Indonesia",
+          "coordinates": {
+            "lat": -8.203877,
+            "lng": 115.1384533
+          },
+          "deltaKm": 1.35,
+          "score": 0.952,
+          "nameScore": 1,
+          "type": "waterfall"
+        }
+      ]
+    },
+    {
+      "id": "ulun-danu-beratan",
+      "name": "Pura Ulun Danu Beratan",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Pura Ulun Danu Beratan, Bali, Indonesia",
+      "displayName": "Pura Ulun Danu Beratan, Jalan Perean Tengah, Luwus, Bukitcatu, Bedugul, Tabanan, Bali, Nusa Tenggara, 81162, Indonesia",
+      "placeId": "31414728",
+      "type": "place_of_worship",
+      "class": "amenity",
+      "current": {
+        "lat": -8.2751,
+        "lng": 115.1668
+      },
+      "suggested": {
+        "lat": -8.2755069,
+        "lng": 115.16626
+      },
+      "deltaKm": 0.075,
+      "score": 1.063,
+      "alternatives": []
+    },
+    {
+      "id": "wanagiri-hidden-hills",
+      "name": "Wanagiri Hidden Hills",
+      "status": "weak_match",
+      "query": "Wanagiri Hidden Hills, Bali, Indonesia",
+      "candidates": [
+        {
+          "displayName": "Wanagiri, Tabanan, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.41,
+            "lng": 115.0556
+          },
+          "deltaKm": 20.664,
+          "score": 0.267,
+          "nameScore": 0.333,
+          "type": null
+        },
+        {
+          "displayName": "Wanagiri, Badung, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.8206,
+            "lng": 115.1493
+          },
+          "deltaKm": 64.009,
+          "score": 0.267,
+          "nameScore": 0.333,
+          "type": null
+        }
+      ]
+    },
+    {
+      "id": "lovina-beach",
+      "name": "Lovina Beach",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Lovina Beach, Bali, Indonesia",
+      "displayName": "Pantai Lovina, Kalibubuk, Kaliasem, Buleleng, Bali, Nusa Tenggara, Indonesia",
+      "placeId": "30668155",
+      "type": "beach",
+      "class": "natural",
+      "current": {
+        "lat": -8.162,
+        "lng": 115.025
+      },
+      "suggested": {
+        "lat": -8.1609242,
+        "lng": 115.0245321
+      },
+      "deltaKm": 0.13,
+      "score": 1.059,
+      "alternatives": [
+        {
+          "displayName": "Lovina Beach, Kalibubuk, Kaliasem, Buleleng, Bali, Nusa Tenggara, 81119, Indonesia",
+          "coordinates": {
+            "lat": -8.1610224,
+            "lng": 115.0243334
+          },
+          "deltaKm": 0.131,
+          "score": 1.059,
+          "nameScore": 1,
+          "type": "beach"
+        },
+        {
+          "displayName": "Lovina Beach, Kalibubuk, Kaliasem, Buleleng, Bali, Nusa Tenggara, Indonesia",
+          "coordinates": {
+            "lat": -8.1593111,
+            "lng": 115.0256024
+          },
+          "deltaKm": 0.306,
+          "score": 1.043,
+          "nameScore": 1,
+          "type": "beach"
+        }
+      ]
+    },
+    {
+      "id": "brahmavihara-arama",
+      "name": "Brahmavihara Arama",
+      "status": "error",
+      "error": "404 {\"error\":\"Unable to geocode\"}"
+    },
+    {
+      "id": "tanah-lot",
+      "name": "Tanah Lot",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Tanah Lot, Bali, Indonesia",
+      "displayName": "Tanah Lot, Jalan Enjung Pura, Batugaing, Tabanan, Bali, Nusa Tenggara, 82121, Indonesia",
+      "placeId": "30925930",
+      "type": "place_of_worship",
+      "class": "amenity",
+      "current": {
+        "lat": -8.6212,
+        "lng": 115.0868
+      },
+      "suggested": {
+        "lat": -8.6212249,
+        "lng": 115.0868804
+      },
+      "deltaKm": 0.009,
+      "score": 1.069,
+      "alternatives": [
+        {
+          "displayName": "Tanah Lot, Jalan Enjung Pura, Batugaing, Tabanan, Bali, Nusa Tenggara, 82121, Indonesia",
+          "coordinates": {
+            "lat": -8.6212286,
+            "lng": 115.0868849
+          },
+          "deltaKm": 0.01,
+          "score": 1.069,
+          "nameScore": 1,
+          "type": "place_of_worship"
+        }
+      ]
+    },
+    {
+      "id": "jatiluwih-rice-terraces",
+      "name": "Jatiluwih Rice Terraces",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Jatiluwih Rice Terraces, Bali, Indonesia",
+      "displayName": "Jatiluwih Rice Terraces, Jalan Tabanan 3, Tabanan, Bali, Nusa Tenggara, 82152, Indonesia",
+      "placeId": "30531059",
+      "type": "events_venue",
+      "class": "amenity",
+      "current": {
+        "lat": -8.3706,
+        "lng": 115.133
+      },
+      "suggested": {
+        "lat": -8.3701966,
+        "lng": 115.1311962
+      },
+      "deltaKm": 0.203,
+      "score": 1.052,
+      "alternatives": []
+    },
+    {
+      "id": "pura-taman-ayun",
+      "name": "Pura Taman Ayun",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Pura Taman Ayun, Bali, Indonesia",
+      "displayName": "Pura Taman Ayun, 10, Gang Nuri VI, Mengwi, Badung, Bali, Nusa Tenggara, 80351, Indonesia",
+      "placeId": "30866291",
+      "type": "place_of_worship",
+      "class": "amenity",
+      "current": {
+        "lat": -8.541,
+        "lng": 115.172
+      },
+      "suggested": {
+        "lat": -8.5418493,
+        "lng": 115.1724926
+      },
+      "deltaKm": 0.109,
+      "score": 1.06,
+      "alternatives": [
+        {
+          "displayName": "Pura Taman Ayun, Jalan Nuri, Beng, Gianyar, Bali, Nusa Tenggara, 85011, Indonesia",
+          "coordinates": {
+            "lat": -8.5326639,
+            "lng": 115.3289562
+          },
+          "deltaKm": 17.284,
+          "score": 0.72,
+          "nameScore": 1,
+          "type": "place_of_worship"
+        }
+      ]
+    },
+    {
+      "id": "menjangan-island",
+      "name": "Menjangan Island",
+      "status": "weak_match",
+      "query": "Menjangan Island, Bali, Indonesia",
+      "candidates": [
+        {
+          "displayName": "Pulau Menjangan, Buleleng, Bali, Nusa Tenggara, Indonesia",
+          "coordinates": {
+            "lat": -8.0960495,
+            "lng": 114.5169235
+          },
+          "deltaKm": 3.851,
+          "score": 0.163,
+          "nameScore": 1,
+          "type": "island"
+        }
+      ]
+    },
+    {
+      "id": "kelingking-beach",
+      "name": "Kelingking Beach",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Kelingking Beach, Bali, Indonesia",
+      "displayName": "Kelingking Beach, Karangdewa, Bunga Mekar, Nusa Penida Subdistrict, Klungkung, Bali, Nusa Tenggara, Indonesia",
+      "placeId": "30806230",
+      "type": "beach",
+      "class": "natural",
+      "current": {
+        "lat": -8.7513,
+        "lng": 115.4711
+      },
+      "suggested": {
+        "lat": -8.751263,
+        "lng": 115.4731315
+      },
+      "deltaKm": 0.223,
+      "score": 1.05,
+      "alternatives": []
+    },
+    {
+      "id": "angels-billabong",
+      "name": "Angel's Billabong",
+      "status": "matched",
+      "confidence": "far",
+      "query": "Angel's Billabong, Bali, Indonesia",
+      "displayName": "Angel's Billabong, Sakti, Nusa Penida Subdistrict, Klungkung, Bali, Nusa Tenggara, Indonesia",
+      "placeId": "30685433",
+      "type": "lagoon",
+      "class": "water",
+      "current": {
+        "lat": -8.7746,
+        "lng": 115.456
+      },
+      "suggested": {
+        "lat": -8.7335286,
+        "lng": 115.4489896
+      },
+      "deltaKm": 4.631,
+      "score": 0.6,
+      "alternatives": []
+    },
+    {
+      "id": "broken-beach",
+      "name": "Broken Beach (Pasih Uug)",
+      "status": "weak_match",
+      "query": "Broken Beach (Pasih Uug), Bali, Indonesia",
+      "candidates": [
+        {
+          "displayName": "Secret Beach, Klungkung, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.70893,
+            "lng": 115.443931
+          },
+          "deltaKm": 7.267,
+          "score": 0.1,
+          "nameScore": 0,
+          "type": null
+        },
+        {
+          "displayName": "Secret Beach Road, Klungkung, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.707267,
+            "lng": 115.44223
+          },
+          "deltaKm": 7.479,
+          "score": 0.1,
+          "nameScore": 0,
+          "type": null
+        },
+        {
+          "displayName": "La Plancha Beach Bar & Restaurant, Jalan Mesari Beach, Badung, Bali, 80361, Indonesia",
+          "coordinates": {
+            "lat": -8.694593,
+            "lng": 115.159758
+          },
+          "deltaKm": 33.458,
+          "score": 0.1,
+          "nameScore": 0,
+          "type": null
+        }
+      ]
+    },
+    {
+      "id": "diamond-beach",
+      "name": "Diamond Beach",
+      "status": "matched",
+      "confidence": "far",
+      "query": "Diamond Beach, Bali, Indonesia",
+      "displayName": "Diamond Beach, Pejukutan, Nusa Penida Subdistrict, Klungkung, Bali, Nusa Tenggara, Indonesia",
+      "placeId": "31300809",
+      "type": "beach",
+      "class": "natural",
+      "current": {
+        "lat": -8.7326,
+        "lng": 115.638
+      },
+      "suggested": {
+        "lat": -8.7761357,
+        "lng": 115.6186362
+      },
+      "deltaKm": 5.288,
+      "score": 0.72,
+      "alternatives": []
+    },
+    {
+      "id": "crystal-bay",
+      "name": "Crystal Bay",
+      "status": "matched",
+      "confidence": "warn",
+      "query": "Crystal Bay, Bali, Indonesia",
+      "displayName": "Crystal Bay, Klungkung, Bali, Nusa Tenggara, 80372, Indonesia",
+      "placeId": "30904518",
+      "type": "reef",
+      "class": "natural",
+      "current": {
+        "lat": -8.718,
+        "lng": 115.447
+      },
+      "suggested": {
+        "lat": -8.7163813,
+        "lng": 115.4574838
+      },
+      "deltaKm": 1.166,
+      "score": 0.968,
+      "alternatives": [
+        {
+          "displayName": "Crystal Bay, Klungkung, Bali, Nusa Tenggara, 80372, Indonesia",
+          "coordinates": {
+            "lat": -8.7150726,
+            "lng": 115.4577438
+          },
+          "deltaKm": 1.225,
+          "score": 0.963,
+          "nameScore": 1,
+          "type": "bay"
+        }
+      ]
+    },
+    {
+      "id": "devils-tear-lembongan",
+      "name": "Devil's Tear",
+      "status": "matched",
+      "confidence": "warn",
+      "query": "Devil's Tear, Bali, Indonesia",
+      "displayName": "Devil's Tear, Jalan Sandy Bay, Lembongan, Jungutbatu, Nusa Penida Subdistrict, Klungkung, Bali, Nusa Tenggara, Indonesia",
+      "placeId": "30685590",
+      "type": "viewpoint",
+      "class": "tourism",
+      "current": {
+        "lat": -8.6871,
+        "lng": 115.4372
+      },
+      "suggested": {
+        "lat": -8.6907635,
+        "lng": 115.4292858
+      },
+      "deltaKm": 0.961,
+      "score": 0.986,
+      "alternatives": []
+    },
+    {
+      "id": "batur-natural-hot-spring",
+      "name": "Batur Natural Hot Spring",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Batur Natural Hot Spring, Bali, Indonesia",
+      "displayName": "Batur Natural Hot Spring, Entrance to Rejeng Bali, Toyabungkah, Bangli, Bali, Nusa Tenggara, Indonesia",
+      "placeId": "30431387",
+      "type": "hot_spring",
+      "class": "natural",
+      "current": {
+        "lat": -8.25131,
+        "lng": 115.40027
+      },
+      "suggested": {
+        "lat": -8.2513752,
+        "lng": 115.4003922
+      },
+      "deltaKm": 0.015,
+      "score": 1.069,
+      "alternatives": []
+    },
+    {
+      "id": "akasa-batur",
+      "name": "AKASA",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "AKASA, Bali, Indonesia",
+      "displayName": "Akasa, Jalan Raya Penelokan, Bugbugan, Batur Tengah, Bangli, Bali, Nusa Tenggara, 80256, Indonesia",
+      "placeId": "30745603",
+      "type": "cafe",
+      "class": "amenity",
+      "current": {
+        "lat": -8.279617,
+        "lng": 115.357559
+      },
+      "suggested": {
+        "lat": -8.2797308,
+        "lng": 115.357665
+      },
+      "deltaKm": 0.017,
+      "score": 1.068,
+      "alternatives": [
+        {
+          "displayName": "Jalan Tirta Akasa, Sanur Kauh, Denpasar Selatan, Denpasar, Bali, Nusa Tenggara, 80277, Indonesia",
+          "coordinates": {
+            "lat": -8.7002986,
+            "lng": 115.2557844
+          },
+          "deltaKm": 48.098,
+          "score": 0.6,
+          "nameScore": 1,
+          "type": "residential"
+        }
+      ]
+    },
+    {
+      "id": "pura-taman-kemuda-saraswati",
+      "name": "Pura Taman Kemuda Saraswati",
+      "status": "weak_match",
+      "query": "Pura Taman Kemuda Saraswati, Bali, Indonesia",
+      "candidates": [
+        {
+          "displayName": "Gang Taman Pura, Denpasar, Denpasar, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.669542,
+            "lng": 115.177928
+          },
+          "deltaKm": 20.347,
+          "score": 0.35,
+          "nameScore": 0.5,
+          "type": null
+        },
+        {
+          "displayName": "Jalan Pura Taman Sari, Banjar Badung, Badung, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.644737,
+            "lng": 115.138334
+          },
+          "deltaKm": 20.491,
+          "score": 0.35,
+          "nameScore": 0.5,
+          "type": null
+        },
+        {
+          "displayName": "Gang Pura Taman, Denpasar, Denpasar, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.693184,
+            "lng": 115.199959
+          },
+          "deltaKm": 21.865,
+          "score": 0.35,
+          "nameScore": 0.5,
+          "type": null
+        }
+      ]
+    },
+    {
+      "id": "inap-retreat-boutique-cabin",
+      "name": "Inap Retreat Boutique Cabin",
+      "status": "weak_match",
+      "query": "Inap Retreat Boutique Cabin, Bali, Indonesia",
+      "candidates": [
+        {
+          "displayName": "Nusa Dua Retreat Boutique Villa Resort & Spa, Jl. Nusa Dua, Bali, Badung, Bali, 80363, Indonesia",
+          "coordinates": {
+            "lat": -8.834187,
+            "lng": 115.179143
+          },
+          "deltaKm": 68.636,
+          "score": 0.35,
+          "nameScore": 0.5,
+          "type": null
+        },
+        {
+          "displayName": "Sun Suko Boutique Retreat, Buleleng, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.152249,
+            "lng": 114.652991
+          },
+          "deltaKm": 82.824,
+          "score": 0.35,
+          "nameScore": 0.5,
+          "type": null
+        }
+      ]
+    },
+    {
+      "id": "villa-bukit-temawang",
+      "name": "Villa Bukit Temawang",
+      "status": "weak_match",
+      "query": "Villa Bukit Temawang, Bali, Indonesia",
+      "candidates": [
+        {
+          "displayName": "Bukit Keresek, Bali, Karang Asem, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.3462,
+            "lng": 115.6601
+          },
+          "deltaKm": 23.404,
+          "score": 0.35,
+          "nameScore": 0.5,
+          "type": null
+        },
+        {
+          "displayName": "Villa Loluan by BukitVista, Badung, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.656027,
+            "lng": 115.134088
+          },
+          "deltaKm": 44.205,
+          "score": 0.35,
+          "nameScore": 0.5,
+          "type": null
+        },
+        {
+          "displayName": "Bukit Surf Villa, Badung, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.81571,
+            "lng": 115.108512
+          },
+          "deltaKm": 58.066,
+          "score": 0.35,
+          "nameScore": 0.5,
+          "type": null
+        }
+      ]
+    },
+    {
+      "id": "padma-resort-ubud",
+      "name": "Padma Resort Ubud",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Padma Resort Ubud, Bali, Indonesia",
+      "displayName": "Padma Resort Ubud, Jalan Raya Belong, Paku Seba, Puhu, Gianyar, Bali, Nusa Tenggara, 80572, Indonesia",
+      "placeId": "30442927",
+      "type": "hotel",
+      "class": "tourism",
+      "current": {
+        "lat": -8.383438,
+        "lng": 115.274563
+      },
+      "suggested": {
+        "lat": -8.3831811,
+        "lng": 115.2745601
+      },
+      "deltaKm": 0.029,
+      "score": 1.068,
+      "alternatives": []
+    },
+    {
+      "id": "rumah-subak",
+      "name": "Rumah Subak",
+      "status": "matched",
+      "confidence": "far",
+      "query": "Rumah Subak, Bali, Indonesia",
+      "displayName": "Rumah Tikus Ubud Slow Bar, Jalan Subak Sok Wayah, Ubud, Kecamatan Ubud, Gianyar, Bali, Nusa Tenggara, 80561, Indonesia",
+      "placeId": "30480600",
+      "type": "coffee",
+      "class": "shop",
+      "current": {
+        "lat": -8.441813,
+        "lng": 115.314063
+      },
+      "suggested": {
+        "lat": -8.4979193,
+        "lng": 115.2582993
+      },
+      "deltaKm": 8.748,
+      "score": 0.6,
+      "alternatives": []
+    },
+    {
+      "id": "warung-betutu-dewi-sri",
+      "name": "Warung Betutu Dewi Sri",
+      "status": "matched",
+      "confidence": "far",
+      "query": "Warung Betutu Dewi Sri, Bali, Indonesia",
+      "displayName": "Ayam Betutu Asli Gilimanuk Ibu Mira - Dewi Sri, Banjar Badung, Badung, Bali, Indonesia",
+      "placeId": "333171618392",
+      "type": null,
+      "class": null,
+      "current": {
+        "lat": -8.609813,
+        "lng": 115.112563
+      },
+      "suggested": {
+        "lat": -8.700676,
+        "lng": 115.176411
+      },
+      "deltaKm": 12.302,
+      "score": 0.6,
+      "alternatives": []
+    },
+    {
+      "id": "roti-bohemia-nyuh-kuning",
+      "name": "Roti Bohemia Nyuh Kuning",
+      "status": "weak_match",
+      "query": "Roti Bohemia Nyuh Kuning, Bali, Indonesia",
+      "candidates": [
+        {
+          "displayName": "Roti Daal, Badung, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.661098,
+            "lng": 115.145724
+          },
+          "deltaKm": 19.981,
+          "score": 0.225,
+          "nameScore": 0.25,
+          "type": null
+        },
+        {
+          "displayName": "Roti Goolung, Badung, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.783954,
+            "lng": 115.166172
+          },
+          "deltaKm": 31.073,
+          "score": 0.225,
+          "nameScore": 0.25,
+          "type": null
+        },
+        {
+          "displayName": "Roti Zulia, Karangasem, Karang Asem, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.453411,
+            "lng": 115.601865
+          },
+          "deltaKm": 38.56,
+          "score": 0.225,
+          "nameScore": 0.25,
+          "type": null
+        }
+      ]
+    },
+    {
+      "id": "tukies-coconut-shop",
+      "name": "Tukie's Coconut Shop",
+      "status": "matched",
+      "confidence": "warn",
+      "query": "Tukie's Coconut Shop, Bali, Indonesia",
+      "displayName": "Tukies (The coconut ice cream & shop), Ubud, Gianyar, Bali, Indonesia",
+      "placeId": "334161918247",
+      "type": null,
+      "class": null,
+      "current": {
+        "lat": -8.507562,
+        "lng": 115.264187
+      },
+      "suggested": {
+        "lat": -8.511028,
+        "lng": 115.261028
+      },
+      "deltaKm": 0.519,
+      "score": 0.905,
+      "alternatives": []
+    },
+    {
+      "id": "sate-pepes-bu-ribu",
+      "name": "Sate Pepes Sop Ikan Marlin Bu Ribu",
+      "status": "error",
+      "error": "404 {\"error\":\"Unable to geocode\"}"
+    },
+    {
+      "id": "warung-mak-beng",
+      "name": "Warung Mak Beng",
+      "status": "matched",
+      "confidence": "ok",
+      "query": "Warung Mak Beng, Bali, Indonesia",
+      "displayName": "Warung Mak Beng, Jalan Hang Tuah, Sanur Kaja, Denpasar Selatan, Denpasar, Bali, Nusa Tenggara, 80030, Indonesia",
+      "placeId": "31574313",
+      "type": "restaurant",
+      "class": "amenity",
+      "current": {
+        "lat": -8.673687,
+        "lng": 115.262938
+      },
+      "suggested": {
+        "lat": -8.673638,
+        "lng": 115.2629981
+      },
+      "deltaKm": 0.009,
+      "score": 1.069,
+      "alternatives": [
+        {
+          "displayName": "Warung Mak Beng, Jalan Hang Tuah, Sanur Kaja, Denpasar Selatan, Denpasar, Bali, Nusa Tenggara, 80030, Indonesia",
+          "coordinates": {
+            "lat": -8.6737273,
+            "lng": 115.2630457
+          },
+          "deltaKm": 0.013,
+          "score": 1.069,
+          "nameScore": 1,
+          "type": "fast_food"
+        }
+      ]
+    },
+    {
+      "id": "lolas-sanur",
+      "name": "Lola's Tap Craft Beer Bar",
+      "status": "error",
+      "error": "404 {\"error\":\"Unable to geocode\"}"
+    },
+    {
+      "id": "daily-baguette-sanur",
+      "name": "Daily Baguette Sanur",
+      "status": "weak_match",
+      "query": "Daily Baguette Sanur, Bali, Indonesia",
+      "candidates": [
+        {
+          "displayName": "Daily Baguette, Jalan Raya Ubud, Ubud, Gianyar, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.505887,
+            "lng": 115.259936
+          },
+          "deltaKm": 21.939,
+          "score": 0.433,
+          "nameScore": 0.667,
+          "type": null
+        },
+        {
+          "displayName": "Hop Daily Rent, Banjar Badung, Badung, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.700247,
+            "lng": 115.177161
+          },
+          "deltaKm": 9.228,
+          "score": 0.267,
+          "nameScore": 0.333,
+          "type": null
+        },
+        {
+          "displayName": "Sawobali, The Daily Buffet, 19, Jalan Sukma, Ubud, Gianyar, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.511846,
+            "lng": 115.268433
+          },
+          "deltaKm": 21.292,
+          "score": 0.267,
+          "nameScore": 0.333,
+          "type": null
+        }
+      ]
+    },
+    {
+      "id": "la-baracca-ubud",
+      "name": "La Baracca Bali (Ubud)",
+      "status": "matched",
+      "confidence": "warn",
+      "query": "La Baracca Bali (Ubud), Bali, Indonesia",
+      "displayName": "La Boheme Bali, 5, Jalan Gootama, Ubud, Gianyar, Bali, 80571, Indonesia",
+      "placeId": "330503805295",
+      "type": null,
+      "class": null,
+      "current": {
+        "lat": -8.503812,
+        "lng": 115.263562
+      },
+      "suggested": {
+        "lat": -8.508658,
+        "lng": 115.264362
+      },
+      "deltaKm": 0.546,
+      "score": 0.652,
+      "alternatives": [
+        {
+          "displayName": "La Baracca Uluwatu 10, 10, Jl. Labuan sait- Pecatu, Badung, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.816455,
+            "lng": 115.0962
+          },
+          "deltaKm": 39.332,
+          "score": 0.35,
+          "nameScore": 0.5,
+          "type": null
+        },
+        {
+          "displayName": "Langkah Bali, 15, Jalan Nyuh Kuning, Gianyar, Bali, Indonesia",
+          "coordinates": {
+            "lat": -8.527933,
+            "lng": 115.257271
+          },
+          "deltaKm": 2.77,
+          "score": 0.208,
+          "nameScore": 0,
+          "type": null
+        }
+      ]
+    }
+  ]
+}

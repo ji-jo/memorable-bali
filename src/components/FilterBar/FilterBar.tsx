@@ -1,18 +1,56 @@
+import { useRef, type ReactNode } from 'react';
+
 import { Chip } from '@/components/Chip';
+import { CaretRightIcon } from '@phosphor-icons/react/dist/csr/CaretRight';
+import { MapPinIcon } from '@phosphor-icons/react/dist/csr/MapPin';
+import { ShapesIcon } from '@phosphor-icons/react/dist/csr/Shapes';
+import { SlidersHorizontalIcon } from '@phosphor-icons/react/dist/csr/SlidersHorizontal';
 import { useCategoryLookup, useRegionLookup } from '@/hooks/useLookups';
+import { useHorizontalScrollOverflow } from '@/hooks/useHorizontalScrollOverflow';
 import type { ExploreFilters, SpotTag } from '@/data/types';
 import styles from './FilterBar.module.css';
 
 export interface FilterBarProps {
   filters: ExploreFilters;
   onChange: (next: ExploreFilters) => void;
-  resultCount: number;
 }
 
 const TAGS: SpotTag[] = ['Memorable', 'Must Visit', 'Cultural', 'Outworldly'];
 const DISTANCES = [10, 25, 50];
 
-export function FilterBar({ filters, onChange, resultCount }: FilterBarProps) {
+interface FilterScrollerProps {
+  ariaLabel: string;
+  children: ReactNode;
+}
+
+function FilterScroller({ ariaLabel, children }: FilterScrollerProps) {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const { overflows, canScrollRight } = useHorizontalScrollOverflow(scrollerRef, [children]);
+
+  return (
+    <div className={styles.scrollerWrap}>
+      <div
+        ref={scrollerRef}
+        className={`${styles.scroller}${overflows ? ' scroll-mask-x' : ''}`}
+        aria-label={ariaLabel}
+      >
+        {children}
+      </div>
+      {canScrollRight ? (
+        <button
+          type="button"
+          className={styles.scrollChevron}
+          aria-label={`Show more ${ariaLabel.toLowerCase()}`}
+          onClick={() => scrollerRef.current?.scrollBy({ left: 180, behavior: 'smooth' })}
+        >
+          <CaretRightIcon aria-hidden="true" weight="bold" />
+        </button>
+      ) : null}
+    </div>
+  );
+}
+
+export function FilterBar({ filters, onChange }: FilterBarProps) {
   const categories = useCategoryLookup();
   const regions = useRegionLookup();
 
@@ -35,60 +73,78 @@ export function FilterBar({ filters, onChange, resultCount }: FilterBarProps) {
 
   return (
     <div className={styles.bar}>
-      <div className={styles.scroller}>
-        {[...categories.values()].map((c) => (
-          <Chip
-            key={c.id}
-            label={c.label}
-            color={c.color}
-            showDot
-            selected={filters.category === c.id}
-            onToggle={() =>
-              onChange({ ...filters, category: filters.category === c.id ? null : c.id })
-            }
-          />
-        ))}
+      <div className={styles.filterGroup}>
+        <div className={styles.filterLabel}>
+          <ShapesIcon aria-hidden="true" weight="regular" />
+          <span>Place type</span>
+        </div>
+        <FilterScroller ariaLabel="Filter by place type">
+          {[...categories.values()].map((c) => (
+            <Chip
+              key={c.id}
+              label={c.label}
+              color={c.color}
+              showDot
+              selected={filters.category === c.id}
+              onToggle={() =>
+                onChange({ ...filters, category: filters.category === c.id ? null : c.id })
+              }
+            />
+          ))}
+        </FilterScroller>
       </div>
 
-      <div className={styles.scroller}>
-        {[...regions.values()].map((r) => (
-          <Chip
-            key={r.id}
-            label={r.label}
-            selected={filters.region === r.id}
-            onToggle={() =>
-              onChange({ ...filters, region: filters.region === r.id ? null : r.id })
-            }
-          />
-        ))}
-        {TAGS.map((tag) => (
-          <Chip
-            key={tag}
-            label={tag}
-            selected={filters.tags.includes(tag)}
-            onToggle={() => toggleTag(tag)}
-          />
-        ))}
-        {DISTANCES.map((km) => (
-          <Chip
-            key={km}
-            label={`Within ${km} km`}
-            selected={filters.maxKm === km}
-            onToggle={() => onChange({ ...filters, maxKm: filters.maxKm === km ? null : km })}
-          />
-        ))}
+      <div className={styles.filterGroup}>
+        <div className={styles.filterLabel}>
+          <MapPinIcon aria-hidden="true" weight="regular" />
+          <span>Location</span>
+        </div>
+        <FilterScroller ariaLabel="Filter by location">
+          {[...regions.values()].map((r) => (
+            <Chip
+              key={r.id}
+              label={r.label}
+              selected={filters.region === r.id}
+              onToggle={() =>
+                onChange({ ...filters, region: filters.region === r.id ? null : r.id })
+              }
+            />
+          ))}
+        </FilterScroller>
       </div>
 
-      <div className={styles.status}>
-        <span aria-live="polite">
-          {resultCount} place{resultCount === 1 ? '' : 's'}
-        </span>
-        {hasActive && (
+      <div className={styles.filterGroup}>
+        <div className={styles.filterLabel}>
+          <SlidersHorizontalIcon aria-hidden="true" weight="regular" />
+          <span>Refine</span>
+        </div>
+        <FilterScroller ariaLabel="Refine results">
+          {TAGS.map((tag) => (
+            <Chip
+              key={tag}
+              label={tag}
+              selected={filters.tags.includes(tag)}
+              onToggle={() => toggleTag(tag)}
+            />
+          ))}
+          {DISTANCES.map((km) => (
+            <Chip
+              key={km}
+              label={`Within ${km} km`}
+              selected={filters.maxKm === km}
+              onToggle={() => onChange({ ...filters, maxKm: filters.maxKm === km ? null : km })}
+            />
+          ))}
+        </FilterScroller>
+      </div>
+
+      {hasActive && (
+        <div className={styles.status}>
           <button type="button" className={styles.clear} onClick={clearAll}>
-            Clear all
+            Clear filters
           </button>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

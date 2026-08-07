@@ -13,7 +13,7 @@ export default function Landing() {
   /** Skip writes a complete default preference set — never a partial record. */
   const skip = () => {
     complete();
-    navigate('/home', { replace: true });
+    navigate('/explore', { replace: true });
   };
 
   return (
