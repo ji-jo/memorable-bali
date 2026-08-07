@@ -32,3 +32,37 @@ MORE CLI:
   swizzle <Name>     eject component source for deep customization
   upgrade --apply    run after any @astryxdesign/core bump
 <!-- ASTRYX:END -->
+
+## Cursor Cloud specific instructions
+
+Memorable Bali (revamp) is a **frontend-only** React 19 + TypeScript SPA (Vite 6). Maps use **MapLibre + OpenFreeMap** (no Google Maps key required for Explore). Curated content lives in `data/*.json`; user state is browser `localStorage` (`bali-explorer:*`). See `README.md` / `docs/08-Developer-Guide.md` for standard docs; npm scripts live in `package.json`.
+
+### Source of truth
+
+Treat the checked-out working tree as authoritative for UI. Prefer the latest local/revamp code over older GitHub history when they diverge.
+
+### Services / commands
+
+Single service: Vite on **port 1234** (`strictPort: true` in `vite.config.ts` — not 5173).
+
+- `npm run dev` — start the app
+- `npm run test` — Vitest (currently green)
+- `npm run validate:data` — curated JSON checks
+- `npm run lint` / `npm run typecheck` / `npm run build` — see known issues below
+
+Optional Node-only tooling keys (never `VITE_`): `UNSPLASH_ACCESS_KEY`, `LOCATION_IQ_ACCESS_TOKEN`, `GOOGLE_MAPS_API_KEY` for scripts in `.env.example`. Core Explore/Home/Itinerary flows work without them.
+
+### Non-obvious notes
+
+- First load is gated by **5-step onboarding**. Reset with `localStorage` keys prefixed `bali-explorer:`.
+- Mobile Explore uses a bottom **Sheet**; desktop uses a floating side panel. Sheet `.content` is full-bleed (`padding: 0`); `ExploreResultsHeader` is end-to-end; FilterBar/listBody own their own horizontal inset.
+- PlaceCard outline uses `outline` with `color-mix(... var(--color-accent) 20% ...)` at `0.5px` (not a dark border token).
+
+### Known pre-existing failures (revamp `main`)
+
+Do not treat these as setup blockers unless you are specifically fixing them:
+
+- `npm run lint` — existing `react-hooks/set-state-in-effect` errors (e.g. Explore, PlaceDetail) plus other warnings
+- `npm run typecheck` / `npm run build` — TS errors in `src/components/agents/loading-states/reasoning-text.tsx` and `src/components/motion/loader.tsx`
+
+`npm run test` and `npm run validate:data` pass; `npm run dev` serves the app.
