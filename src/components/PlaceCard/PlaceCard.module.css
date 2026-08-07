@@ -19,23 +19,32 @@
   outline-color: color-mix(in srgb, var(--color-accent) 35%, transparent);
 }
 
-/* Selected — driven by Explore's selectedId after a map pin (or list) selection. */
-.selected {
-  outline-color: var(--color-accent);
+/* Selected — driven by Explore's selectedId after a map pin (or list) selection.
+   One shared treatment for every variant (default / compact / grid / feature / wide):
+   1px solid blue outline + 1px left accent (never the old 4px inset). */
+.selected,
+.card.selected,
+.card[data-selected='true'] {
+  border: none !important;
+  outline: 1px solid var(--color-accent);
+  outline-offset: 0;
   background-color: color-mix(in srgb, var(--color-accent-subtle) 88%, transparent);
-  box-shadow:
-    inset 4px 0 0 var(--color-accent),
-    0 0 0 1px color-mix(in srgb, var(--color-accent) 35%, transparent);
+  box-shadow: inset 1px 0 0 var(--color-accent);
 }
 
-.compact.selected {
+.compact.selected,
+.card.compact.selected,
+.card.compact[data-selected='true'] {
   background-color: color-mix(in srgb, var(--color-accent-subtle) 92%, transparent);
 }
 
-.grid.selected {
-  outline-color: var(--color-accent);
-  box-shadow:
-    inset 0 0 0 2px color-mix(in srgb, var(--color-accent) 45%, transparent);
+.grid.selected,
+.card.grid.selected,
+.card.grid[data-selected='true'] {
+  /* Same 1px blue edge + left accent as list cards — no thicker inset ring. */
+  outline: 1px solid var(--color-accent);
+  outline-offset: 0;
+  box-shadow: inset 1px 0 0 var(--color-accent);
 }
 
 .media {
@@ -318,12 +327,11 @@
 /* Selected must win over later variant border resets (.grid, .feature, :hover). */
 .card.selected,
 .card[data-selected='true'] {
-  border-color: var(--color-accent) !important;
+  border: none !important;
+  outline: 1px solid var(--color-accent) !important;
+  outline-offset: 0;
   background-color: color-mix(in srgb, var(--color-accent-subtle) 90%, var(--color-surface));
-  box-shadow:
-    inset 4px 0 0 var(--color-accent),
-    0 0 0 1px color-mix(in srgb, var(--color-accent) 40%, transparent);
-  outline: none;
+  box-shadow: inset 1px 0 0 var(--color-accent) !important;
 }
 
 .card.compact.selected,
@@ -333,9 +341,9 @@
 
 .card.grid.selected,
 .card.grid[data-selected='true'] {
-  box-shadow:
-    inset 0 0 0 3px color-mix(in srgb, var(--color-accent) 55%, transparent),
-    0 0 0 1px var(--color-accent);
+  outline: 1px solid var(--color-accent) !important;
+  outline-offset: 0;
+  box-shadow: inset 1px 0 0 var(--color-accent) !important;
 }
 
 .card[data-flash-selected='true'] {
@@ -345,17 +353,17 @@
 @keyframes cardSelectPulse {
   0% {
     box-shadow:
-      inset 4px 0 0 var(--color-accent),
+      inset 1px 0 0 var(--color-accent),
       0 0 0 0 color-mix(in srgb, var(--color-accent) 45%, transparent);
   }
   40% {
     box-shadow:
-      inset 4px 0 0 var(--color-accent),
+      inset 1px 0 0 var(--color-accent),
       0 0 0 4px color-mix(in srgb, var(--color-accent) 28%, transparent);
   }
   100% {
     box-shadow:
-      inset 4px 0 0 var(--color-accent),
-      0 0 0 1px color-mix(in srgb, var(--color-accent) 40%, transparent);
+      inset 1px 0 0 var(--color-accent),
+      0 0 0 0 transparent;
   }
 }
