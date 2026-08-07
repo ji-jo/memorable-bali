@@ -99,7 +99,9 @@
   flex: 1;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 0 var(--gutter) var(--space-8);
+  /* No horizontal inset — ExploreResultsHeader must run end-to-end.
+     FilterBar / listBody own their own horizontal padding. */
+  padding: 0;
   touch-action: pan-y;
 }
 
