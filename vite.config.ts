@@ -8,8 +8,9 @@ export default defineConfig({
 
   server: {
     // 5173 is in use on this machine — see docs/08-Developer-Guide.md.
-    // This port must match the localhost entry on the Google Maps key's
-    // Websites restriction, or the map will refuse to load in dev.
+    // Bind IPv4 explicitly: default localhost can end up on ::1 only, which
+    // makes http://127.0.0.1:1234 (and some browser previews) refuse to connect.
+    host: '127.0.0.1',
     port: 1234,
     strictPort: true,
   },

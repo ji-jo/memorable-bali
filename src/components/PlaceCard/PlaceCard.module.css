@@ -21,11 +21,11 @@
 
 /* Selected — driven by Explore's selectedId after a map pin (or list) selection. */
 .selected {
-  outline-color: var(--color-accent);
+  outline: 1px solid var(--color-accent);
+  outline-offset: 0;
   background-color: color-mix(in srgb, var(--color-accent-subtle) 88%, transparent);
-  box-shadow:
-    inset 4px 0 0 var(--color-accent),
-    0 0 0 1px color-mix(in srgb, var(--color-accent) 35%, transparent);
+  /* 1px left accent (was 4px) — avoids the ~2px double-edge offset. */
+  box-shadow: inset 1px 0 0 var(--color-accent);
 }
 
 .compact.selected {
@@ -33,9 +33,9 @@
 }
 
 .grid.selected {
-  outline-color: var(--color-accent);
-  box-shadow:
-    inset 0 0 0 2px color-mix(in srgb, var(--color-accent) 45%, transparent);
+  outline: 1px solid var(--color-accent);
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-accent) 45%, transparent);
 }
 
 .media {
