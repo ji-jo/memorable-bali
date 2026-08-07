@@ -1,8 +1,8 @@
 /* Shared edge for every PlaceCard in Explore listBody (and elsewhere).
-   Explicit border — outline+antialiasing was reading as black. */
+   Use --color-selection (not --color-accent): Astrayx Theme remaps accent to #262626. */
 .card {
-  --place-card-edge: color-mix(in srgb, var(--color-accent) 20%, transparent);
-  --place-card-edge-strong: color-mix(in srgb, var(--color-accent) 35%, transparent);
+  --place-card-edge: color-mix(in srgb, var(--color-selection) 20%, transparent);
+  --place-card-edge-strong: color-mix(in srgb, var(--color-selection) 35%, transparent);
 
   display: block;
   position: relative;
@@ -30,14 +30,14 @@
 .card[data-selected='true'] {
   border: 0.5px solid var(--place-card-edge) !important;
   outline: none !important;
-  background-color: color-mix(in srgb, var(--color-accent-subtle) 88%, transparent);
-  box-shadow: inset 1px 0 0 var(--color-accent) !important;
+  background-color: color-mix(in srgb, var(--color-selection-subtle) 88%, transparent);
+  box-shadow: inset 1px 0 0 var(--color-selection) !important;
 }
 
 .compact.selected,
 .card.compact.selected,
 .card.compact[data-selected='true'] {
-  background-color: color-mix(in srgb, var(--color-accent-subtle) 92%, transparent);
+  background-color: color-mix(in srgb, var(--color-selection-subtle) 92%, transparent);
 }
 
 .grid.selected,
@@ -45,7 +45,7 @@
 .card.grid[data-selected='true'] {
   border: 0.5px solid var(--place-card-edge) !important;
   outline: none !important;
-  box-shadow: inset 1px 0 0 var(--color-accent) !important;
+  box-shadow: inset 1px 0 0 var(--color-selection) !important;
 }
 
 .media {
@@ -330,20 +330,20 @@
 .card[data-selected='true'] {
   border: 0.5px solid var(--place-card-edge) !important;
   outline: none !important;
-  background-color: color-mix(in srgb, var(--color-accent-subtle) 90%, var(--color-surface));
-  box-shadow: inset 1px 0 0 var(--color-accent) !important;
+  background-color: color-mix(in srgb, var(--color-selection-subtle) 90%, var(--color-surface));
+  box-shadow: inset 1px 0 0 var(--color-selection) !important;
 }
 
 .card.compact.selected,
 .card.compact[data-selected='true'] {
-  background-color: color-mix(in srgb, var(--color-accent-subtle) 94%, var(--color-surface));
+  background-color: color-mix(in srgb, var(--color-selection-subtle) 94%, var(--color-surface));
 }
 
 .card.grid.selected,
 .card.grid[data-selected='true'] {
   border: 0.5px solid var(--place-card-edge) !important;
   outline: none !important;
-  box-shadow: inset 1px 0 0 var(--color-accent) !important;
+  box-shadow: inset 1px 0 0 var(--color-selection) !important;
 }
 
 .card[data-flash-selected='true'] {
@@ -353,17 +353,17 @@
 @keyframes cardSelectPulse {
   0% {
     box-shadow:
-      inset 1px 0 0 var(--color-accent),
-      0 0 0 0 color-mix(in srgb, var(--color-accent) 45%, transparent);
+      inset 1px 0 0 var(--color-selection),
+      0 0 0 0 color-mix(in srgb, var(--color-selection) 45%, transparent);
   }
   40% {
     box-shadow:
-      inset 1px 0 0 var(--color-accent),
-      0 0 0 4px color-mix(in srgb, var(--color-accent) 28%, transparent);
+      inset 1px 0 0 var(--color-selection),
+      0 0 0 4px color-mix(in srgb, var(--color-selection) 28%, transparent);
   }
   100% {
     box-shadow:
-      inset 1px 0 0 var(--color-accent),
+      inset 1px 0 0 var(--color-selection),
       0 0 0 0 transparent;
   }
 }
