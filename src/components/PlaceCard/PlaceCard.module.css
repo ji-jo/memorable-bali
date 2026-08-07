@@ -2,9 +2,9 @@
   display: block;
   position: relative;
   background-color: transparent;
-  /* Subtle blue outline — 0.5px at 20% opacity (not near-black text mix). */
+  /* Subtle blue outline — 0.5px at 20% opacity via accent token. */
   border: none;
-  outline: 0.5px solid rgba(100, 149, 237, 0.2);
+  outline: 0.5px solid color-mix(in srgb, var(--color-accent) 20%, transparent);
   outline-offset: 0;
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -16,7 +16,7 @@
 }
 
 .card:hover {
-  outline-color: rgba(100, 149, 237, 0.35);
+  outline-color: color-mix(in srgb, var(--color-accent) 35%, transparent);
 }
 
 /* Selected — driven by Explore's selectedId after a map pin (or list) selection. */
