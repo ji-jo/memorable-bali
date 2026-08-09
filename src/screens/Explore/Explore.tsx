@@ -136,15 +136,19 @@ export default function Explore() {
     const node = root.querySelector<HTMLElement>(`[data-spot-id="${CSS.escape(spotId)}"]`);
     if (!node) return false;
 
-    const scroller = findScrollParent(node) ?? root;
+    // Prefer the PerfectScrollbar host (listScroll). Native scrollTo({behavior:'smooth'})
+    // is a no-op when PS sets overflow:hidden — animate scrollTop instead.
+    const scroller =
+      root.scrollHeight > root.clientHeight + 1 ? root : (findScrollParent(node) ?? root);
     const scrollerRect = scroller.getBoundingClientRect();
     const nodeRect = node.getBoundingClientRect();
     const sticky = scroller.querySelector<HTMLElement>(`.${styles.resultsHeader}`);
     const topPad = (sticky?.offsetHeight ?? 56) + 12;
     const next = Math.max(0, scroller.scrollTop + (nodeRect.top - scrollerRect.top) - topPad);
 
-    scroller.scrollTo({ top: next, behavior: 'smooth' });
-    listScrollbarRef.current?.update();
+    animateScrollTop(scroller, next);
+    // Keep the custom rail in sync after programmatic scroll.
+    window.requestAnimationFrame(() => listScrollbarRef.current?.update());
     node.setAttribute('data-flash-selected', 'true');
     window.setTimeout(() => node.removeAttribute('data-flash-selected'), 900);
     return true;
@@ -327,4 +331,32 @@ function findScrollParent(start: HTMLElement): HTMLElement | null {
     node = node.parentElement;
   }
   return null;
+}
+
+/**
+ * PerfectScrollbar hosts use overflow:hidden, so Element.scrollTo({behavior:'smooth'})
+ * often never moves. Drive scrollTop directly (instant if reduced-motion).
+ */
+function animateScrollTop(scroller: HTMLElement, top: number) {
+  const target = Math.max(0, Math.min(top, scroller.scrollHeight - scroller.clientHeight));
+  const reduce =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || Math.abs(scroller.scrollTop - target) < 2) {
+    scroller.scrollTop = target;
+    return;
+  }
+
+  const start = scroller.scrollTop;
+  const delta = target - start;
+  const duration = Math.min(520, Math.max(220, Math.abs(delta) * 0.35));
+  const t0 = performance.now();
+  const easeOutCubic = (t: number) => 1 - (1 - t) ** 3;
+
+  const step = (now: number) => {
+    const p = Math.min(1, (now - t0) / duration);
+    scroller.scrollTop = start + delta * easeOutCubic(p);
+    if (p < 1) window.requestAnimationFrame(step);
+  };
+  window.requestAnimationFrame(step);
 }
