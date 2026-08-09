@@ -120,6 +120,14 @@ export default function Onboarding() {
         </div>
 
         <div className={styles.body}>
+          <img
+            className={styles.brandIcon}
+            src="/images/website/barong-mask.png"
+            alt=""
+            width={56}
+            height={56}
+            decoding="async"
+          />
           <p className={styles.stepLabel}>
             Step {step} of {TOTAL_STEPS}
           </p>

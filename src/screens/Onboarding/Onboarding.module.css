@@ -90,11 +90,22 @@
   padding-block: var(--space-6);
 }
 
+.brandIcon {
+  display: block;
+  width: 56px;
+  height: 56px;
+  margin-inline: auto;
+  padding: 24px;
+  box-sizing: content-box;
+  object-fit: contain;
+}
+
 .stepLabel {
   font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   color: var(--color-text-tertiary);
+  text-align: center;
 }
 
 .question {
@@ -105,12 +116,14 @@
   letter-spacing: var(--tracking-tight);
   margin-top: var(--space-2);
   color: var(--color-text);
+  text-align: center;
 }
 
 .hint {
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
   margin-top: var(--space-2);
+  text-align: center;
 }
 
 .options {
