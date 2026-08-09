@@ -239,35 +239,40 @@ export function StayLocationPicker({ open, onClose }: StayLocationPickerProps) {
           </p>
         </header>
 
-        <div className={styles.searchRow}>
-          <input
-            className={styles.input}
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Hotel, villa, or area in Bali"
-            aria-label="Search for your stay"
-          />
-          <button type="button" className={styles.locate} onClick={useDeviceLocation}>
-            Use GPS
-          </button>
-        </div>
+        <div className={styles.searchBlock}>
+          <div className={styles.searchRow}>
+            <input
+              className={styles.input}
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Hotel, villa, or area in Bali"
+              aria-label="Search for your stay"
+              aria-autocomplete="list"
+              aria-controls={hits.length > 0 ? 'stay-location-hits' : undefined}
+              aria-expanded={hits.length > 0}
+            />
+            <button type="button" className={styles.locate} onClick={useDeviceLocation}>
+              Use GPS
+            </button>
+          </div>
 
-        {searching ? <p className={styles.status}>Searching…</p> : null}
-        {hits.length > 0 ? (
-          <ul className={styles.hits}>
-            {hits.map((hit) => (
-              <li key={`${hit.coordinates.lat}-${hit.coordinates.lng}-${hit.label}`}>
-                <button
-                  type="button"
-                  className={styles.hit}
-                  onClick={() => applyCoordinates(hit.coordinates, hit.label, 'search')}
-                >
-                  {hit.label}
-                </button>
-              </li>
-            ))}
-          </ul>
-        ) : null}
+          {searching ? <p className={styles.status}>Searching…</p> : null}
+          {hits.length > 0 ? (
+            <ul id="stay-location-hits" className={styles.hits} role="listbox" aria-label="Matching places">
+              {hits.map((hit) => (
+                <li key={`${hit.coordinates.lat}-${hit.coordinates.lng}-${hit.label}`} role="option">
+                  <button
+                    type="button"
+                    className={styles.hit}
+                    onClick={() => applyCoordinates(hit.coordinates, hit.label, 'search')}
+                  >
+                    {hit.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
 
         <div ref={mapNode} className={styles.map} />
 

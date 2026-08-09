@@ -55,6 +55,15 @@
   line-height: var(--leading-snug);
 }
 
+/* Anchor for the absolute suggestion menu so the map isn't crushed by hits. */
+.searchBlock {
+  position: relative;
+  z-index: 3;
+  flex: 0 0 auto;
+  display: grid;
+  gap: var(--space-2);
+}
+
 .searchRow {
   display: flex;
   flex-wrap: wrap;
@@ -91,30 +100,48 @@
   color: var(--color-text-tertiary);
 }
 
+/* Floating dropdown over the map — never a flex-shrunk scroll strip. */
 .hits {
+  position: absolute;
+  top: calc(100% + var(--space-1));
+  left: 0;
+  right: 0;
+  z-index: 4;
   display: grid;
-  gap: var(--space-1);
+  gap: 0;
   margin: 0;
-  padding: 0;
+  padding: var(--space-1);
   list-style: none;
-  max-height: 8rem;
-  overflow: auto;
+  max-height: min(16rem, 40dvh);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+  background: var(--color-surface);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14);
+  scrollbar-width: thin;
 }
 
 .hit {
+  display: block;
   width: 100%;
+  min-height: 44px;
   text-align: left;
-  padding: var(--space-3);
-  border-radius: var(--radius-md);
-  border: 1px solid transparent;
-  background: var(--color-surface-sunken);
+  padding: var(--space-3) var(--space-3);
+  border-radius: calc(var(--radius-md) - 2px);
+  border: 0;
+  background: transparent;
   color: var(--color-text);
   font-size: var(--text-sm);
   line-height: var(--leading-snug);
+  cursor: pointer;
 }
 
-.hit:hover {
-  border-color: var(--color-accent);
+.hit:hover,
+.hit:focus-visible {
+  background: color-mix(in srgb, var(--color-selection, #007aff) 10%, var(--color-surface-sunken));
+  outline: none;
 }
 
 .map {
