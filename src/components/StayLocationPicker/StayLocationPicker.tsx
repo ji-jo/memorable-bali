@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import maplibregl from 'maplibre-gl';
@@ -46,20 +46,40 @@ export function StayLocationPicker({ open, onClose }: StayLocationPickerProps) {
   const mapNode = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const markerRef = useRef<maplibregl.Marker | null>(null);
+  const searchBlockRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  /** Tracks whether the suggestion menu is open — used by document listeners. */
+  const menuOpenRef = useRef(false);
   /** When true, draft came from the map — don't fight the user with easeTo. */
   const syncingFromMap = useRef(false);
   const searchSeq = useRef(0);
 
-  const applyCoordinates = (
-    coordinates: Coordinates,
-    label: string,
-    origin: 'map' | 'input' | 'search' | 'gps',
-  ) => {
-    syncingFromMap.current = origin === 'map';
-    setDraft({ label, coordinates });
-    setCoordText(formatStayCoordinates(coordinates));
-    setParseError(null);
-  };
+  menuOpenRef.current = hits.length > 0 || searching;
+
+  const dismissHits = useCallback(() => {
+    searchSeq.current += 1;
+    setHits([]);
+    setSearching(false);
+  }, []);
+
+  const applyCoordinates = useCallback(
+    (
+      coordinates: Coordinates,
+      label: string,
+      origin: 'map' | 'input' | 'search' | 'gps',
+    ) => {
+      syncingFromMap.current = origin === 'map';
+      setDraft({ label, coordinates });
+      setCoordText(formatStayCoordinates(coordinates));
+      setParseError(null);
+      // Choosing a place (or moving the pin) should close the suggestion menu.
+      if (origin === 'search' || origin === 'map' || origin === 'gps') {
+        dismissHits();
+        if (origin === 'search') setQuery(label);
+      }
+    },
+    [dismissHits],
+  );
 
   useEffect(() => {
     setMounted(true);
@@ -82,20 +102,41 @@ export function StayLocationPicker({ open, onClose }: StayLocationPickerProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps -- intentionally only when `open` flips true
   }, [open]);
 
-  // Esc + focus trap basics — overlay click is handled on the backdrop node.
+  // Esc: dismiss suggestions first, then close the dialog.
+  // Outside pointer/touch dismisses the dropdown without waiting for React state.
   useEffect(() => {
     if (!open) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        event.preventDefault();
-        onClose();
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      if (menuOpenRef.current) {
+        dismissHits();
+        searchInputRef.current?.blur();
+        return;
       }
+      onClose();
+    };
+
+    const onOutsidePointer = (event: Event) => {
+      if (!menuOpenRef.current) return;
+      const target = event.target as Node | null;
+      if (target && searchBlockRef.current?.contains(target)) return;
+      dismissHits();
     };
 
     window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
-  }, [open, onClose]);
+    // Capture + mousedown/touchstart: MapLibre canvas and mobile need both.
+    document.addEventListener('pointerdown', onOutsidePointer, true);
+    document.addEventListener('mousedown', onOutsidePointer, true);
+    document.addEventListener('touchstart', onOutsidePointer, true);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('pointerdown', onOutsidePointer, true);
+      document.removeEventListener('mousedown', onOutsidePointer, true);
+      document.removeEventListener('touchstart', onOutsidePointer, true);
+    };
+  }, [open, onClose, dismissHits]);
 
   useEffect(() => {
     if (!open || !mapNode.current || mapRef.current) return;
@@ -278,9 +319,10 @@ export function StayLocationPicker({ open, onClose }: StayLocationPickerProps) {
           </p>
         </header>
 
-        <div className={styles.searchBlock}>
+        <div className={styles.searchBlock} ref={searchBlockRef}>
           <div className={styles.searchRow}>
             <input
+              ref={searchInputRef}
               className={styles.input}
               value={query}
               onChange={(event) => setQuery(event.target.value)}
@@ -303,6 +345,11 @@ export function StayLocationPicker({ open, onClose }: StayLocationPickerProps) {
                   <button
                     type="button"
                     className={styles.hit}
+                    onMouseDown={(event) => {
+                      // Select on pointer-down so input blur can't race the click away.
+                      event.preventDefault();
+                      applyCoordinates(hit.coordinates, hit.label, 'search');
+                    }}
                     onClick={() => applyCoordinates(hit.coordinates, hit.label, 'search')}
                   >
                     {hit.label}
@@ -312,6 +359,26 @@ export function StayLocationPicker({ open, onClose }: StayLocationPickerProps) {
             </ul>
           ) : null}
         </div>
+
+        {/* Catches clicks on the map / footer while suggestions are open. */}
+        {hits.length > 0 || searching ? (
+          <button
+            type="button"
+            className={styles.hitsCatcher}
+            aria-label="Dismiss place suggestions"
+            tabIndex={-1}
+            onMouseDown={(event) => {
+              event.preventDefault();
+              dismissHits();
+              searchInputRef.current?.blur();
+            }}
+            onTouchStart={(event) => {
+              event.preventDefault();
+              dismissHits();
+              searchInputRef.current?.blur();
+            }}
+          />
+        ) : null}
 
         <div ref={mapNode} className={styles.map} />
 
