@@ -48,6 +48,7 @@ export function StayLocationPicker({ open, onClose }: StayLocationPickerProps) {
   const markerRef = useRef<maplibregl.Marker | null>(null);
   /** When true, draft came from the map — don't fight the user with easeTo. */
   const syncingFromMap = useRef(false);
+  const searchSeq = useRef(0);
 
   const applyCoordinates = (
     coordinates: Coordinates,
@@ -64,6 +65,8 @@ export function StayLocationPicker({ open, onClose }: StayLocationPickerProps) {
     setMounted(true);
   }, []);
 
+  // Reset draft only when the dialog opens — not on every preferences identity change
+  // (that was clearing the search query mid-typing and leaving "Searching…" stuck).
   useEffect(() => {
     if (!open) return;
     const coordinates = preferences.stayAnchor;
@@ -75,7 +78,24 @@ export function StayLocationPicker({ open, onClose }: StayLocationPickerProps) {
     setParseError(null);
     setQuery('');
     setHits([]);
-  }, [open, preferences.stayAnchor, preferences.stayAreaId, preferences.stayAreaLabel]);
+    setSearching(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- intentionally only when `open` flips true
+  }, [open]);
+
+  // Esc + focus trap basics — overlay click is handled on the backdrop node.
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [open, onClose]);
 
   useEffect(() => {
     if (!open || !mapNode.current || mapRef.current) return;
@@ -138,24 +158,28 @@ export function StayLocationPicker({ open, onClose }: StayLocationPickerProps) {
     if (!open) return;
     const trimmed = query.trim();
     if (trimmed.length < 2) {
+      searchSeq.current += 1;
       setHits([]);
+      setSearching(false);
       return;
     }
 
+    const seq = ++searchSeq.current;
     const controller = new AbortController();
+    setSearching(true);
+
     const timer = window.setTimeout(() => {
-      setSearching(true);
       void searchBaliPlaces(trimmed, controller.signal)
         .then((next) => {
-          if (!controller.signal.aborted) setHits(next);
+          if (seq === searchSeq.current) setHits(next);
         })
         .catch(() => {
-          if (!controller.signal.aborted) setHits([]);
+          if (seq === searchSeq.current) setHits([]);
         })
         .finally(() => {
-          if (!controller.signal.aborted) setSearching(false);
+          if (seq === searchSeq.current) setSearching(false);
         });
-    }, 320);
+    }, 280);
 
     return () => {
       controller.abort();
@@ -220,19 +244,34 @@ export function StayLocationPicker({ open, onClose }: StayLocationPickerProps) {
   // Portaled to <body> so ancestors with transforms (e.g. motion.div) can't
   // trap position:fixed and pin the panel to the top of a scroll container.
   return createPortal(
-    <div className={styles.overlay} role="presentation" onClick={onClose}>
+    <div className={styles.overlay} role="presentation">
+      <div
+        className={styles.backdrop}
+        aria-hidden="true"
+        onClick={onClose}
+        onKeyDown={undefined}
+      />
       <div
         className={styles.panel}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={helperId}
-        onClick={(event) => event.stopPropagation()}
       >
         <header className={styles.header}>
-          <h2 id={titleId} className={styles.title}>
-            Set your hotel / home
-          </h2>
+          <div className={styles.titleRow}>
+            <h2 id={titleId} className={styles.title}>
+              Set your hotel / home
+            </h2>
+            <button
+              type="button"
+              className={styles.close}
+              onClick={onClose}
+              aria-label="Close"
+            >
+              ×
+            </button>
+          </div>
           <p className={styles.hint}>
             Distances and navigation start from here. Drag the pin, search, or type a
             location.
