@@ -56,7 +56,7 @@ Optional Node-only tooling keys (never `VITE_`): `UNSPLASH_ACCESS_KEY`, `LOCATIO
 
 - First load is gated by **5-step onboarding**. Reset with `localStorage` keys prefixed `bali-explorer:`.
 - Mobile Explore uses a bottom **Sheet**; desktop uses a floating side panel. Sheet `.content` is full-bleed (`padding: 0`); `ExploreResultsHeader` is end-to-end; FilterBar/listBody own their own horizontal inset.
-- PlaceCard outline uses `outline` with `color-mix(... var(--color-accent) 20% ...)` at `0.5px` (not a dark border token).
+- PlaceCard / map-pin selection chrome must use `--color-selection` (`#007aff`), **not** `--color-accent`. Astrayx `<Theme theme={neutralTheme}>` remaps `--color-accent` to `#262626` under `#root`, so `color-mix(... accent 20%)` paints as a black edge. Cards use `border: 0.5px solid` at selection@20% plus selected `box-shadow: inset 1px 0 0 var(--color-selection)`.
 
 ### Known pre-existing failures (revamp `main`)
 

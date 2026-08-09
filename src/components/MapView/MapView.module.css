@@ -177,17 +177,18 @@
   transform: scale(1.35);
 }
 
-/* Selected pin preview matches PlaceCard: 1px blue outline + 1px left accent. */
+/* Selected pin preview matches PlaceCard: blue@20% edge + 1px left accent.
+   Use --color-selection — Astrayx remaps --color-accent to #262626. */
 :global(.bali-pin--selected .bali-pin__preview) {
-  outline: 1px solid var(--color-accent);
-  outline-offset: 0;
+  border: 0.5px solid color-mix(in srgb, var(--color-selection) 20%, transparent);
+  outline: none;
   box-shadow:
-    inset 1px 0 0 var(--color-accent),
+    inset 1px 0 0 var(--color-selection),
     var(--shadow-md);
 }
 
 :global(.bali-pin--selected .bali-pin__dot) {
-  outline: 1px solid var(--color-accent);
+  outline: 1px solid color-mix(in srgb, var(--color-selection) 55%, transparent);
 }
 
 :global(.bali-pin:hover),

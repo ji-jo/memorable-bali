@@ -33,6 +33,12 @@
   --color-accent-subtle: #e8f2ff;
   --color-accent-text: #ffffff;
 
+  /* Selection chrome (PlaceCard edges, map pin preview accent).
+     Astrayx <Theme>/neutralTheme overrides --color-accent to #262626 under
+     #root — never use --color-accent for these edges or they read as black. */
+  --color-selection: #007aff;
+  --color-selection-subtle: #e8f2ff;
+
   /* ─── Secondary: rice-terrace green, for visited + success ─────────── */
   --color-success: #34c759;
   --color-success-subtle: #e7f8ec;
@@ -151,6 +157,10 @@
   --color-accent-hover: #ec8570;
   --color-accent-subtle: #33211c;
   --color-accent-text: #131211;
+
+  /* Keep Explore selection edges system-blue even in dark mode. */
+  --color-selection: #007aff;
+  --color-selection-subtle: #e8f2ff;
 
   --color-success: #5fa07c;
   --color-success-subtle: #1b2a22;
