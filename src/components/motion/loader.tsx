@@ -224,11 +224,16 @@ const MORPH_PATHS = [
   morphPath((a) => ngonRadius(a, 3)), // triangle
   morphPath((a) => ngonRadius(a, 6)), // hexagon
   morphPath((a) => ngonRadius(a, 4)), // diamond
-];
+] as const;
+
+const MORPH_START = MORPH_PATHS[0];
 
 // Each shape appears twice in a row so it fully forms and HOLDS before the
 // next morph. Even keyframe spacing then alternates hold / morph segments.
-const MORPH_SEQ = [...MORPH_PATHS.flatMap((p) => [p, p]), MORPH_PATHS[0]];
+const MORPH_SEQ: string[] = [
+  ...MORPH_PATHS.flatMap((p) => [p, p]),
+  MORPH_START,
+];
 // Rotation and scale only change across the morph segments, staying put on the
 // holds, so a settled shape sits still.
 const MORPH_ROT = [0, 0, 72, 72, 144, 144, 216, 216, 288, 288, 360];
@@ -240,7 +245,7 @@ function Morph({ size, speed, reduce }: PartProps) {
       <title>Loading</title>
       <motion.path
         fill="currentColor"
-        d={MORPH_PATHS[0]}
+        d={MORPH_START}
         initial={false}
         style={{ transformBox: "fill-box", transformOrigin: "center" }}
         animate={
