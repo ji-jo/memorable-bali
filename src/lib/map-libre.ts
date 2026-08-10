@@ -60,12 +60,14 @@ export function fitSpotsInBali(
   map: MapLibreMap,
   points: Coordinates[],
   padding: number | { top: number; bottom: number; left: number; right: number } = 56,
+  duration = 500,
 ) {
   const options = {
     padding,
     maxZoom: BALI_FIT_MAX_ZOOM,
     pitch: 0,
     bearing: 0,
+    duration,
   } as const;
 
   try {
