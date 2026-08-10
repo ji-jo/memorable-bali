@@ -77,29 +77,31 @@ export function PlaceCard({
       transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
     >
       <div className={styles.media}>
-        <SpotImage
-          src={spot.images[0]}
-          alt={spot.name}
-          name={spot.name}
-          priority={variant === 'feature'}
-          className={variant === 'feature' ? styles.featureImage : undefined}
-          aspect={
-            variant === 'wide' || variant === 'feature'
-              ? '16/9'
-              : variant === 'compact' || variant === 'grid'
-                ? '1/1'
-                : '4/3'
-          }
-          categoryColor={category?.color}
-          rounded={variant === 'compact'}
-        />
-        {selected ? (
-          <span className={styles.expandHint} aria-hidden="true">
-            <span className={styles.expandHintCircle}>
-              <ArrowsOutSimpleIcon size={18} weight="bold" />
+        <div className={styles.thumb}>
+          <SpotImage
+            src={spot.images[0]}
+            alt={spot.name}
+            name={spot.name}
+            priority={variant === 'feature'}
+            className={variant === 'feature' ? styles.featureImage : undefined}
+            aspect={
+              variant === 'wide' || variant === 'feature'
+                ? '16/9'
+                : variant === 'compact' || variant === 'grid'
+                  ? '1/1'
+                  : '4/3'
+            }
+            categoryColor={category?.color}
+            rounded={variant === 'compact'}
+          />
+          {selected ? (
+            <span className={styles.expandHint} aria-hidden="true">
+              <span className={styles.expandHintCircle}>
+                <ArrowsOutSimpleIcon size={18} weight="bold" color="#fff" />
+              </span>
             </span>
-          </span>
-        ) : null}
+          ) : null}
+        </div>
         {spot.tags[0] && variant !== 'grid' && (
           <div className={styles.tagSlot}>
             <TagBadge tag={spot.tags[0]} />
