@@ -82,15 +82,25 @@ function centerForVisibleArea(
   return { lat: shiftedLatitude, lng: location.lng };
 }
 
-function fitPadding(leftInset: number, mapWidth = 0) {
+function fitPadding(
+  leftInset: number,
+  mapWidth = 0,
+  bottomInset = 0,
+  mapHeight = 0,
+) {
   const rawLeft = EDGE_PAD + Math.max(0, leftInset);
   // Huge left padding + tight Bali maxBounds makes MapLibre throw on setPadding/fitBounds.
   const maxLeft =
     mapWidth > 0 ? Math.min(rawLeft, Math.max(EDGE_PAD, Math.floor(mapWidth * 0.42))) : rawLeft;
+  const rawBottom = EDGE_PAD + Math.max(0, bottomInset) * Math.max(0, mapHeight);
+  const maxBottom =
+    mapHeight > 0
+      ? Math.min(rawBottom, Math.max(EDGE_PAD, Math.floor(mapHeight * 0.72)))
+      : EDGE_PAD;
   return {
     top: EDGE_PAD,
     right: EDGE_PAD,
-    bottom: EDGE_PAD,
+    bottom: maxBottom,
     left: maxLeft,
   };
 }
@@ -174,7 +184,9 @@ export function MapView({
       mapRef.current = map;
       applyBaliMapConstraints(map);
       try {
-        map.setPadding(fitPadding(leftInset, container.clientWidth));
+        map.setPadding(
+          fitPadding(leftInset, container.clientWidth, bottomInset, container.clientHeight),
+        );
       } catch (error) {
         console.warn('[map] setPadding skipped:', error);
       }
@@ -230,21 +242,34 @@ export function MapView({
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
-    const width = map.getContainer().clientWidth;
+    const container = map.getContainer();
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+    const padding = fitPadding(leftInset, width, bottomInset, height);
     try {
-      map.setPadding(fitPadding(leftInset, width));
+      map.setPadding(padding);
     } catch (error) {
       console.warn('[map] setPadding skipped:', error);
     }
     if (!fitBounds || spots.length === 0) return;
-    return whenMapReady(map, () => {
-      fitSpotsInBali(
-        map,
-        spots.map((spot) => spot.coordinates),
-        fitPadding(leftInset, width),
-      );
+
+    let frame = 0;
+    const readyCleanup = whenMapReady(map, () => {
+      // Instant refit while the sheet moves so Bali stays in the visible band.
+      frame = window.requestAnimationFrame(() => {
+        fitSpotsInBali(
+          map,
+          spots.map((spot) => spot.coordinates),
+          padding,
+          0,
+        );
+      });
     });
-  }, [fitBounds, leftInset, spots, mapEpoch]);
+    return () => {
+      readyCleanup();
+      window.cancelAnimationFrame(frame);
+    };
+  }, [fitBounds, leftInset, bottomInset, spots, mapEpoch]);
 
   // Sync markers to the filtered set (not to selection — that is class-only below).
   useEffect(() => {
@@ -426,9 +451,15 @@ export function MapView({
         containerRef.current?.clientHeight ?? window.innerHeight,
       );
       try {
+        const container = map.getContainer();
         map.easeTo({
           center: [target.lng, target.lat],
-          padding: fitPadding(leftInset, map.getContainer().clientWidth),
+          padding: fitPadding(
+            leftInset,
+            container.clientWidth,
+            bottomInset,
+            container.clientHeight,
+          ),
           duration: 320,
         });
       } catch (error) {
@@ -455,10 +486,11 @@ export function MapView({
   const handleRecenter = () => {
     const map = mapRef.current;
     if (!mapFullscreen && map && spots.length > 0) {
+      const container = map.getContainer();
       fitSpotsInBali(
         map,
         spots.map((spot) => spot.coordinates),
-        fitPadding(leftInset, map.getContainer().clientWidth),
+        fitPadding(leftInset, container.clientWidth, bottomInset, container.clientHeight),
       );
     }
     onRecenter?.();
