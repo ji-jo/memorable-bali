@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import type { MouseEvent } from 'react';
+import { ArrowsOutSimpleIcon } from '@phosphor-icons/react/dist/csr/ArrowsOutSimple';
 
 import { SpotImage } from '@/components/SpotImage';
 import { TagBadge } from '@/components/TagBadge';
@@ -70,27 +71,37 @@ export function PlaceCard({
       data-spot-id={spot.id}
       data-selected={selected ? 'true' : undefined}
       aria-current={selected ? 'true' : undefined}
+      aria-label={selected ? `${spot.name}, tap again to open` : undefined}
       whileHover={hoverMotion}
       whileTap={{ scale: 0.985 }}
       transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
     >
       <div className={styles.media}>
-        <SpotImage
-          src={spot.images[0]}
-          alt={spot.name}
-          name={spot.name}
-          priority={variant === 'feature'}
-          className={variant === 'feature' ? styles.featureImage : undefined}
-          aspect={
-            variant === 'wide' || variant === 'feature'
-              ? '16/9'
-              : variant === 'compact' || variant === 'grid'
-                ? '1/1'
-                : '4/3'
-          }
-          categoryColor={category?.color}
-          rounded={variant === 'compact'}
-        />
+        <div className={styles.thumb}>
+          <SpotImage
+            src={spot.images[0]}
+            alt={spot.name}
+            name={spot.name}
+            priority={variant === 'feature'}
+            className={variant === 'feature' ? styles.featureImage : undefined}
+            aspect={
+              variant === 'wide' || variant === 'feature'
+                ? '16/9'
+                : variant === 'compact' || variant === 'grid'
+                  ? '1/1'
+                  : '4/3'
+            }
+            categoryColor={category?.color}
+            rounded={variant === 'compact'}
+          />
+          {selected ? (
+            <span className={styles.expandHint} aria-hidden="true">
+              <span className={styles.expandHintCircle}>
+                <ArrowsOutSimpleIcon size={18} weight="bold" color="#fff" />
+              </span>
+            </span>
+          ) : null}
+        </div>
         {spot.tags[0] && variant !== 'grid' && (
           <div className={styles.tagSlot}>
             <TagBadge tag={spot.tags[0]} />

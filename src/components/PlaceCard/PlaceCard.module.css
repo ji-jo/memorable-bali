@@ -52,6 +52,53 @@
   position: relative;
 }
 
+/* Thumbnail frame — expand affordance is centered on THIS, not the whole card. */
+.thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/*
+ * Open affordance — only when the card is selected (blue).
+ * White expand icon + white @ 25% circle, dead-center on the image.
+ */
+.expandHint {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.expandHintCircle {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background-color: rgb(255 255 255 / 0.25);
+  color: #fff;
+}
+
+.expandHintCircle :global(svg) {
+  display: block;
+  color: #fff;
+}
+
+.compact .expandHintCircle {
+  width: 2rem;
+  height: 2rem;
+}
+
+.compact .expandHintCircle :global(svg) {
+  width: 1rem;
+  height: 1rem;
+}
+
 .visitedSlot {
   position: absolute;
   top: var(--space-3);
@@ -145,7 +192,14 @@
 .compact .media {
   flex-shrink: 0;
   width: 88px;
-  align-self: stretch;
+  height: 88px;
+  align-self: center;
+}
+
+.compact .thumb {
+  width: 88px;
+  height: 88px;
+  border-radius: var(--radius-lg);
 }
 
 .compact .body {
@@ -257,7 +311,13 @@
   border-color: var(--place-card-edge-strong);
 }
 
-.grid .media > * {
+.grid .thumb {
+  position: absolute;
+  inset: 0;
+  height: auto;
+}
+
+.grid .media > .thumb > * {
   height: 100%;
   aspect-ratio: unset;
 }
