@@ -52,6 +52,41 @@
   position: relative;
 }
 
+/* Selected-card open affordance — white expand icon on white@25% circle. */
+.expandHint {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.expandHintCircle {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-full);
+  background-color: rgb(255 255 255 / 0.25);
+  color: #fff;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.12);
+}
+
+.expandHintCircle :global(svg) {
+  display: block;
+}
+
+.compact .expandHintCircle {
+  width: 2rem;
+  height: 2rem;
+}
+
+.compact .expandHintCircle :global(svg) {
+  width: 1rem;
+  height: 1rem;
+}
+
 .visitedSlot {
   position: absolute;
   top: var(--space-3);
@@ -146,6 +181,8 @@
   flex-shrink: 0;
   width: 88px;
   align-self: stretch;
+  overflow: hidden;
+  border-radius: var(--radius-md);
 }
 
 .compact .body {

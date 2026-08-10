@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import type { MouseEvent } from 'react';
+import { ArrowsOutSimpleIcon } from '@phosphor-icons/react/dist/csr/ArrowsOutSimple';
 
 import { SpotImage } from '@/components/SpotImage';
 import { TagBadge } from '@/components/TagBadge';
@@ -70,6 +71,7 @@ export function PlaceCard({
       data-spot-id={spot.id}
       data-selected={selected ? 'true' : undefined}
       aria-current={selected ? 'true' : undefined}
+      aria-label={selected ? `${spot.name}, tap again to open` : undefined}
       whileHover={hoverMotion}
       whileTap={{ scale: 0.985 }}
       transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
@@ -91,6 +93,13 @@ export function PlaceCard({
           categoryColor={category?.color}
           rounded={variant === 'compact'}
         />
+        {selected ? (
+          <span className={styles.expandHint} aria-hidden="true">
+            <span className={styles.expandHintCircle}>
+              <ArrowsOutSimpleIcon size={18} weight="bold" />
+            </span>
+          </span>
+        ) : null}
         {spot.tags[0] && variant !== 'grid' && (
           <div className={styles.tagSlot}>
             <TagBadge tag={spot.tags[0]} />
