@@ -1,5 +1,5 @@
 /**
- * Draggable bottom sheet — Explore list over the map (mobile + desktop).
+ * Draggable bottom sheet — Explore list over the map on mobile only.
  * Map stays visible behind it; the sheet holds the list.
  */
 .sheet {
@@ -86,9 +86,9 @@
   touch-action: pan-y;
 }
 
+/* From --bp-lg the sheet is not used — Explore renders the left panel instead. */
 @media (min-width: 1024px) {
   .sheet {
-    /* A little more map peek above the sheet on large screens. */
-    height: calc(100dvh - var(--sheet-top-inset, 5rem));
+    display: none;
   }
 }
