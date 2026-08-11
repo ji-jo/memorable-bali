@@ -5,6 +5,7 @@ import { EmptyState } from '@/components/EmptyState';
 import { PlaceCard } from '@/components/PlaceCard';
 import { computeTotals } from '@/lib/itinerary';
 import { formatCost, formatDuration } from '@/lib/format';
+import { shortStayLabel } from '@/lib/stay-location';
 import { useSpots } from '@/hooks/useSpots';
 import { useItinerary } from '@/state/ItineraryContext';
 import { useOnboarding } from '@/state/OnboardingContext';
@@ -41,7 +42,7 @@ export default function Itinerary() {
         <h1 className={styles.title}>{active.title}</h1>
         <p className={styles.subtitle}>
           {totals.stopCount} stop{totals.stopCount === 1 ? '' : 's'} from{' '}
-          {preferences.stayAreaLabel}
+          {shortStayLabel(preferences.stayAreaLabel)}
         </p>
       </header>
 

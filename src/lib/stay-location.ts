@@ -89,3 +89,14 @@ export function formatStayPlusCode(coordinates: Coordinates): string {
     return '';
   }
 }
+
+/**
+ * Short display name for stay labels that come back as full geocode strings
+ * (e.g. "Kusamba, Dawan, Klungkung Regency" → "Kusamba").
+ */
+export function shortStayLabel(label: string): string {
+  const trimmed = label.trim();
+  if (!trimmed) return trimmed;
+  const first = trimmed.split(',')[0]?.trim() ?? trimmed;
+  return first || trimmed;
+}

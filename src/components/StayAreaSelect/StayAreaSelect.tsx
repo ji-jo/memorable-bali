@@ -10,6 +10,7 @@ import {
   SelectValue,
 } from '@/components/motion/select';
 import { StayLocationPicker } from '@/components/StayLocationPicker/StayLocationPicker';
+import { shortStayLabel } from '@/lib/stay-location';
 import { cn } from '@/lib/utils';
 
 import styles from './StayAreaSelect.module.css';
@@ -69,7 +70,7 @@ export function StayAreaSelect({ className, triggerClassName }: StayAreaSelectPr
           ))}
           <SelectItem value={CUSTOM_VALUE}>
             {preferences.stayAreaId === CUSTOM_VALUE
-              ? `Custom · ${preferences.stayAreaLabel}`
+              ? `Custom · ${shortStayLabel(preferences.stayAreaLabel)}`
               : 'Set hotel / home…'}
           </SelectItem>
         </SelectContent>

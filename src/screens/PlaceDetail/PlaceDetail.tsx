@@ -17,6 +17,7 @@ import { sync } from '@/data/repository';
 import ferriesFile from '@data/ferries.json';
 import { formatCost, formatDistance, formatDuration } from '@/lib/format';
 import { fetchDrivingRoute, googleDirectionsUrl } from '@/lib/navigation';
+import { shortStayLabel } from '@/lib/stay-location';
 import { useSpot, useSpots } from '@/hooks/useSpots';
 import { useCategoryLookup, useRegionLookup } from '@/hooks/useLookups';
 import { useItinerary } from '@/state/ItineraryContext';
@@ -285,7 +286,7 @@ export default function PlaceDetail() {
                         rel="noopener noreferrer"
                         className={styles.planLink}
                       >
-                        Navigate from {preferences.stayAreaLabel}
+                        Navigate from {shortStayLabel(preferences.stayAreaLabel)}
                         <span aria-hidden="true">↗</span>
                       </a>
                       <a

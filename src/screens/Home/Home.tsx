@@ -19,6 +19,7 @@ import { useSpots } from '@/hooks/useSpots';
 import { useCategoryLookup } from '@/hooks/useLookups';
 import { useHorizontalScrollOverflow } from '@/hooks/useHorizontalScrollOverflow';
 import { EASE_OUT, SPRING_PRESS } from '@/lib/ease';
+import { shortStayLabel } from '@/lib/stay-location';
 import { useOnboarding } from '@/state/OnboardingContext';
 import categoriesFile from '@data/categories.json';
 import type { OnboardingInterest } from '@/data/types';
@@ -268,7 +269,7 @@ export default function Home() {
       <section className={styles.leadSection}>
         <div className={styles.sectionIntro}>
           <p className={styles.sectionKicker}>
-            {isOnboarded ? `Curated from ${preferences.stayAreaLabel}` : 'A considered starting point'}
+            {isOnboarded ? `Curated from ${shortStayLabel(preferences.stayAreaLabel)}` : 'A considered starting point'}
           </p>
           <h2 className={styles.sectionTitle}>Start with one good idea.</h2>
           <p className={styles.sectionCopy}>
@@ -283,7 +284,7 @@ export default function Home() {
               <div>
                 <p className={styles.nearbyKicker}>Near you now</p>
                 <h3 id="nearby-heading" className={styles.nearbyTitle}>
-                  {isOnboarded ? `Easy starts from ${preferences.stayAreaLabel}` : 'A few easy starts'}
+                  {isOnboarded ? `Easy starts from ${shortStayLabel(preferences.stayAreaLabel)}` : 'A few easy starts'}
                 </h3>
               </div>
               <Link to="/explore" className={styles.textLink}>
