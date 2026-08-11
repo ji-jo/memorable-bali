@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import PerfectScrollbar from 'perfect-scrollbar';
 
 import { EmptyState } from '@/components/EmptyState';
 import { FilterBar } from '@/components/FilterBar';
@@ -9,6 +10,7 @@ import { Sheet } from '@/components/Sheet';
 import type { SnapPoint } from '@/components/Sheet';
 import { applyFilters } from '@/data/queries';
 import { useSpots } from '@/hooks/useSpots';
+import { useIsDesktop } from '@/hooks/useMediaQuery';
 import { BALI_CENTER } from '@/lib/geo';
 import { useOnboarding } from '@/state/OnboardingContext';
 import type { ExploreFilters, SpotTag } from '@/data/types';
@@ -28,8 +30,8 @@ type ExploreLocationState = {
  * hides the list chrome so the map can breathe. Pin taps in map-focus open
  * PlaceDetail; elsewhere they sync the list selection.
  *
- * Mobile and desktop both use the draggable bottom sheet; the map stays
- * full-bleed and recenters into the visible band above the sheet.
+ * Mobile (<1024px): full-bleed map + draggable bottom sheet (Bali recenters
+ * into the visible band). Desktop: floating left list panel beside the map.
  */
 export default function Explore() {
   const [params, setParams] = useSearchParams();
@@ -45,13 +47,32 @@ export default function Explore() {
     () => (location.state as ExploreLocationState | null)?.mapFocus === true,
   );
   const [viewMode, setViewMode] = useState<ExploreViewMode>('list');
-  /** Viewport fraction covered by the sheet — drives map bottom padding. */
+  const [mapLeftInset, setMapLeftInset] = useState(0);
+  /** Mobile sheet cover fraction — drives map bottom padding. Unused on desktop. */
   const [sheetCover, setSheetCover] = useState(0.5);
   const listRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLElement>(null);
+  const listScrollbarRef = useRef<PerfectScrollbar | null>(null);
 
   const spots = useSpots();
   const { anchor, preferences } = useOnboarding();
+  const isDesktop = useIsDesktop();
   const activeMapId = hoveredId ?? selectedId;
+
+  useEffect(() => {
+    if (!isDesktop || mapFocus) {
+      setMapLeftInset(0);
+      return;
+    }
+
+    const update = () => {
+      setMapLeftInset(panelRef.current?.getBoundingClientRect().width ?? 0);
+    };
+
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, [isDesktop, mapFocus]);
 
   // Filters live in the URL so a filtered view is linkable and refresh-safe.
   const filters = useMemo<ExploreFilters>(
@@ -96,9 +117,9 @@ export default function Explore() {
       setHoveredId(null);
       setSelectedId(id);
       if (!id) return;
-      if (snap === 'peek') setChosenSnap('half');
+      if (!isDesktop && snap === 'peek') setChosenSnap('half');
     },
-    [mapFocus, navigate, snap],
+    [isDesktop, mapFocus, navigate, snap],
   );
 
   /** List card click → select map pin (first click). Already selected → open place. */
@@ -108,9 +129,9 @@ export default function Explore() {
       event.preventDefault();
       setHoveredId(null);
       setSelectedId(id);
-      if (snap === 'peek') setChosenSnap('half');
+      if (!isDesktop && snap === 'peek') setChosenSnap('half');
     },
-    [selectedId, snap],
+    [isDesktop, selectedId, snap],
   );
 
   const scrollSelectedCardIntoView = useCallback((spotId: string) => {
@@ -120,6 +141,8 @@ export default function Explore() {
     const node = root.querySelector<HTMLElement>(`[data-spot-id="${CSS.escape(spotId)}"]`);
     if (!node) return false;
 
+    // Prefer the PerfectScrollbar host (listScroll). Native scrollTo({behavior:'smooth'})
+    // is a no-op when PS sets overflow:hidden — animate scrollTop instead.
     const scroller =
       root.scrollHeight > root.clientHeight + 1 ? root : (findScrollParent(node) ?? root);
     const scrollerRect = scroller.getBoundingClientRect();
@@ -129,6 +152,7 @@ export default function Explore() {
     const next = Math.max(0, scroller.scrollTop + (nodeRect.top - scrollerRect.top) - topPad);
 
     animateScrollTop(scroller, next);
+    window.requestAnimationFrame(() => listScrollbarRef.current?.update());
     node.setAttribute('data-flash-selected', 'true');
     window.setTimeout(() => node.removeAttribute('data-flash-selected'), 900);
     return true;
@@ -150,12 +174,12 @@ export default function Explore() {
     };
 
     // Wait for sheet snap / list paint, then retry a few times.
-    const start = window.setTimeout(tryScroll, 120);
+    const start = window.setTimeout(tryScroll, isDesktop ? 0 : 120);
     return () => {
       cancelled = true;
       window.clearTimeout(start);
     };
-  }, [selectedId, mapFocus, viewMode, results, scrollSelectedCardIntoView]);
+  }, [selectedId, mapFocus, viewMode, results, isDesktop, scrollSelectedCardIntoView]);
 
   const enterMapFocus = useCallback(() => {
     setSelectedId(null);
@@ -179,6 +203,36 @@ export default function Explore() {
       navigate(location.pathname + location.search, { replace: true, state: null });
     }
   }, [location.pathname, location.search, location.state, navigate]);
+
+  useEffect(() => {
+    if (!isDesktop || mapFocus) return;
+    const node = listRef.current;
+    if (!node) return;
+
+    const scrollbar = new PerfectScrollbar(node, {
+      suppressScrollX: true,
+      wheelPropagation: false,
+    });
+    listScrollbarRef.current = scrollbar;
+
+    const frame = requestAnimationFrame(() => scrollbar.update());
+
+    return () => {
+      cancelAnimationFrame(frame);
+      try {
+        scrollbar.destroy();
+      } catch {
+        // PerfectScrollbar can throw if the node was already detached.
+      }
+      listScrollbarRef.current = null;
+      node.querySelectorAll('.ps__rail-x, .ps__rail-y').forEach((rail) => rail.remove());
+      node.classList.remove('ps', 'ps--active-x', 'ps--active-y');
+    };
+  }, [isDesktop, mapFocus]);
+
+  useEffect(() => {
+    listScrollbarRef.current?.update();
+  }, [results.length, viewMode]);
 
   const list = (
     <div className={styles.listScroll} ref={listRef}>
@@ -237,19 +291,28 @@ export default function Explore() {
           selectedId={activeMapId}
           onSelectSpot={selectFromMap}
           onRecenter={toggleMapFocus}
-          bottomInset={mapFocus ? 0 : sheetCover}
+          leftInset={mapLeftInset}
+          bottomInset={!isDesktop && !mapFocus ? sheetCover : 0}
           mapFullscreen={mapFocus}
           stayAnchor={anchor}
           stayLabel={preferences.stayAreaLabel}
         />
       </div>
 
-      {!mapFocus ? (
+      {mapFocus ? null : isDesktop ? (
+        <aside className={styles.panel} ref={panelRef}>
+          <div className={styles.panelHeader}>
+            <h1 className={styles.title}>Explore</h1>
+            <FilterBar filters={filters} onChange={setFilters} />
+          </div>
+          {list}
+        </aside>
+      ) : (
         <Sheet snap={snap} onSnapChange={setChosenSnap} onCoverChange={setSheetCover}>
           <FilterBar filters={filters} onChange={setFilters} />
           {list}
         </Sheet>
-      ) : null}
+      )}
     </div>
   );
 }
@@ -276,7 +339,10 @@ function findScrollParent(start: HTMLElement): HTMLElement | null {
   return null;
 }
 
-/** Drive scrollTop directly (instant if reduced-motion). */
+/**
+ * PerfectScrollbar hosts use overflow:hidden, so Element.scrollTo({behavior:'smooth'})
+ * often never moves. Drive scrollTop directly (instant if reduced-motion).
+ */
 function animateScrollTop(scroller: HTMLElement, top: number) {
   const target = Math.max(0, Math.min(top, scroller.scrollHeight - scroller.clientHeight));
   const reduce =
