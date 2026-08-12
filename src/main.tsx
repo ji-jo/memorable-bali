@@ -16,6 +16,8 @@ import '@astryxdesign/theme-neutral/theme.css';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import 'react-nano-scrollbar/dist/index.css';
+import '@fontsource/redaction-10/400.css';
+import '@fontsource/redaction-10/700.css';
 import './styles/global.css';
 
 const container = document.getElementById('root');

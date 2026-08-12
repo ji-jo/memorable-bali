@@ -52,16 +52,16 @@
 
   /* ─── Type ─────────────────────────────────────────────────────────── */
   --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', sans-serif;
-  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+  --font-display: 'Redaction 10', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-  /* Fluid scale — min at 360px, max at 1280px */
+  /* Fluid scale — min at 360px, max at 1280px (+2pt on display sizes) */
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
-  --text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem);
-  --text-xl: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
-  --text-2xl: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
-  --text-3xl: clamp(2.25rem, 1.6rem + 2.9vw, 3.75rem);
+  --text-lg: clamp(calc(1.125rem + 2pt), calc(1.05rem + 2pt + 0.35vw), calc(1.25rem + 2pt));
+  --text-xl: clamp(calc(1.375rem + 2pt), calc(1.2rem + 2pt + 0.8vw), calc(1.75rem + 2pt));
+  --text-2xl: clamp(calc(1.75rem + 2pt), calc(1.4rem + 2pt + 1.6vw), calc(2.5rem + 2pt));
+  --text-3xl: clamp(calc(2.25rem + 2pt), calc(1.6rem + 2pt + 2.9vw), calc(3.75rem + 2pt));
 
   --leading-tight: 1.15;
   --leading-snug: 1.35;

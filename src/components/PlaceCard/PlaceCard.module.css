@@ -4,14 +4,16 @@
   --place-card-edge: color-mix(in srgb, var(--color-selection) 20%, transparent);
   --place-card-edge-strong: color-mix(in srgb, var(--color-selection) 35%, transparent);
 
-  display: block;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   position: relative;
-  background-color: transparent;
+  background-color: var(--color-surface);
   border: 0.5px solid var(--place-card-edge);
   outline: none;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: none;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 6px 20px rgb(0 0 0 / 0.06);
   transition:
     border-color var(--duration-base) var(--ease-out),
     transform var(--duration-base) var(--ease-out),
@@ -21,6 +23,7 @@
 
 .card:hover {
   border-color: var(--place-card-edge-strong);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.05), 0 10px 28px rgb(0 0 0 / 0.08);
 }
 
 /* Selected — same 0.5px blue@20% edge for EVERY variant + 1px left accent.
@@ -116,15 +119,15 @@
 }
 
 .body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   padding: var(--space-4);
-  /* Same frosted glass read as ExpandableTabs (bg-white/80). */
-  background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  background-color: var(--color-surface);
 }
 
 :root[data-theme='dark'] .body {
-  background-color: color-mix(in srgb, var(--color-surface) 65%, transparent);
+  background-color: var(--color-surface);
 }
 
 .category {
@@ -132,7 +135,7 @@
   width: fit-content;
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-full);
-  background-color: color-mix(in srgb, var(--color-surface) 90%, transparent);
+  background-color: var(--color-surface-sunken);
   font-size: var(--text-xs);
   line-height: 1;
   text-transform: uppercase;
@@ -143,18 +146,28 @@
 .name {
   font-family: var(--font-display);
   font-size: var(--text-lg);
-  font-weight: var(--weight-semibold);
+  font-weight: var(--weight-regular);
   line-height: var(--leading-tight);
-  margin-top: var(--space-1);
+  margin-top: var(--space-2);
   color: var(--color-text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-/* The 50–80 char description. One line at 360px — do not let it wrap to three. */
+/* The 50–80 char description. Two lines in rails — full text on detail. */
 .description {
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
   line-height: var(--leading-snug);
   margin-top: var(--space-2);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .meta {
@@ -162,7 +175,8 @@
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-3);
-  margin-top: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-3);
   font-size: var(--text-xs);
   color: var(--color-text-tertiary);
 }
@@ -176,10 +190,13 @@
 /* ─── compact: horizontal, for the sheet list and itinerary stops ────── */
 .compact {
   display: flex;
+  flex-direction: row;
   gap: var(--space-3);
   align-items: stretch;
   padding: var(--space-2);
   min-height: calc(var(--space-8) + var(--space-7));
+  height: auto;
+  box-shadow: none;
   background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
   backdrop-filter: blur(16px) saturate(140%);
   -webkit-backdrop-filter: blur(16px) saturate(140%);
@@ -229,6 +246,7 @@
 
 .compact .meta {
   margin-top: var(--space-2);
+  padding-top: 0;
   gap: var(--space-2);
 }
 
@@ -239,7 +257,10 @@
 
 /* ─── feature: editorial lead story with information over photography ── */
 .feature {
+  display: block;
+  height: auto;
   min-height: calc(var(--space-8) * 5);
+  box-shadow: none;
   background-color: var(--color-surface-sunken);
   /* Keep the shared blue@20% edge — do not wipe to transparent. */
 }
@@ -260,6 +281,7 @@
 .feature .body {
   position: absolute;
   inset: auto 0 0;
+  flex: none;
   padding: var(--space-7) var(--space-5) var(--space-5);
   background: linear-gradient(to bottom, transparent, var(--color-scrim));
   backdrop-filter: none;
@@ -293,11 +315,14 @@
 
 /* ─── grid: photo tiles for Explore's two-column mosaic ─────────────── */
 .grid {
+  display: block;
+  height: auto;
   aspect-ratio: 4 / 5;
   border-radius: var(--radius-ios);
   corner-shape: squircle;
   overflow: hidden;
   background-color: var(--color-surface-sunken);
+  box-shadow: none;
   /* Inherit .card blue@20% border — do not set transparent. */
 }
 
