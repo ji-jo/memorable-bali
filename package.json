@@ -15,7 +15,9 @@
     "reconcile:locationiq": "node scripts/reconcile-spots-locationiq.mjs",
     "compute:distances": "node scripts/compute-distances.mjs",
     "fetch:spot-images": "node scripts/fetch-spot-images.mjs",
-    "optimize:spot-images": "node scripts/optimize-spot-images.mjs"
+    "optimize:spot-images": "node scripts/optimize-spot-images.mjs",
+    "pages:deploy": "npm run build && wrangler pages deploy",
+    "pages:dev": "wrangler pages dev dist"
   },
   "dependencies": {
     "@astryxdesign/cli": "^0.2.0",
@@ -68,6 +70,7 @@
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.66.0",
     "vite": "^6.0.3",
-    "vitest": "^3.2.7"
+    "vitest": "^3.2.7",
+    "wrangler": "^4.122.0"
   }
 }
