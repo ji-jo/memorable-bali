@@ -78,8 +78,11 @@
   display: none;
 }
 
+/* Equal-height rail: CSS grid stretch is reliable; flex + height:100% was not. */
 .rail {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(72vw, 18rem);
   align-items: stretch;
   gap: var(--space-4);
   width: max-content;
@@ -87,9 +90,9 @@
 }
 
 .rail > * {
-  flex: 0 0 auto;
+  height: auto;
+  min-height: 100%;
   align-self: stretch;
-  width: min(72vw, 18rem);
   scroll-snap-align: start;
 }
 
@@ -133,7 +136,7 @@
     grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
   }
 
-  .rail > * {
-    width: 19rem;
+  .rail {
+    grid-auto-columns: 19rem;
   }
 }
