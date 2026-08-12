@@ -19,7 +19,7 @@ export interface SectionProps {
 
 export function Section({ title, subtitle, action, scrollable = false, children }: SectionProps) {
   const railRef = useRef<HTMLDivElement>(null);
-  const { overflows, canScrollLeft, canScrollRight } = useHorizontalScrollOverflow(
+  const { canScrollLeft, canScrollRight } = useHorizontalScrollOverflow(
     railRef,
     [scrollable, children],
   );
@@ -68,7 +68,13 @@ export function Section({ title, subtitle, action, scrollable = false, children 
           ) : null}
           <div
             ref={railRef}
-            className={`${styles.railScroll}${overflows ? ' scroll-mask-x' : ''}`}
+            className={[
+              styles.railScroll,
+              canScrollLeft ? 'scroll-mask-l' : '',
+              canScrollRight ? 'scroll-mask-r' : '',
+            ]
+              .filter(Boolean)
+              .join(' ')}
           >
             <div className={styles.rail}>{children}</div>
           </div>

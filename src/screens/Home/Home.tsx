@@ -39,7 +39,6 @@ export default function Home() {
   const { preferences, isOnboarded } = useOnboarding();
   const interests = categoriesFile.onboardingInterests as OnboardingInterest[];
   const {
-    overflows: categoriesOverflow,
     canScrollLeft: canScrollCategoriesLeft,
     canScrollRight: canScrollCategoriesRight,
   } = useHorizontalScrollOverflow(categoryRailRef, [categories]);
@@ -238,7 +237,13 @@ export default function Home() {
           </button>
         ) : null}
         <div
-          className={`${styles.categoryRail}${categoriesOverflow ? ' scroll-mask-x' : ''}`}
+          className={[
+            styles.categoryRail,
+            canScrollCategoriesLeft ? 'scroll-mask-l' : '',
+            canScrollCategoriesRight ? 'scroll-mask-r' : '',
+          ]
+            .filter(Boolean)
+            .join(' ')}
           ref={categoryRailRef}
         >
           {[...categories.values()].map((category, index) => (
