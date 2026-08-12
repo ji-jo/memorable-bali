@@ -187,6 +187,11 @@
   gap: var(--space-1);
 }
 
+.copy {
+  display: flex;
+  flex-direction: column;
+}
+
 /* ─── default / vertical: Home rails — equal height, meta pinned bottom ─ */
 .vertical {
   height: 100%;
@@ -201,12 +206,23 @@
   min-height: 0;
 }
 
-.vertical .name {
+.vertical .copy {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+  min-height: 0;
+}
+
+.vertical .copy .name {
   /* Always reserve two title lines so rail cards stay the same height. */
+  margin-top: 0;
   min-height: calc(2 * var(--leading-tight) * 1em);
 }
 
-.vertical .description {
+.vertical .copy .description {
+  margin-top: 0;
   flex: 1;
   min-height: calc(2 * var(--leading-snug) * 1em);
 }
