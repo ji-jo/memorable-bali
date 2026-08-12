@@ -79,7 +79,7 @@ export function AppShell() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        made with &lt;3 by jijo.fyi
+        made with ♡ by jijo.fyi
       </a>
     </>
   );
