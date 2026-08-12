@@ -68,9 +68,9 @@ export function Section({ title, subtitle, action, scrollable = false, children 
           ) : null}
           <div
             ref={railRef}
-            className={`${styles.rail}${overflows ? ' scroll-mask-x' : ''}`}
+            className={`${styles.railScroll}${overflows ? ' scroll-mask-x' : ''}`}
           >
-            {children}
+            <div className={styles.rail}>{children}</div>
           </div>
           {canScrollRight ? (
             <button
