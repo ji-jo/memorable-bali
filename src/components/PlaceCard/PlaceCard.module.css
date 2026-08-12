@@ -195,7 +195,10 @@
 
 /* ─── default / vertical: Home rails — equal height, meta pinned bottom ─ */
 .vertical {
+  /* Fill the stretched rail slot so body can pin meta. */
+  width: 100%;
   height: 100%;
+  align-self: stretch;
 }
 
 .vertical .media {
@@ -205,20 +208,37 @@
 .vertical .body {
   flex: 1;
   min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Title + description stay grouped; only meta pins to the card bottom. */
+.vertical .category {
+  flex-shrink: 0;
+}
+
+/*
+ * Title + description stay grouped (16px gap). Copy grows so leftover
+ * whitespace sits between description and metrics — not between title lines.
+ * Meta stays pinned to the card bottom across the rail.
+ */
 .vertical .copy {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   gap: var(--space-4);
   margin-top: var(--space-2);
+  min-height: 0;
 }
 
 .vertical .copy .name {
   margin-top: 0;
+  flex-shrink: 0;
 }
 
 .vertical .copy .description {
   margin-top: 0;
+  flex-shrink: 0;
 }
 
 .vertical .meta {
