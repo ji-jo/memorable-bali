@@ -187,6 +187,36 @@
   gap: var(--space-1);
 }
 
+/* ─── default / vertical: Home rails — equal height, meta pinned bottom ─ */
+.vertical {
+  height: 100%;
+}
+
+.vertical .media {
+  flex-shrink: 0;
+}
+
+.vertical .body {
+  flex: 1;
+  min-height: 0;
+}
+
+.vertical .name {
+  /* Always reserve two title lines so rail cards stay the same height. */
+  min-height: calc(2 * var(--leading-tight) * 1em);
+}
+
+.vertical .description {
+  flex: 1;
+  min-height: calc(2 * var(--leading-snug) * 1em);
+}
+
+.vertical .meta {
+  margin-top: auto;
+  flex-shrink: 0;
+  padding-top: var(--space-3);
+}
+
 /* ─── compact: horizontal, for the sheet list and itinerary stops ────── */
 .compact {
   display: flex;

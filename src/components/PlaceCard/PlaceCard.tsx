@@ -46,6 +46,7 @@ export function PlaceCard({
 
   const classes = [
     styles.card,
+    variant === 'default' ? styles.vertical : '',
     variant === 'compact' ? styles.compact : '',
     variant === 'wide' ? styles.wide : '',
     variant === 'feature' ? styles.feature : '',

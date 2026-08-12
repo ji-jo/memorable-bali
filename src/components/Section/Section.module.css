@@ -48,6 +48,7 @@
 /* Horizontal rail — cards peek at the right edge to signal more content. */
 .rail {
   display: flex;
+  align-items: stretch;
   gap: var(--space-4);
   overflow-x: auto;
   overscroll-behavior-x: contain;
@@ -77,6 +78,7 @@
 
 .rail > * {
   flex: 0 0 auto;
+  align-self: stretch;
   width: min(72vw, 18rem);
   scroll-snap-align: start;
 }
@@ -113,6 +115,7 @@
   display: grid;
   gap: var(--space-4);
   padding-inline: var(--gutter);
+  align-items: stretch;
 }
 
 @media (min-width: 768px) {
