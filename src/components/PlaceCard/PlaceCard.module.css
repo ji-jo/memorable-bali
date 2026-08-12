@@ -6,7 +6,9 @@
 
   display: flex;
   flex-direction: column;
-  height: 100%;
+  /* height:auto so rail/grid stretch can equalize cards; height:100% blocks stretch */
+  height: auto;
+  min-height: 100%;
   position: relative;
   background-color: var(--color-surface);
   border: 0.5px solid var(--place-card-edge);
@@ -195,9 +197,9 @@
 
 /* ─── default / vertical: Home rails — equal height, meta pinned bottom ─ */
 .vertical {
-  /* Fill the stretched rail slot so body can pin meta. */
-  width: 100%;
-  height: 100%;
+  /* Must stay height:auto — percentage height cancels align-self:stretch. */
+  height: auto;
+  min-height: 100%;
   align-self: stretch;
 }
 
@@ -206,7 +208,7 @@
 }
 
 .vertical .body {
-  flex: 1;
+  flex: 1 1 auto;
   min-height: 0;
   display: flex;
   flex-direction: column;
@@ -239,6 +241,8 @@
 .vertical .copy .description {
   margin-top: 0;
   flex-shrink: 0;
+  /* Always reserve two description lines so short copy doesn't shrink the card. */
+  min-height: calc(2 * var(--leading-snug) * 1em);
 }
 
 .vertical .meta {
