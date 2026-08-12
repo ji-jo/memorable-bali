@@ -12,12 +12,6 @@
     var(--color-bg);
 }
 
-.themeSlot {
-  position: absolute;
-  top: var(--space-4);
-  right: var(--gutter);
-}
-
 .content {
   max-width: 34rem;
   text-align: center;

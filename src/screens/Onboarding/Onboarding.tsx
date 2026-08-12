@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import { Button } from '@/components/Button';
 import { Chip } from '@/components/Chip';
+import { MakerCredit } from '@/components/MakerCredit';
 import { StayLocationPicker } from '@/components/StayLocationPicker/StayLocationPicker';
 import { SunRayShader } from '@/components/SunRayShader';
 import { useOnboarding, resolveStayArea } from '@/state/OnboardingContext';
@@ -260,6 +261,9 @@ export default function Onboarding() {
           {step === TOTAL_STEPS ? 'See my Bali' : 'Continue'}
         </Button>
       </div>
+
+      {/* Sit above the fixed CTA so it matches AppShell without covering Continue. */}
+      <MakerCredit className={styles.creditAboveCta} />
     </div>
   );
 }

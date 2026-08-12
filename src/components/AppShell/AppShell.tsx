@@ -5,12 +5,11 @@ import { CompassIcon } from '@phosphor-icons/react/dist/csr/Compass';
 import { HouseIcon } from '@phosphor-icons/react/dist/csr/House';
 import { MapTrifoldIcon } from '@phosphor-icons/react/dist/csr/MapTrifold';
 
+import { MakerCredit } from '@/components/MakerCredit';
 import {
   ExpandableTabs,
   type ExpandableTabsItem,
 } from '@/components/motion/expandable-tabs';
-
-import styles from './AppShell.module.css';
 
 const NAV: Array<ExpandableTabsItem & { to: string }> = [
   {
@@ -73,14 +72,7 @@ export function AppShell() {
           }}
         />
       )}
-      <a
-        className={styles.credit}
-        href="https://jijo.fyi/work"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        made with ♡ by jijo.fyi
-      </a>
+      <MakerCredit />
     </>
   );
 }
