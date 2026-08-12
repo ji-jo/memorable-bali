@@ -117,17 +117,8 @@ export function PlaceCard({
 
       <div className={styles.body}>
         <div className={styles.category}>{category?.label ?? spot.category}</div>
-        {variant === 'default' ? (
-          <div className={styles.copy}>
-            <h3 className={styles.name}>{spot.name}</h3>
-            <p className={styles.description}>{spot.description}</p>
-          </div>
-        ) : (
-          <>
-            <h3 className={styles.name}>{spot.name}</h3>
-            <p className={styles.description}>{spot.description}</p>
-          </>
-        )}
+        <h3 className={styles.name}>{spot.name}</h3>
+        <p className={styles.description}>{spot.description}</p>
         <div className={styles.meta}>
           <span className={styles.metaItem}>{formatDistance(distance)}</span>
           {variant !== 'grid' && (

@@ -46,6 +46,13 @@
 }
 
 /* Horizontal rail — cards peek at the right edge to signal more content. */
+.railWrap {
+  position: relative;
+  /* Room for card box-shadows so the scroll rail doesn't clip them. */
+  padding-block: var(--space-2) var(--space-5);
+  margin-block: calc(-1 * var(--space-2)) calc(-1 * var(--space-5));
+}
+
 .rail {
   display: flex;
   align-items: stretch;
@@ -56,7 +63,7 @@
   cursor: grab;
   scroll-snap-type: x mandatory;
   padding-inline: var(--gutter);
-  padding-bottom: var(--space-2);
+  padding-block: var(--space-2) var(--space-4);
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 }
@@ -66,10 +73,6 @@
   scroll-snap-type: none;
   scroll-behavior: auto;
   user-select: none;
-}
-
-.railWrap {
-  position: relative;
 }
 
 .rail::-webkit-scrollbar {
