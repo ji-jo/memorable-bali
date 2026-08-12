@@ -13,7 +13,6 @@ import { Section } from '@/components/Section';
 import { StayAreaSelect } from '@/components/StayAreaSelect/StayAreaSelect';
 import { SunRayShader } from '@/components/SunRayShader';
 import { CommandPalette } from '@/components/motion/command-palette';
-import { ThemeToggle } from '@/components/ThemeToggle';
 import { dailyShuffle, matchesInterests, sortByDistance, sortByRating } from '@/data/queries';
 import { useSpots } from '@/hooks/useSpots';
 import { useCategoryLookup } from '@/hooks/useLookups';
@@ -124,11 +123,6 @@ export default function Home() {
               <StayAreaSelect />
             </div>
             <h1 className={styles.title}>Where to today?</h1>
-          </div>
-          {/* The AppShell's top bar is hidden below --bp-md, so without this
-              mobile users would have no way to change theme at all. */}
-          <div className={styles.themeSlot}>
-            <ThemeToggle />
           </div>
         </div>
         <motion.button

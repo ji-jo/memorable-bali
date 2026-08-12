@@ -38,17 +38,6 @@
   gap: var(--space-4);
 }
 
-/* Only below --bp-md, where AppShell's top bar (and its toggle) is hidden. */
-.themeSlot {
-  flex-shrink: 0;
-}
-
-@media (min-width: 768px) {
-  .themeSlot {
-    display: none;
-  }
-}
-
 .greetingRow {
   display: flex;
   flex-wrap: wrap;

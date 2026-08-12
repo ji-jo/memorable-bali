@@ -197,6 +197,11 @@
   max-width: 40rem;
 }
 
+/* Clear the fixed Continue bar (same padding as .screen). */
+.creditAboveCta {
+  bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+}
+
 .searchNote {
   margin-top: var(--space-4);
   font-size: var(--text-sm);

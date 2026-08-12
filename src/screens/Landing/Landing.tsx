@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/Button';
-import { ThemeToggle } from '@/components/ThemeToggle';
+import { MakerCredit } from '@/components/MakerCredit';
 import { useOnboarding } from '@/state/OnboardingContext';
 import { sync } from '@/data/repository';
 import styles from './Landing.module.css';
@@ -18,10 +18,6 @@ export default function Landing() {
 
   return (
     <div className={styles.landing}>
-      <div className={styles.themeSlot}>
-        <ThemeToggle />
-      </div>
-
       <div className={styles.content}>
         <p className={styles.eyebrow}>{spotCount} places, chosen carefully</p>
         <h1 className={styles.title}>
@@ -45,6 +41,8 @@ export default function Landing() {
 
         <p className={styles.note}>Takes under a minute. No account, nothing to sign up for.</p>
       </div>
+
+      <MakerCredit />
     </div>
   );
 }
