@@ -36,10 +36,14 @@ export function useHorizontalScrollOverflow(
     const update = () => {
       const { scrollLeft, scrollWidth, clientWidth } = el;
       const overflows = scrollWidth > clientWidth + 1;
+      // Ignore sub-pixel / scroll-snap noise at the edges so start/end chrome
+      // (fade + chevron) does not flash when there is nothing further to show.
+      const atStart = scrollLeft <= 8;
+      const atEnd = scrollLeft + clientWidth >= scrollWidth - 8;
       setState({
         overflows,
-        canScrollLeft: overflows && scrollLeft > 2,
-        canScrollRight: overflows && scrollLeft + clientWidth < scrollWidth - 2,
+        canScrollLeft: overflows && !atStart,
+        canScrollRight: overflows && !atEnd,
       });
     };
 

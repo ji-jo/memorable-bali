@@ -25,13 +25,19 @@ interface FilterScrollerProps {
 
 function FilterScroller({ ariaLabel, children }: FilterScrollerProps) {
   const scrollerRef = useRef<HTMLDivElement>(null);
-  const { overflows, canScrollRight } = useHorizontalScrollOverflow(scrollerRef, [children]);
+  const { canScrollLeft, canScrollRight } = useHorizontalScrollOverflow(scrollerRef, [children]);
 
   return (
     <div className={styles.scrollerWrap}>
       <div
         ref={scrollerRef}
-        className={`${styles.scroller}${overflows ? ' scroll-mask-x' : ''}`}
+        className={[
+          styles.scroller,
+          canScrollLeft ? 'scroll-mask-l' : '',
+          canScrollRight ? 'scroll-mask-r' : '',
+        ]
+          .filter(Boolean)
+          .join(' ')}
         aria-label={ariaLabel}
       >
         {children}

@@ -61,7 +61,9 @@
   touch-action: pan-x;
   cursor: grab;
   scroll-snap-type: x mandatory;
+  /* Match section header gutter so the first card lines up with the title. */
   padding-inline: var(--gutter);
+  scroll-padding-inline: var(--gutter);
   padding-block: var(--space-2) var(--space-7);
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
