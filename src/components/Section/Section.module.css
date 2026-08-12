@@ -14,7 +14,7 @@
 .title {
   font-family: var(--font-display);
   font-size: var(--text-xl);
-  font-weight: var(--weight-semibold);
+  font-weight: var(--weight-regular);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
   color: var(--color-text);
@@ -77,7 +77,7 @@
 
 .rail > * {
   flex: 0 0 auto;
-  width: min(72vw, 17rem);
+  width: min(72vw, 18rem);
   scroll-snap-align: start;
 }
 
