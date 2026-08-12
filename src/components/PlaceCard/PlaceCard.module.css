@@ -12,8 +12,7 @@
   border: 0.5px solid var(--place-card-edge);
   outline: none;
   border-radius: var(--radius-lg);
-  /* Don't clip outer box-shadow — round media/body instead. */
-  overflow: visible;
+  overflow: hidden;
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 6px 20px rgb(0 0 0 / 0.06);
   transition:
     border-color var(--duration-base) var(--ease-out),
@@ -55,8 +54,6 @@
 .media {
   position: relative;
   overflow: hidden;
-  border-top-left-radius: var(--radius-lg);
-  border-top-right-radius: var(--radius-lg);
 }
 
 /* Thumbnail frame — expand affordance is centered on THIS, not the whole card. */
@@ -208,8 +205,6 @@
 .vertical .body {
   flex: 1;
   min-height: 0;
-  border-bottom-left-radius: var(--radius-lg);
-  border-bottom-right-radius: var(--radius-lg);
 }
 
 /* Title + description stay grouped; only meta pins to the card bottom. */
@@ -307,8 +302,6 @@
   min-height: calc(var(--space-8) * 5);
   box-shadow: none;
   background-color: var(--color-surface-sunken);
-  /* Clip hero photo to card radius — no outer shadow on this variant. */
-  overflow: hidden;
   /* Keep the shared blue@20% edge — do not wipe to transparent. */
 }
 
@@ -319,7 +312,6 @@
 
 .feature .media {
   height: 100%;
-  border-radius: var(--radius-lg);
 }
 
 .featureImage {
