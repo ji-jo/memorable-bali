@@ -307,6 +307,8 @@
   min-height: calc(var(--space-8) * 5);
   box-shadow: none;
   background-color: var(--color-surface-sunken);
+  /* Clip hero photo to card radius — no outer shadow on this variant. */
+  overflow: hidden;
   /* Keep the shared blue@20% edge — do not wipe to transparent. */
 }
 
@@ -317,6 +319,7 @@
 
 .feature .media {
   height: 100%;
+  border-radius: var(--radius-lg);
 }
 
 .featureImage {
