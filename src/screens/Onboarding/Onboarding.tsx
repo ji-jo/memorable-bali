@@ -262,8 +262,7 @@ export default function Onboarding() {
         </Button>
       </div>
 
-      {/* Sit above the fixed CTA so it matches AppShell without covering Continue. */}
-      <MakerCredit className={styles.creditAboveCta} />
+      <MakerCredit />
     </div>
   );
 }
