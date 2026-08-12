@@ -10,6 +10,8 @@ import {
   type ExpandableTabsItem,
 } from '@/components/motion/expandable-tabs';
 
+import styles from './AppShell.module.css';
+
 const NAV: Array<ExpandableTabsItem & { to: string }> = [
   {
     id: 'home',
@@ -71,6 +73,14 @@ export function AppShell() {
           }}
         />
       )}
+      <a
+        className={styles.credit}
+        href="https://jijo.fyi/work"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        made with &lt;3 by jijo.fyi
+      </a>
     </>
   );
 }
